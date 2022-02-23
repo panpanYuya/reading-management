@@ -18,4 +18,9 @@ Route::get('/', function () {
     return view('/user/userAuthCreate');
 });
 
-Route::post('/user/userAuth/create', [UserAuthController::class, 'create']);
+// Route::post('/user/userAuth/createConfirm', [UserAuthController::class, 'createConfirm']);
+
+Route::controller(UserAuthController::class)->group(function(){
+    Route::post('/user/userAuth/createConfirm', 'createConfirm');
+    Route::post('/user/userAuth/createComplete', 'createComplete');
+});

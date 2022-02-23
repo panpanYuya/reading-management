@@ -13,7 +13,8 @@ class StoreuserAuthRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //この値をtrueにしないとうまく動かないので、trueにしておく。
+        return true;
     }
 
     /**
@@ -24,7 +25,11 @@ class StoreuserAuthRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            //新規登録のバリデーション
+            'username' => 'required|alpha_num|unique:App\Models\userAuth,user_name|unique:App\Models\temporaryRegistration,user_name|min:8|max:20',
+            'password' => 'required|alpha_num|min:8|max:50|confirmed',
+            'mailAddress' => 'required|email:strict,dns,spoof|min:5|max:100|nullable'
+
         ];
     }
 

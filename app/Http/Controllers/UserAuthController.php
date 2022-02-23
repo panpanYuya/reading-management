@@ -6,10 +6,11 @@ use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreuserAuthRequest;
 use App\Http\Requests\UpdateuserAuthRequest;
-use App\Services\ValidationService;
 use App\Services\UserService;
-use App\Http\Requests\StoretemporaryRegistrationRequest;
+use App\Http\Requests\UserAuthCompleteRequest;
 use App\Models\TemporaryRegistration;
+use App\Exceptions\InvalidOrderException;
+use Exception;
 
 class UserAuthController extends Controller{
 
@@ -29,28 +30,30 @@ class UserAuthController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function createConfirm(StoreuserAuthRequest $request)
     {
-
-        //
-        $errors = ValidationService::userAuthValidation($request);
-        if(empty($errors)){
-            return view('/user/userAuthCreate', $errors);
-        }
-
         //hash化した値を格納する。
         $hashedPassword = UserService::PasswordHash($request->password);
-        if($request->mailAddress == NULL){
+        if ($request->mailAddress == NULL) {
             $userAuthForm = $this->userAuthForm($request, $hashedPassword);
-            $userAuthForm->save();
+            try {
+                $userAuthForm->save();
+            } catch (Exception $e) {
+                abort(500);
+            }
+            return view('/user/userAuthCreateComplete');
         } else {
             //認証用のtokenを発行する。
             $temporaryToken = UserService::generateToken();
-            $tmpRegistrationForm = $this->temporaryRegistrationForm($request ,$hashedPassword, $temporaryToken);
-            $tmpRegistrationForm->save();
-        }
+            $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
+            try {
+                $tmpRegistrationForm->save();
+            } catch (Exception $e) {
+                abort(500);
+            }
+            return view('/user/userAuthCreateTmpComplete');
 
-        return true;
+        }
 
     }
 
@@ -119,13 +122,12 @@ class UserAuthController extends Controller{
         return $userAuth;
     }
 
-
-    public function temporaryRegistrationForm(Request $request,  $hashedPassword , $temporaryToken){
+    public function temporaryRegistrationForm(Request $request, $hashedPassword,$temporaryToken){
         $tmpRegistrationForm = new TemporaryRegistration();
-        $tmpRegistrationForm->username = $request->username;
-        $tmpRegistrationForm->mailAddress = $request->mailAddress;
+        $tmpRegistrationForm->user_name = $request->username;
+        $tmpRegistrationForm->mail_address = $request->mailAddress;
         $tmpRegistrationForm->password = $hashedPassword;
-        $tmpRegistrationForm->temporaryToken = $temporaryToken;
+        $tmpRegistrationForm->temporary_token = $temporaryToken;
         return $tmpRegistrationForm;
     }
 

@@ -11,17 +11,17 @@ class TemporaryRegistration extends Model
 
     protected $primaryKey = 'id';
 
-    protected $userId = 'user_id';
+    protected $user_id = 'user_id';
 
-    protected $username = 'user_name';
+    protected $user_name = 'user_name';
 
-    protected $mailAddress = 'mail_address';
+    protected $mail_address = 'mail_address';
 
     protected $password = 'password';
 
-    protected $loginToken = 'login_token';
+    protected $login_token = 'login_token';
 
-    protected $temporaryToken = 'temporary_token';
+    protected $temporary_token = 'temporary_token';
 
     protected $createdAt = 'created_at';
 
