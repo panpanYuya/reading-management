@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserCreateController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,9 @@ Route::get('/', function () {
 //Route::postの第二引数には無名関数を動かすことができる。
 Route::controller(UserCreateController::class)->group(function(){
     Route::post('/user/createUser', 'createUser');
+});
+
+Route::controller(LoginController::class)->group(function(){
+    Route::post('/login', 'authenticate');
 });
 
