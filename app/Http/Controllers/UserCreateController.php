@@ -33,6 +33,7 @@ class UserCreateController extends Controller
                 abort(500);
             }
             return view('/user/userAuthCreateComplete');
+
         } else {
             //認証用のtokenを発行する。
             $temporaryToken = UserService::generateToken();
