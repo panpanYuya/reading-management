@@ -25,6 +25,8 @@ class UserCreateController extends Controller
 
         //hash化した値を格納する。
         $hashedPassword = UserService::PasswordHash($request->password);
+
+        //メールアドレスなしで登録
         if ($request->mailAddress == NULL) {
             $userAuthForm = $this->userAuthForm($request, $hashedPassword);
             try {
@@ -34,6 +36,7 @@ class UserCreateController extends Controller
             }
             return view('/user/userAuthCreateComplete');
 
+        //メールアドレス有で登録
         } else {
             //認証用のtokenを発行する。
             $temporaryToken = UserService::generateToken();
