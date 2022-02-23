@@ -14,12 +14,12 @@
                     <div class="regist-form">
                         <form action="{{ url('/user/createUser')}}" method="POST">
                             @csrf
-                            @error('username')
+                            @error('userName')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <label for="">
                                 ユーザー名
-                                <input type="text" id="username" name="username" minlength="8" maxlength="20" required value="{{ old('username') }}">
+                                <input type="text" id="userName" name="userName" minlength="8" maxlength="20" required value="{{ old('userName') }}">
                             </label>
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>

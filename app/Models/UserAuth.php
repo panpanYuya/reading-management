@@ -3,25 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class UserAuth extends Model
-{
+class UserAuth extends Authenticatable {
+
     use HasFactory;
-    //そもそも.envファイルで定義をしているのだから必要ないんじゃないか？
-    //protected $connection = 'sqlite';
 
-    protected $primaryKey = 'id';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'id',
+        'user_name',
+        'mail_address',
+        'created_at',
+        'updated_at',
+    ];
 
-    protected $userName = 'user_name';
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'login_token',
+    ];
 
-    protected $mailAddress = 'mail_address';
-
-    protected $password = 'password';
-
-    protected $loginToken = 'login_token';
-
-    protected $created_at = 'created_at';
-
-    protected $updated_at = 'updated_at';
 }
