@@ -2,29 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class TemporaryRegistration extends Model
-{
+class TemporaryRegistration extends Model{
+
     use HasFactory;
 
-    protected $primaryKey = 'id';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'id',
+        'user_id',
+        'user_name',
+        'mail_address',
+        'created_at',
+        'updated_at',
+    ];
 
-    protected $user_id = 'user_id';
-
-    protected $user_name = 'user_name';
-
-    protected $mail_address = 'mail_address';
-
-    protected $password = 'password';
-
-    protected $login_token = 'login_token';
-
-    protected $temporary_token = 'temporary_token';
-
-    protected $createdAt = 'created_at';
-
-    protected $updatedAt = 'updated_at';
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'login_token',
+        'temporary_token',
+    ];
 
 }

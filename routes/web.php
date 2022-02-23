@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/create', function () {
     return view('/user/userAuthCreate');
+});
+
+Route::get('/', function () {
+    return view('/login');
 });
 
 
