@@ -12,7 +12,7 @@
             <div class="main">
                 <div class="container">
                     <div class="regist-form">
-                        <form action="{{ url('/user/userAuth/createConfirm')}}" method="POST">
+                        <form action="{{ url('/user/createUser')}}" method="POST">
                             @csrf
                             @error('username')
                                 <div class="alert alert-danger">{{ $message }}</div>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\UserCreateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('/user/userAuthCreate');
 });
 
-// Route::post('/user/userAuth/createConfirm', [UserAuthController::class, 'createConfirm']);
 
-Route::controller(UserAuthController::class)->group(function(){
-    Route::post('/user/userAuth/createConfirm', 'createConfirm');
-    Route::post('/user/userAuth/createComplete', 'createComplete');
+//Route::postの第二引数には無名関数を動かすことができる。
+Route::controller(UserCreateController::class)->group(function(){
+    Route::post('/user/createUser', 'createUser');
 });
+
