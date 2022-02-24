@@ -65,7 +65,7 @@ class UserCreateController extends Controller
     public function userAuthForm(Request $request, $hashedPassword)
     {
         $userAuth = new UserAuth();
-        $userAuth->user_name = $request->userName;
+        $userAuth->user_name = $request->user_name;
         $userAuth->mail_address = $request->mailAddress;
         $userAuth->password = $hashedPassword;
 
@@ -84,7 +84,7 @@ class UserCreateController extends Controller
     public function temporaryRegistrationForm(Request $request, $hashedPassword, $temporaryToken)
     {
         $tmpRegistrationForm = new TemporaryRegistration();
-        $tmpRegistrationForm->user_name = $request->userName;
+        $tmpRegistrationForm->user_name = $request->user_name;
         $tmpRegistrationForm->mail_address = $request->mailAddress;
         $tmpRegistrationForm->password = $hashedPassword;
         $tmpRegistrationForm->temporary_token = $temporaryToken;
