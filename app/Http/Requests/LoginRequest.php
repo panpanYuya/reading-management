@@ -25,8 +25,6 @@ class LoginRequest extends FormRequest
     {
         return [
             //
-            'userName' => 'required|alpha_num|min:8|max:20',
-            'password' => 'required|alpha_num|min:8|max:50',
         ];
     }
 }

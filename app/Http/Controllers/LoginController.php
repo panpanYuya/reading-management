@@ -6,6 +6,7 @@ use App\Models\UserAuth;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -31,10 +32,10 @@ class LoginController extends Controller
             //この後loginの際に使用したユーザー名からユーザーidを取得して、ユーザーidにひもづく本棚ページを表示するように記述する。
             //本棚英語 bookshelf
             echo 'success';
-            return view('/user/userAuthCreateComplete');
+            return view('/user/userAuthCreate');
         }
-        echo 'fail';
-        return view('/user/userAuthCreateTmpComplete');
+
+        return $this->sendFailedLoginResponse($request);
     }
 
     /**
@@ -118,5 +119,12 @@ class LoginController extends Controller
         $userAuth->password = $request->password;
 
         return $userAuth;
+    }
+
+    protected function sendFailedLoginResponse(LoginRequest $request)
+    {
+        throw ValidationException::withMessages([
+            'user_name' => [trans('auth.failed')],
+        ]);
     }
 }

@@ -12,14 +12,14 @@
             <div class="main">
                 <div class="container">
                     <div class="regist-form">
-                        <form action="{{ url('/login')}}" method="POST">
+                        <form action="{{ url('/login/auth')}}" method="POST">
                             @csrf
-                            @error('userName')
+                            @error('user_name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <label for="">
                                 ユーザー名
-                                <input type="text" id="userName" name="userName" minlength="8" maxlength="20" required value="{{ old('userName') }}">
+                                <input type="text" id="user_name" name="user_name" minlength="8" maxlength="20" required value="{{ old('userName') }}">
                             </label>
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
