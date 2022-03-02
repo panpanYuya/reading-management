@@ -11,6 +11,8 @@ class BookTagRegistration extends Model
 
     protected $primaryKey = 'id';
 
+    protected $userId = 'user_id';
+
     protected $tagId = 'tag_id';
 
     protected $bookId = 'book_id';
