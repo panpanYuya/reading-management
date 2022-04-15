@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookRegistration extends Model
+class UserBook extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'id',
-        'title',
-        'author',
-        'book_cover_url',
-        'genre_id',
+        'user_id',
+        'book_id',
+        'unread_flg',
+        'book_impression',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
+
+
 }
