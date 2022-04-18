@@ -51,7 +51,7 @@ div.user-info {
     font-size: 13px;
 }
 
-.register-button {
+.common-button {
     height: 48px;
     background-color: #eb7e35;
     font-size: 36px;
@@ -89,7 +89,7 @@ div.user-info {
         margin-top: 6px;
     }
 
-    .register-button {
+    .common-button {
         width: 80%;
         margin: 0 auto;
     }
