@@ -24,7 +24,7 @@
                                     <label for="user_name">ユーザー名</label><span class="required">必須</span>
                                 </div>
                                     <input type="text" id="user_name" name="user_name" minlength="8" maxlength="20" required value="{{ old('user_name') }}">
-                                    <p class="length_limit">8文字以上20文字以内で入力してください。</p>
+                                    <p class="length_limit">※半角英数字8~20文字以内</p>
                                 @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -34,7 +34,7 @@
                                     <label for="password">パスワード</label><span class="required">必須</span>
                                 </div>
                                 <input type="password" id="password" name="password" minlength="8" maxlength="50" required >
-                                <p class="length_limit">5文字以上50文字以内で入力してください。</p>
+                                <p class="length_limit">※半角英数字5~50文字以内</p>
                                 @error('passwordConfirm')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

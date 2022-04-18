@@ -2,8 +2,7 @@
     width: 100%;
 }
 
-.regist-form{
-    width: 320px;
+.regist-form {
     margin: 32px auto;
 }
 
@@ -44,6 +43,8 @@ div.user-info{
 .length_limit{
     font-size: 13px;
     text-align:left;
+    color:#bfbfbf;
+
 }
 
 .warning_note{
@@ -59,6 +60,40 @@ div.user-info{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@media screen and (min-width: 100px) {
+
+    .regist-form {
+        width: 320px;
+    }
+
+    .length_limit {
+        margin-top: 3px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .regist-form {
+        width: 640px;
+    }
+
+    .tag {
+        margin-bottom: 12px;
+    }
+
+    .length_limit {
+        margin-top: 6px;
+    }
+
+    .register-button {
+        width: 80%;
+        margin: 0 auto;
+    }
+
 }
 
 
