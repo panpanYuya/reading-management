@@ -1,0 +1,98 @@
+.main {
+    width: 100%;
+}
+
+.common-form {
+    margin: 32px auto;
+}
+
+.tag {
+    text-align: left;
+}
+
+div.user-info {
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 15px;
+}
+
+.title {
+    text-align: center;
+    font-size: 48px;
+    margin: 40px auto;
+    width: 100%;
+    display: block;
+}
+
+.user-info>label {
+    font-size: 24px;
+}
+
+.user-info>input {
+    height: 32px;
+}
+
+.required {
+    color: white;
+    background-color: #eb6665;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.length_limit {
+    font-size: 13px;
+    text-align: left;
+    color: #bfbfbf;
+
+}
+
+.warning_note {
+    font-size: 13px;
+}
+
+.register-button {
+    height: 48px;
+    background-color: #eb7e35;
+    font-size: 36px;
+    padding-top: 5px;
+    color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (min-width: 100px) {
+
+    .common-form {
+        width: 320px;
+    }
+
+    .length_limit {
+        margin-top: 3px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .common-form {
+        width: 640px;
+    }
+
+    .tag {
+        margin-bottom: 12px;
+    }
+
+    .length_limit {
+        margin-top: 6px;
+    }
+
+    .register-button {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+}
+

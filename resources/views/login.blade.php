@@ -4,10 +4,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>読書管理ツール</title>
         <!-- Styles -->
-        <style>
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
     </head>
+
     <body class="antialiased">
+        <x-header />
         <div>
             <div class="main">
                 <div class="container">

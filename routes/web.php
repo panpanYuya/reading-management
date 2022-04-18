@@ -19,9 +19,15 @@ Route::get('/create', function () {
     return view('/user/userAuthCreate');
 });
 
+// Route::get('/', function () {
+//     return view('/login');
+// });
+
 Route::get('/', function () {
-    return view('/login');
+    return view('user.userAuthCreate');
 });
+
+
 
 
 //Route::postの第二引数には無名関数を動かすことができる。
