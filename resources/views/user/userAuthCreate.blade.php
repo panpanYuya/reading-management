@@ -5,15 +5,15 @@
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/register.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/commonForm.css') }}" type="text/css">
     </head>
-    <body class="antialiased">
+    <body>
         <x-header />
         <div>
             <div class="main">
                 <div class="container">
                     <h1 class="title">新規登録</h1>
-                    <div class="regist-form">
+                    <div class="common-form">
                         <form action="{{ url('/user/createUser')}}" method="POST">
                             @csrf
                             @error('user_name')
