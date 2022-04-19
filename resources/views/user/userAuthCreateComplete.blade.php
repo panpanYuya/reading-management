@@ -2,20 +2,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="refresh" content=" 5; url=/">
         <title>読書管理ツール</title>
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/userAuthCreateComplete.css') }}" type="text/css">
     </head>
-    <body class="antialiased">
+    <body>
+        <x-header />
         <div>
             <div class="main">
                 <div class="container">
-                    <div class="complete">登録が完了しました。
+                    <h1 class="title">本登録完了</h1>
+                    <div class="regist-container">
+                        <div class="complete">本登録が完了いたしました。</div>
+                        <div class="complete">サービスをご利用してください。</div>
+                        <div class="back_button">
+                            <a href="">ログイン画面へ</a></a>
+                        </div>
                     </div>
-                    <div class="complete">5秒後にログイン画面に遷移します。
-                    </div>
-                </div>
-                <div class="back_button">
-                    <a href="">ログイン画面へ</a></a>
                 </div>
             </div>
         </div>

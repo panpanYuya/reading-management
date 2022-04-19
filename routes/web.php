@@ -19,12 +19,15 @@ Route::get('/create', function () {
     return view('user.userAuthCreate');
 });
 
+
+
 // Route::get('/', function () {
-//     return view('/login');
+//     return view('login');
 // });
 
+
 Route::get('/', function () {
-    return view('login');
+    return view('user.userAuthCreateTmpComplete');
 });
 
 
