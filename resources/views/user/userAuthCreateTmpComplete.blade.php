@@ -4,18 +4,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>読書管理ツール</title>
         <!-- Styles -->
-        <style>
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/userAuthCreateComplete.css') }}" type="text/css">
     </head>
-    <body class="antialiased">
+    <body>
+        <x-header />
         <div>
             <div class="main">
                 <div class="container">
-                    <div class="complete">認証用のメールが送信されました。メール本文の本登録ボタンを押下して下さい。
+                    <h1 class="title">仮登録登録</h1>
+                    <div class="regist-container">
+                        <div class="complete">認証用のメールが送信されました。</div>
+                        <div class="complete">ご確認ください。</div>
+                        <div class="back_button">
+                            <a href="">ログイン画面へ</a></a>
+                        </div>
                     </div>
-                </div>
-                <div class="back_button">
-                    <a href="">ログイン画面へ</a></a>
                 </div>
             </div>
         </div>
