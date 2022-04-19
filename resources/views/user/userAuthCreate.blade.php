@@ -58,7 +58,7 @@
                                 <p class="warning_note">※パスワードを忘れてしまった際、メールアドレスがないとパスワードの再設定ができません。</p>
                             </div>
                             <div class="user-info">
-                                <button type="submit" class="register-button">
+                                <button type="submit" class="common-button">
                                     登録
                                 </button>
                             </div>

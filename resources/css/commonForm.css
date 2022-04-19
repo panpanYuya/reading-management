@@ -42,8 +42,8 @@ div.user-info {
 
 .length_limit {
     font-size: 13px;
-    text-align: left;
     color: #bfbfbf;
+    text-align: left;
 
 }
 
@@ -51,12 +51,42 @@ div.user-info {
     font-size: 13px;
 }
 
-.register-button {
+.forget-password{
+    font-size: 20px;
+    text-align: right;
+}
+
+.common-button {
     height: 48px;
+    font-size: 36px;
+    margin:32px 0;
+    padding-top: 5px;
+    color: #fafafa;
     background-color: #eb7e35;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regist-button {
+    height: 48px;
     font-size: 36px;
     padding-top: 5px;
-    color: #f3f3f3;
+    color: #3e3e3e;
+    border-color:#897ceb;
+    background-color: #c6c0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.external_account-button {
+    height: 64px;
+    font-size: 24px;
+    padding-top: 5px;
+    color: #3e3e3e;
+    border-color:#349e54;
+    background-color: #d0ead8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,6 +101,10 @@ div.user-info {
 
     .length_limit {
         margin-top: 3px;
+    }
+
+    .external_account-button {
+        width: 100%;
     }
 
 }
@@ -89,8 +123,18 @@ div.user-info {
         margin-top: 6px;
     }
 
-    .register-button {
+    .common-button {
         width: 80%;
+        margin: 0 auto;
+    }
+
+    .regist-button {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .external_account-button {
+        width: 640px;
         margin: 0 auto;
     }
 

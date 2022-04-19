@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/create', function () {
-    return view('/user/userAuthCreate');
+    return view('user.userAuthCreate');
 });
 
 // Route::get('/', function () {
@@ -24,7 +24,7 @@ Route::get('/create', function () {
 // });
 
 Route::get('/', function () {
-    return view('user.userAuthCreate');
+    return view('login');
 });
 
 
