@@ -12,10 +12,9 @@
         <div>
             <div class="main">
                 <div class="container">
-                    <h1 class="title">本登録完了</h1>
+                    <h1 class="title">パスワード変更</h1>
                     <div class="regist-container">
-                        <div class="complete">本登録が完了いたしました。</div>
-                        <div class="complete">サービスをご利用してください。</div>
+                        <div class="complete">認証メールに添付されているURLからパスワード変更を行ってください。</div>
                         <div class="back_button">
                             <a href="">ログイン画面へ</a></a>
                         </div>

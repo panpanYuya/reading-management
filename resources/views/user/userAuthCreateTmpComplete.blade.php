@@ -5,7 +5,7 @@
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/userAuthCreateComplete.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/commonCompletePage.css') }}" type="text/css">
     </head>
     <body>
         <x-header />
