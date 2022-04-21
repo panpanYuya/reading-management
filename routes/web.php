@@ -27,7 +27,7 @@ Route::get('/create', function () {
 
 
 Route::get('/', function () {
-    return view('password.sendMail');
+    return view('password.forgetPassword');
 });
 
 
