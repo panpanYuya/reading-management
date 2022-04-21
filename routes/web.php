@@ -27,7 +27,7 @@ Route::get('/create', function () {
 
 
 Route::get('/', function () {
-    return view('user.userAuthCreateTmpComplete');
+    return view('password.sendMail');
 });
 
 

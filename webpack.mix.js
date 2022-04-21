@@ -18,6 +18,6 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/commonForm.css', 'public/css', [
         //
     ])
-    .postCss('resources/css/userAuthCreateComplete.css', 'public/css', [
+    .postCss('resources/css/commonCompletePage.css', 'public/css', [
         //
     ]);
