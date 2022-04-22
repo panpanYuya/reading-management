@@ -10,12 +10,12 @@
     display: block;
 }
 
-.regist-container{
+.regist-container {
     text-align: center;
     margin: 0 auto;
 }
 
-.back_button{
+.back_button {
     margin-top: 32px;
 }
 
@@ -34,4 +34,3 @@
     }
 
 }
-

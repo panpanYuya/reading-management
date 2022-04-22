@@ -51,7 +51,7 @@ div.user-info {
     font-size: 13px;
 }
 
-.forget-password{
+.forget-password {
     font-size: 20px;
     text-align: right;
 }
@@ -59,7 +59,7 @@ div.user-info {
 .common-button {
     height: 48px;
     font-size: 36px;
-    margin:32px 0;
+    margin: 32px 0;
     padding-top: 5px;
     color: #fafafa;
     background-color: #eb7e35;
@@ -73,7 +73,7 @@ div.user-info {
     font-size: 36px;
     padding-top: 5px;
     color: #3e3e3e;
-    border-color:#897ceb;
+    border-color: #897ceb;
     background-color: #c6c0f1;
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ div.user-info {
     font-size: 24px;
     padding-top: 5px;
     color: #3e3e3e;
-    border-color:#349e54;
+    border-color: #349e54;
     background-color: #d0ead8;
     display: flex;
     justify-content: center;
