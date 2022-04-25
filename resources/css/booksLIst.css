@@ -1,0 +1,201 @@
+.main {
+    width: 100%;
+}
+
+.slideshow{
+    background-color: #f4f4f4;
+}
+
+#nav {
+    height: 50px;
+    list-style: none;
+
+}
+
+#nav li:first-child {
+    padding-left: 15px;
+}
+
+#nav li {
+    line-height: 50px;
+    width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#nav li a{
+    text-decoration: none;
+    color: #3e3e3e;
+}
+
+
+.books-list {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.unread {
+    position:absolute;
+}
+
+.book_exaplain {
+    text-align: center;
+}
+
+.tags_circle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.circle_first, .circle_second, .circle_third, .circle_fource, .circle_fifth{
+    display: flex;
+    border-radius: 50%;
+    background: red;
+}
+
+@media screen and (min-width: 100px) {
+
+    #nav{
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    #nav li {
+        text-align: center;
+    }
+
+    #nav ul > li {
+        text-align: center;
+        white-space: nowrap;
+    }
+
+
+    #nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .book {
+        width: 100px;
+        height: 150px;
+        margin-top: 15px;
+        margin-left: 15px;
+        background-color: yellow;
+    }
+
+    .unread > img {
+        width: 34px;
+        height: 34px;
+        margin-left: -15px;
+        margin-top: -15px;
+    }
+
+
+    .image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .image > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .book_exaplain {
+        width: 100px;
+        height: 50px;
+        background-color: #eeeeee;
+    }
+
+    .title {
+        padding-top: 7px;
+        font-size:15px;
+    }
+
+    .tags_title {
+        text-align: left;
+        padding-left: 5px;
+        font-size: 10px;
+        padding-top: 5px;
+    }
+
+    .tags_circle {
+        padding: 0 5px;
+    }
+
+    .circle_first,
+    .circle_second,
+    .circle_third,
+    .circle_fource,
+    .circle_fifth {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    #nav {
+        text-align: center;
+    }
+
+    .books-list {
+        margin-top:30px;
+    }
+
+    .book {
+        width: 200px;
+        height: 300px;
+        margin-top: 15px;
+        margin-left: 30px;
+        margin-bottom: 15px;
+        background-color: yellow;
+    }
+
+    .unread>img {
+        width: 68px;
+        height: 68px;
+        margin-left: -30px;
+        margin-top: -30px;
+    }
+
+    .image{
+        width: 200px;
+        height: 200px;
+    }
+
+    .image > img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .book_exaplain {
+        width: 200px;
+        height: 100px;
+        background-color: #eeeeee;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .tags_title {
+        text-align: left;
+        padding-left: 10px;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .tags_circle {
+        padding: 0 10px;
+    }
+
+    .circle_first,
+    .circle_second,
+    .circle_third,
+    .circle_fource,
+    .circle_fifth {
+        width: 24px;
+        height: 24px;
+    }
+
+}
