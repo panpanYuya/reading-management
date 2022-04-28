@@ -1,0 +1,92 @@
+.main {
+    width: 100%;
+}
+
+
+.search-container{
+    height:64px;
+}
+
+.book-title{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+@media screen and (min-width: 100px) {
+    .search-container {
+        height: 64px;
+    }
+
+    .search > input {
+        height: 58px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .result-book{
+        width: 180px;
+        height: 165px;
+        border: 1px solid #000;
+    }
+
+    .result-top{
+        text-align: center;
+    }
+
+    .book-image{
+        padding-top:5px;
+    }
+
+    .book-image > img{
+        width:85px;
+        height:108px;
+        padding-top: 5px;
+    }
+
+    .result-bottom {
+        padding-left: 19px;
+    }
+
+    .book-title{
+        width:130px;
+        font-size: 16px;
+        padding-top: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .book-author{
+        font-size: 12px;
+        padding-top: 11px;
+        width:130px;
+    }
+
+    .result-bottom > .arrow-right {
+        display: flex;
+        width: 18px;
+        height: 18px;
+        margin: -31px 110px;
+        border-top: 4px solid #000;
+        border-right: 4px solid #000;
+        transform: rotate(45deg);
+    }
+
+
+
+}
+
+@media screen and (min-width: 768px) {
+
+
+}
+
+@media screen and (min-width: 1045px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+
+
+}
+
