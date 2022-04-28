@@ -27,7 +27,7 @@ Route::get('/create', function () {
 
 
 Route::get('/', function () {
-    return view('book.bookDetail');
+    return view('book.bookSearch');
 });
 
 

@@ -26,4 +26,10 @@ mix.js('resources/js/app.js', 'public/js')
     ])
     .postCss('resources/css/bookDetail.css', 'public/css', [
         //
-    ]);
+    ])
+    .postCss('resources/css/bookSearch.css', 'public/css', [
+        //
+    ])
+    .autoload({
+        "jquery": ['$', 'window.jQuery'],
+    });
