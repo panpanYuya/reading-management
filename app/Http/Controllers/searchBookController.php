@@ -7,20 +7,29 @@ use App\Models\BookRegistration;
 use App\Services\BookService;
 use App\Services\ApiService;
 
-class BookController extends Controller
+class searchBookController extends Controller
 {
+    //
+    public function searchBook(Request $request){
+
+        // $keywords = BookService::trimKeywords($request->keyword);
+
+        $results = ApiService::serachBookApi($request->keyword);
 
 
+        dd(json_decode($results, true, 10));
 
-    public function searchBookForm($jsonResults){
-        $searchResult = json_decode($jsonResults,true,10);
+
+        // return $results;
+    }
+
+    public function searchBookForm($jsonResults)
+    {
+        $searchResult = json_decode($jsonResults, true, 10);
         $book = new BookRegistration();
         $book->id = $searchResult->items->id;
         $book->title = $searchResult->items->volumeInfo->title;
         $book->author = $searchResult->items->volumeInfo->authors;
         $book->book_cover_url = $searchResult->items->volumeInfo->selfLink;
-
     }
-
-
 }

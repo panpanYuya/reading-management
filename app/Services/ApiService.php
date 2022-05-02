@@ -12,13 +12,15 @@ class ApiService {
 
     static public function serachBookApi($keywords){
         $apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
-        for ($i = 0; $i < count($keywords); $i++) {
-            if($i + 1 == count($keywords)){
-                $apiUrl .= $keywords[$i];
-            } else {
-                $apiUrl .= $keywords[$i] . "+";
-            }
-        }
+        // dd($keywords);
+        // for ($i = 0; $i < count($keywords); $i++) {
+        //     if($i + 1 == count($keywords)){
+        //         $apiUrl .= $keywords[$i];
+        //     } else {
+        //         $apiUrl .= $keywords[$i] . "+";
+        //     }
+        // }
+        $apiUrl .= $keywords;
         return Http::get($apiUrl);
     }
 

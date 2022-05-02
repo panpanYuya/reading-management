@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/bookSearch.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" type="text/javascript">
+        <script src="{{ asset('/js/bookSearch.js') }}"></script>
     </head>
     <body>
         <x-header />
@@ -14,10 +15,14 @@
             <div class="main">
                 <div class="container">
                     <div class="search-container">
-                        <div class="search">
-                            {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
-                            <input type="text" class="search-input" placeholder="検索ワードを入力してください。">
-                        </div>
+                        <form action="/book/search" method="post" >
+                            <div class="search">
+                                @csrf
+                                {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
+                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。">
+                                <button type="submit"></button>
+                            </div>
+                        </form>
                     </div>
                     <div class="result-container">
                         <div class="result-book">
