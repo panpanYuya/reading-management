@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserCreateController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\searchBookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,10 @@ Route::get('/', function () {
     return view('book.bookSearch');
 });
 
+Route::controller(searchBookController::class)->group(function () {
+    // Route::get('/book/search', 'searchBook');
+    Route::post('/book/search', 'searchBook');
+});
 
 
 

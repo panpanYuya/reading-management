@@ -9,16 +9,7 @@ use App\Services\ApiService;
 
 class BookController extends Controller
 {
-    //
-    // public function search(Request $request){
 
-    //     $keywords = BookService::trimKeywords($request->keyword);
-
-    //     $results = ApiService::serachBookApi($keywords);
-
-
-    //     return $results;
-    // }
 
 
     public function searchBookForm($jsonResults){
