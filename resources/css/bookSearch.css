@@ -37,7 +37,6 @@
     }
 
     .result-book{
-        width: 360px;
         height: 165px;
         border: 1px solid #000;
     }
@@ -57,11 +56,11 @@
     }
 
     .result-bottom {
-        padding-left: 19px;
+        text-align: center;
+        padding: 0 10px;
     }
 
     .book-title{
-        width:300px;
         font-size: 16px;
         padding-top: 5px;
         white-space: nowrap;
@@ -69,7 +68,6 @@
     }
 
     .book-author{
-        width:300px;
         font-size: 12px;
         padding-top: 11px;
     }
@@ -78,7 +76,7 @@
         display: flex;
         width: 18px;
         height: 18px;
-        margin: -31px 289px;
+        margin: -31px 90%;
         border-top: 4px solid #000;
         border-right: 4px solid #000;
         transform: rotate(45deg);
@@ -88,20 +86,91 @@
 
 }
 
+
 @media screen and (min-width: 768px) {
 
-        .alert-danger {
-            font-size: 24px;
-        }
+    .alert-danger {
+        font-size: 24px;
+    }
 
+    .result-book {
+        height: 247.5px;
+        border: 1px solid #000;
+        width: 360px;
+    }
 
-}
+    .search>input {
+        font-size: 24px;
+    }
 
-@media screen and (min-width: 1045px) {
+    .result-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .result-book {
+        height: 247.5px;
+        border: 1px solid #000;
+        width: 360px;
+    }
+
+    .book-image>img {
+        width: 127.5px;
+        height: 162px;
+        padding-top: 5px;
+    }
+
+    .book-title {
+        font-size: 24px;
+        padding-top: 7.5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .book-author {
+        font-size: 18px;
+        padding-top: 16.5px;
+    }
 
 }
 
 @media screen and (min-width: 1280px) {
+
+
+    .search>input {
+        font-size: 24px;
+    }
+
+    .result-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .result-book {
+        height: 330px;
+        border: 1px solid #000;
+        width: 480px;
+    }
+
+    .book-image>img {
+        width: 170px;
+        height: 216px;
+        padding-top: 10px;
+    }
+
+    .book-title {
+        font-size: 32px;
+        padding-top: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .book-author {
+        font-size: 24px;
+        padding-top: 16.5px;
+    }
 
 
 }
