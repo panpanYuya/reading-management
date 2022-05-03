@@ -32,6 +32,7 @@ Route::get('/', function () {
 });
 
 Route::controller(searchBookController::class)->group(function () {
+    // Route::get('/book/search', 'searchBook');
     Route::post('/book/search', 'searchBook');
 });
 

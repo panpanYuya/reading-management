@@ -19,12 +19,25 @@
                             <div class="search">
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
-                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。">
+                                @if (isset($keyword))
+                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{$keyword}}">
+                                @else
+                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ old('keyword') }}">
+                                @endif
                                 <button type="submit"></button>
                             </div>
                         </form>
                     </div>
                     <div class="result-container">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @if (isset($resultBooks))
                             @foreach ($resultBooks as $resultBook)
                                 <div class="result-book">

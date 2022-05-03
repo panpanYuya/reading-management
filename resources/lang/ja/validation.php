@@ -137,5 +137,6 @@ return [
         'user_name'=>'ユーザー名',
         'password'=>'パスワード',
         'mailAddress'=>'メールアドレス',
+        'keyword'=>'検索ワード',
     ],
 ];
