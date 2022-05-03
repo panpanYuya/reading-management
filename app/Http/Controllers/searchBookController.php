@@ -12,24 +12,48 @@ class searchBookController extends Controller
     //
     public function searchBook(Request $request){
 
-        // $keywords = BookService::trimKeywords($request->keyword);
+        $keywords = BookService::trimKeywords($request->keyword);
 
-        $results = ApiService::serachBookApi($request->keyword);
-
-
-        dd(json_decode($results, true, 10));
+        $results = ApiService::serachBookApi($keywords);
 
 
-        // return $results;
+        $resultBooks = $this->searchBookForm($results);
+
+        // dd($resultBooks);
+        return view('/book/bookSearch', compact('resultBooks'));
     }
 
     public function searchBookForm($jsonResults)
     {
-        $searchResult = json_decode($jsonResults, true, 10);
-        $book = new BookRegistration();
-        $book->id = $searchResult->items->id;
-        $book->title = $searchResult->items->volumeInfo->title;
-        $book->author = $searchResult->items->volumeInfo->authors;
-        $book->book_cover_url = $searchResult->items->volumeInfo->selfLink;
+        $searchResult = json_decode($jsonResults, false, 10);
+
+        // dd($searchResult);
+        foreach ($searchResult->items as $item) {
+            $book = new BookRegistration();
+            // dd($item);
+            $book->id = $item->id;
+            if (property_exists($item->volumeInfo, 'title')) {
+                $book->title = $item->volumeInfo->title;
+            }
+            if (property_exists($item->volumeInfo, 'authors')) {
+                $authors = $item->volumeInfo->authors;
+                // dd($authors);
+                for ($i = 0; $i < count($authors); $i++) {
+                    $author = "";
+                    if ($i + 1 == count($authors)) {
+                        $author .= $authors[$i];
+                    } else {
+                        $author .= $authors[$i] . ",";
+                    }
+                }
+                $book->author = $author;
+            }
+            if (property_exists($item->volumeInfo, 'imageLinks')) {
+                $book->book_cover_url = $item->volumeInfo->imageLinks->smallThumbnail;
+            }
+            $showBooks[] = $book;
+            // dd($book);
+        }
+        return $showBooks;
     }
 }

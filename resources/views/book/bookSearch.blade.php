@@ -25,24 +25,42 @@
                         </form>
                     </div>
                     <div class="result-container">
-                        <div class="result-book">
-                            <div class="result-top">
-                                <div class="book-image">
-                                    <img src={{ asset('images/title.jpg')}} alt="本のタイトル">
+                        @if (isset($resultBooks))
+                            @foreach ($resultBooks as $resultBook)
+                                <div class="result-book">
+                                    <div class="result-top">
+                                        <div class="book-image">
+                                            @if (isset($resultBook->book_cover_url))
+                                                <img src={{$resultBook->book_cover_url}} alt="本のタイトル">
+                                            @else
+                                                <img src="{{asset('images/noImage.png')}}" alt="画像が見つかりませんでした。">
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                    <div class="result-bottom">
+                                        <div class="book-title">
+                                            {{$resultBook->title}}
+                                        </div>
+                                        <div class="book-author">
+                                            {{$resultBook->author}}
+                                        </div>
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="result-bottom">
-                                <div class="book-title">
-                                    本のタイトル
-                                </div>
-                                <div class="book-author">
-                                    本の著者
-                                </div>
-                                <div class="arrow-right">
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
+                    @if (isset($results))
+                            @foreach ($results as $result)
+                                <div class="result-list">
+                                    <img class="book-self" src="" alt="">
+                                    <p class="title">{{$result->title}}</p>
+                                    <input type="hidden" class="book-api-id" >
+                                </div>
+                            @endforeach
+                        @endif
                 </div>
             </div>
         </div>

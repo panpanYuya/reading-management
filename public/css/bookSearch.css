@@ -24,6 +24,10 @@
         text-align: center;
     }
 
+    .search > button{
+        display: none;
+    }
+
     .result-book{
         width: 180px;
         height: 165px;
