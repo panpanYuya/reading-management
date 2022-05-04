@@ -11,6 +11,7 @@ class BookRegistration extends Model
 
     protected $fillable =[
         'id',
+        'api_id',
         'title',
         'author',
         'book_cover_url',
