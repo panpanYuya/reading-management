@@ -87,41 +87,6 @@
 }
 
 
-/* スマホを横にした時の対策 */
-@media screen and (min-width: 640px) {
-
-    /* .search>input {
-        font-size: 24px;
-    } */
-
-    /* .result-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .book-image>img {
-        width: 127.5px;
-        height: 162px;
-        padding-top: 5px;
-    }
-
-    .book-title {
-        font-size: 24px;
-        padding-top: 7.5px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    .book-author {
-        font-size: 18px;
-        padding-top: 16.5px;
-    } */
-
-
-}
-
-
 @media screen and (min-width: 768px) {
 
     .alert-danger {
@@ -167,10 +132,6 @@
         font-size: 18px;
         padding-top: 16.5px;
     }
-
-}
-
-@media screen and (min-width: 1045px) {
 
 }
 

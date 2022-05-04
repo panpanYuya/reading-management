@@ -28,7 +28,9 @@ class searchBookController extends Controller
 
         foreach ($searchResult->items as $item) {
             $book = new BookRegistration();
-            $book->id = $item->id;
+
+            //apiのユニークidを変数に格納。
+            $book->api_id = $item->id;
             //apiから取得した本のタイトルを代入する
             if (property_exists($item->volumeInfo, 'title')) {
                 $book->title = $item->volumeInfo->title;

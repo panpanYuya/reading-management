@@ -20,9 +20,9 @@
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
                                 @if (isset($keyword))
-                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{$keyword}}">
+                                    <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ $keyword }}">
                                 @else
-                                <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ old('keyword') }}">
+                                    <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ old('keyword') }}">
                                 @endif
                                 <button type="submit"></button>
                             </div>
@@ -44,36 +44,28 @@
                                     <div class="result-top">
                                         <div class="book-image">
                                             @if (isset($resultBook->book_cover_url))
-                                                <img src={{$resultBook->book_cover_url}} alt="本のタイトル">
+                                            <img src={{ $resultBook->book_cover_url }} alt="本のタイトル">
                                             @else
-                                                <img src="{{asset('images/noImage.png')}}" alt="画像が見つかりませんでした。">
+                                            <img src="{{ asset('images/noImage.png') }}" alt="画像が見つかりませんでした。">
                                             @endif
 
                                         </div>
                                     </div>
                                     <div class="result-bottom">
                                         <div class="book-title">
-                                            {{$resultBook->title}}
+                                            {{ $resultBook->title }}
                                         </div>
                                         <div class="book-author">
-                                            {{$resultBook->author}}
+                                            {{ $resultBook->author }}
                                         </div>
                                         <div class="arrow-right">
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" value="{{ $resultBook->api_id }}">
                             @endforeach
                         @endif
                     </div>
-                    @if (isset($results))
-                            @foreach ($results as $result)
-                                <div class="result-list">
-                                    <img class="book-self" src="" alt="">
-                                    <p class="title">{{$result->title}}</p>
-                                    <input type="hidden" class="book-api-id" >
-                                </div>
-                            @endforeach
-                        @endif
                 </div>
             </div>
         </div>

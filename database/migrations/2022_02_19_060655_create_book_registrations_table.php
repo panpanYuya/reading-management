@@ -17,6 +17,7 @@ class CreateBookRegistrationsTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_bin';
             $table->increments('id');
+            $table->string('api_id', 255)->comment('apiId');
             $table->string('title', 255)->comment('タイトル');
             $table->string('author', 255)->comment('著者名');
             $table->string('book_cover_url', 255)->nullable()->comment('表紙URL');
