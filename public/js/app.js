@@ -2062,48 +2062,6 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./bookSearch */ "./resources/js/bookSearch.js");
-
-/***/ }),
-
-/***/ "./resources/js/bookSearch.js":
-/*!************************************!*\
-  !*** ./resources/js/bookSearch.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-$('#search-keyword').keypress(function (e) {
-  // ここに処理を書く
-  $(function () {
-    $.ajaxSetup({
-      headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-      }
-    });
-    var keyword = $('[name="search-keyword"]').val();
-    $.ajax({
-      type: "post",
-      //HTTP通信の種類
-      url: '/book/search',
-      //通信したいURL
-      dataType: 'json',
-      data: {
-        keyword: keyword
-      }
-    }) //通信が成功したとき
-    .done(function (res) {
-      console.log(res.message);
-    }) //通信が失敗したとき
-    .fail(function (error) {
-      console.log(error.statusText);
-    });
-  }); // スマホのキーボードを閉じる
-
-  $("#search-keyword").blur();
-  return false;
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2112,12 +2070,19 @@ $('#search-keyword').keypress(function (e) {
   \***********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+/* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
+try {
+  // window.Popper = require('popper.js').default;
+  window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // require('bootstrap');
+} catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -30254,6 +30219,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/modal.css":
+/*!*********************************!*\
+  !*** ./resources/css/modal.css ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -30640,6 +30618,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 			"css/commonCompletePage": 0,
 /******/ 			"css/commonForm": 0,
 /******/ 			"css/app": 0,
+/******/ 			"css/modal": 0,
 /******/ 			"css/bookSearch": 0
 /******/ 		};
 /******/ 		
@@ -30690,13 +30669,14 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/commonForm.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/commonCompletePage.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/booksList.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/bookDetail.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/bookSearch"], () => (__webpack_require__("./resources/css/bookSearch.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/commonForm.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/commonCompletePage.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/booksList.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/bookDetail.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/bookSearch.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/bookDetail","css/booksList","css/commonCompletePage","css/commonForm","css/app","css/modal","css/bookSearch"], () => (__webpack_require__("./resources/css/modal.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

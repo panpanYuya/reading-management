@@ -1,0 +1,64 @@
+#modal {
+    display:none;
+    width: 287px;
+    background-color: aliceblue;
+    border: 2px solid black;
+    position: absolute;
+    left: 9.72%;
+    top: 5.6%;
+    z-index: 2;
+}
+
+.modal-content {
+    text-align: center;
+    /* height: 480px; */
+}
+
+.modal-img>img {
+    width: 133px;
+    height: 195px;
+    padding: 23px 77px 0;
+}
+
+.modal-title {
+    padding-top: 13px;
+}
+
+.modal-author {
+    padding-top: 19px;
+    height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.modal-title,
+.modal-author {
+    font-size: 20px;
+}
+
+.modal-slide {
+    padding-top:24px;
+}
+
+.slide-font {
+    display: flex;
+    justify-content: space-around;
+}
+
+.slider > input {
+    width: 80%;
+}
+
+.book_register-button {
+    padding-top: 32px;
+    padding-bottom: 22px;
+}
+
+.book_register-button>button {
+    width: 206px;
+    height: 50px;
+    background-color: #eb7e35;
+    border: 1px solid #000;
+    font-size: 30px;
+}
+

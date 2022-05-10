@@ -7,20 +7,21 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/bookSearch.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" type="text/javascript">
-        <script src="{{ asset('/js/bookSearch.js') }}"></script>
+
     </head>
     <body>
         <x-header />
         <div>
             <div class="main">
                 <div class="container">
+                    <x-modal />
                     <div class="search-container">
                         <form action="/book/search" method="post" >
                             <div class="search">
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
                                 @if (isset($keyword))
-                                    <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ $keyword }}">
+                                    <input id="test" type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ $keyword }}">
                                 @else
                                     <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ old('keyword') }}">
                                 @endif
@@ -66,8 +67,10 @@
                             @endforeach
                         @endif
                     </div>
+                    <button id="btn">test</button>
                 </div>
             </div>
         </div>
     </body>
+    <script src="{{ asset('/js/bookSearch.js') }}"></script>
 </html>
