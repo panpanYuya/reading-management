@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\UserCreateController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\searchBookController;
+use App\Http\Controllers\SearchBookController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,18 +22,16 @@ Route::get('/create', function () {
 });
 
 
-
-// Route::get('/', function () {
-//     return view('login');
-// });
-
-
-Route::get('/', function () {
+Route::get('/search', function () {
     return view('book.bookSearch');
 });
 
-Route::controller(searchBookController::class)->group(function () {
+Route::controller(SearchBookController::class)->group(function () {
     Route::post('/book/search', 'searchBook');
+});
+
+Route::controller(BookController::class)->group(function () {
+    Route::post('/book/regist', 'regist');
 });
 
 

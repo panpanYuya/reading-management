@@ -15,6 +15,6 @@ class BookRegistration extends Model
         'book_cover_url',
         'title',
         'author',
-        'synopsis',
+        'description',
     ];
 }

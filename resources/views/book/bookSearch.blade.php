@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
@@ -16,12 +17,12 @@
                 <div class="container">
                     <x-modal />
                     <div class="search-container">
-                        <form action="/book/search" method="post" >
+                        <form action="/book/search" method="POST" >
                             <div class="search">
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
                                 @if (isset($keyword))
-                                    <input id="test" type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ $keyword }}">
+                                    <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ $keyword }}">
                                 @else
                                     <input type="text" id="search-keyword" name="keyword" class="search-input" placeholder="検索ワードを入力してください。" required value="{{ old('keyword') }}">
                                 @endif
@@ -62,12 +63,11 @@
                                         <div class="arrow-right">
                                         </div>
                                     </div>
+                                    <input class="book-id" type="hidden" value="{{ $resultBook->api_id }}">
                                 </div>
-                                <input type="hidden" value="{{ $resultBook->api_id }}">
                             @endforeach
                         @endif
                     </div>
-                    <button id="btn">test</button>
                 </div>
             </div>
         </div>
