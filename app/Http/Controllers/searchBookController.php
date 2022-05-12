@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\searchBookRequest;
+use App\Http\Requests\SearchBookRequest;
 use App\Models\BookRegistration;
 use App\Services\BookService;
 use App\Services\ApiService;
 
-class searchBookController extends Controller
+class SearchBookController extends Controller
 {
     //
-    public function searchBook(searchBookRequest $request){
+    public function searchBook(SearchBookRequest $request){
 
         $keyword = $request->keyword;
         $keywords = BookService::trimKeywords($request->keyword);

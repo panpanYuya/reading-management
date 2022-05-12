@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Space;
 
-class searchBookRequest extends FormRequest
+class SearchBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class searchBookRequest extends FormRequest
         return true;
     }
 
-    protected $redirect = '/';
+    // protected $redirect = '/';
 
     /**
      * Get the validation rules that apply to the request.
