@@ -28167,7 +28167,11 @@ var __webpack_exports__ = {};
 var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
     find = _require.find;
 
-var modalFlg = false; // $('#search-keyword').keypress( function ( e ) {
+var modalFlg = false; //登録する本のステータス
+
+var read = 1;
+var readWish = 2;
+var unread = 3; // $('#search-keyword').keypress( function ( e ) {
 //     // ここに処理を書く
 //     $(function(){
 //         $.ajaxSetup({
@@ -28198,6 +28202,40 @@ var modalFlg = false; // $('#search-keyword').keypress( function ( e ) {
 //     return false;
 // });
 
+$('.regist-button').on('click', function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  var modalContent = $(this).parent().parent();
+  var bookStatus = modalContent.find(".slider").children('input').val();
+
+  if (bookStatus !== read && bookStatus !== readWish && bookStatus !== unread) {
+    bookStatus = unread;
+  }
+
+  var bookId = modalContent.find(".book-id").val();
+  var formattedBookId = escapeHTML(bookId);
+  $.ajax({
+    type: 'POST',
+    url: '/book/regist',
+    data: {
+      'bookStatus': bookStatus,
+      'bookId': formattedBookId
+    }
+  }).done(function (res) {
+    //成功のメッセージ
+    alert("成功、メッセージを画面に表示できるように修正しよう");
+  }).fail(function (error) {
+    alert("失敗、メッセージを画面に表示できるように修正しよう");
+  });
+});
+
+function escapeHTML(text) {
+  return text.replace(/&/g, '&lt;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, "&#x27;");
+}
+
 $('.result-book').on("click", function () {
   if (!modalFlg) {
     //モーダルに表示する要素を取得
@@ -28206,15 +28244,17 @@ $('.result-book').on("click", function () {
     var bookCover = resultBook.find(".book-image").children('img').attr('src');
     var bookTitle = resultBook.find(".book-title").text();
     var bookAuthor = resultBook.find(".book-author").text();
-    openModal(bookCover, bookTitle, bookAuthor);
+    var bookId = resultBook.find(".book-id").val();
+    openModal(bookCover, bookTitle, bookAuthor, bookId);
   }
 }); //モーダルを表示する。
 
-function openModal(bookCover, bookTitle, bookAuthor) {
+function openModal(bookCover, bookTitle, bookAuthor, bookId) {
   var modal = $('#modal');
   modal.find(".modal-img").children('img').attr('src', bookCover);
   modal.find(".modal-title").text(bookTitle);
   modal.find(".modal-author").text(bookAuthor);
+  modal.find(".book-id").val(bookId);
   $('#modal').css('display', 'block');
   $('.main').css('background', 'rgba(0, 0, 0, .5)');
   $('.search > input').css('background', 'rgba(0, 0, 0, .5)');
