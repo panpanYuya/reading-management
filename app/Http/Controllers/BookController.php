@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Throwable;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreBookRequest;
+use App\Models\UserBook;
 use App\Models\BookRegistration;
 use App\Services\ApiService;
 
@@ -12,6 +11,7 @@ class BookController extends Controller
 {
 
     public function regist(Request $request){
+
         if(empty($request->bookId)){
             abort(500);
         }
@@ -21,27 +21,26 @@ class BookController extends Controller
             abort($apiErrorStatus);
         }
         $book = json_decode($jsonResults, false, 10);
-        $resultbook = BookRegistration::firstOrNew(['api_id' => $book->id]);
-        if(!$resultbook->exists){
-            try {
-                $registBookForm = $this->registBookForm($book);
-                $resultbook->api_id = $registBookForm->api_id;
-                $resultbook->title =  $registBookForm->title;
-                $resultbook->author = $registBookForm->author;
-                $resultbook->book_cover_url = $registBookForm->book_cover_url ;
-                $resultbook->description = $registBookForm->description ;
+        $registBookForm = $this->registBookForm($book);
+        $resultBook = BookRegistration::updateOrCreate(
+            ['api_id' => $book->id],
+            [
+                'book_cover_url' => $registBookForm->book_cover_url,
+                'title' => $registBookForm->title,
+                'author' => $registBookForm->author,
+                'description' => $registBookForm->description
+            ]
+        );
 
-                $resultbook->save();
-            } catch (Throwable $e){
-                abort(500);
+        $bookId = $resultBook->id;
 
-            }
+        //TODO ユーザー機能実装後に引数は変更する。
+        $checkedBookStatus = $this->bookStatusCheck($request->bookStatus);
+        UserBook::updateOrCreate(['user_id' => 1, 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
 
-
-        }
-        //図書テーブルに登録する処理を書く
-
-        //ユーザー図書テーブルに登録する機能を書く
+        return response()->json([
+            'message' => '登録に成功しました'
+        ], 200);
 
     }
 
@@ -75,6 +74,14 @@ class BookController extends Controller
             $registBook->description = $book->volumeInfo->description;
         }
         return $registBook;
+    }
+
+
+    public function bookStatusCheck($bookStatus){
+        if($bookStatus !== \BookConst::READ_STATUS_LIST['読んだ'] && $bookStatus !== \BookConst::READ_STATUS_LIST['読みたい']  && $bookStatus !== \BookConst::READ_STATUS_LIST['未読']){
+            $bookStatus = \BookConst::READWISH_STATUS;
+        }
+        return $bookStatus;
     }
 
 

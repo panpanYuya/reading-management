@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -36,6 +37,22 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable( function(Throwable $e, Request $request){
+            if($request->ajax()){
+                //Log出力用のメソッドを記入
+                if($this->isHttpException($e)){
+                    $message = $e->getMessage();
+                    return response()->json([
+                        'message' => $message
+                    ],$e->getStatusCode());
+                } else{
+                    return response()->json([
+                        'message' => 'アプリケーション内部で問題が発生しました。'
+                    ],500);
+                }
+            }
         });
     }
 }

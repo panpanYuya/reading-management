@@ -1,44 +1,8 @@
-const { find } = require("lodash");
-
 let modalFlg = false;
-
 //登録する本のステータス
-const read = 1;
-const readWish = 2;
-const unread = 3;
-
-
-
-// $('#search-keyword').keypress( function ( e ) {
-//     // ここに処理を書く
-//     $(function(){
-//         $.ajaxSetup({
-//             headers: {
-//                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-//             },
-//         });
-//         const keyword = $('[name="search-keyword"]').val();
-//         $.ajax({
-//             type: "post", //HTTP通信の種類
-//             url:'/book/search', //通信したいURL
-//             dataType: 'json',
-//                 data: {
-//                 keyword: keyword,
-//             },
-//         })
-//         //通信が成功したとき
-//         .done((res)=>{
-//             console.log(res.message)
-//         })
-//         //通信が失敗したとき
-//         .fail((error)=>{
-//             console.log(error.statusText)
-//         })
-//     });
-//     // スマホのキーボードを閉じる
-//     $("#search-keyword").blur();
-//     return false;
-// });
+const read = "1";
+const readWish = "2";
+const unread = "3";
 
 $('.regist-button').on('click',function(){
     $.ajaxSetup({
@@ -47,12 +11,12 @@ $('.regist-button').on('click',function(){
         }
     })
 
-    let modalContent = $(this).parent().parent();
-    let bookStatus = modalContent.find(".slider").children('input').val();
+    let modalBox = $(this).parent().parent().parent();
+    let bookStatus = modalBox.find(".slider").children('input').val();
     if(bookStatus !== read && bookStatus !== readWish && bookStatus !== unread){
         bookStatus = unread;
     }
-    let bookId = modalContent.find(".book-id").val();
+    let bookId = modalBox.find(".book-id").val();
     let formattedBookId = escapeHTML(bookId);
 
     $.ajax({
@@ -64,9 +28,20 @@ $('.regist-button').on('click',function(){
         }
     }).done((res)=>{
         //成功のメッセージ
-        alert("成功、メッセージを画面に表示できるように修正しよう");
+        modalBox.find(".regist-book-box").css('display', 'none');
+        modalBox.find(".modal-close").css('display', 'none');
+        modalBox.find(".message-box").css('display', 'block');
+        modalBox.find(".message-box").text(res.message);
+        window.setTimeout(closeModal, 5000);
     }).fail((error)=>{
-        alert("失敗、メッセージを画面に表示できるように修正しよう");
+        //失敗のメッセージ
+        modalBox.find(".regist-book-box").css('display', 'none');
+        modalBox.find(".modal-close").css('display', 'none');
+        modalBox.find(".message-box").css('display', 'block');
+        modalBox.find(".message-box").text(error.message);
+        modalBox.find(".message-box").css('color', 'red');
+        window.setTimeout(closeModal, 5000);
+
     });
 
 });
@@ -94,19 +69,43 @@ $('.result-book' ).on( "click", function(){
     }
 });
 
+$('.modal-close' ).on( "click", function(){
+    if(modalFlg){
+        modalFlg = false;
+        closeModal();
+    }
+});
+
 //モーダルを表示する。
 function openModal(bookCover, bookTitle, bookAuthor, bookId){
 
-    let modal = $('#modal');
-    modal.find(".modal-img").children('img').attr('src',bookCover);
-    modal.find(".modal-title").text(bookTitle);
-    modal.find(".modal-author").text(bookAuthor);
-    modal.find(".book-id").val(bookId);
+    let bookContent = $('.regist-book-box');
+    bookContent.find(".modal-img").children('img').attr('src',bookCover);
+    bookContent.find(".modal-title").text(bookTitle);
+    bookContent.find(".modal-author").text(bookAuthor);
+    bookContent.find(".book-id").val(bookId);
 
+    $('#modal').find(".message-box").css('display', 'none');
+    $('#modal').find(".modal-close").css('display', 'block');
     $('#modal').css('display', 'block');
+    $('#modal').find(".regist-book-box").css('display', 'block');
     $('.main').css('background', 'rgba(0, 0, 0, .5)');
     $('.search > input').css('background', 'rgba(0, 0, 0, .5)');
+    $('.search > input').prop('disabled', true);
+    $('.book-image > img').css('opacity', '0.5');
+    $('#modal').find(".regist-book-box").css('display', 'block');
 
+}
+
+function closeModal() {
+    $('#modal').find(".message-box").css('display', 'none');
+    $('#modal').css('display', 'none');
+    $('.main').css('background', '');
+    $('.search > input').css('background', '');
+    $('.search > input').prop('disabled', false);
+    $('.book-image > img').css('opacity', '');
+
+    modalFlg = false;
 }
 
 
