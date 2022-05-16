@@ -12,11 +12,9 @@ class BookRegistration extends Model
     protected $fillable =[
         'id',
         'api_id',
+        'book_cover_url',
         'title',
         'author',
-        'book_cover_url',
-        'genre_id',
-        'created_at',
-        'updated_at'
+        'description',
     ];
 }

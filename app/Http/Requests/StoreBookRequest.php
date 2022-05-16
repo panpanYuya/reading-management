@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\Space;
 
-class SearchBookRequest extends FormRequest
+class StoreBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,8 +16,6 @@ class SearchBookRequest extends FormRequest
         return true;
     }
 
-    // protected $redirect = '/';
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +24,12 @@ class SearchBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'keyword' => ['required', 'string', new Space],
+            //
+            'img' => ['string'],
+            'title' => ['string'],
+            'author' => ['string'],
+            'range' => ['integer'],
+            'id' => ['string']
         ];
     }
 }

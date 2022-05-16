@@ -2,20 +2,22 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/bookSearch.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" type="text/javascript">
-        <script src="{{ asset('/js/bookSearch.js') }}"></script>
+
     </head>
     <body>
         <x-header />
         <div>
             <div class="main">
                 <div class="container">
+                    <x-modal />
                     <div class="search-container">
-                        <form action="/book/search" method="post" >
+                        <form action="/book/search" method="POST" >
                             <div class="search">
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}
@@ -61,8 +63,8 @@
                                         <div class="arrow-right">
                                         </div>
                                     </div>
+                                    <input class="book-id" type="hidden" value="{{ $resultBook->api_id }}">
                                 </div>
-                                <input type="hidden" value="{{ $resultBook->api_id }}">
                             @endforeach
                         @endif
                     </div>
@@ -70,4 +72,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ asset('/js/bookSearch.js') }}"></script>
 </html>

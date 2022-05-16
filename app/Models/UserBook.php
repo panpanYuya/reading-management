@@ -13,10 +13,7 @@ class UserBook extends Model
         'id',
         'user_id',
         'book_id',
-        'unread_flg',
-        'book_impression',
-        'created_at',
-        'updated_at',
+        'read_status',
     ];
 
 

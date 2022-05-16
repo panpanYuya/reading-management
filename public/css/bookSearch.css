@@ -1,16 +1,32 @@
 .main {
     width: 100%;
+    position: fixed;
+    height: 100%;
+    z-index: 4;
+    /* background: rgba(0, 0, 0, .5); */
 }
 
+.container {
+    overflow: auto;
+    height: 100%;
+}
 
 .search-container{
     height:64px;
+}
+
+.result-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .book-title{
     white-space: nowrap;
     overflow: hidden;
 }
+
+
 
 
 @media screen and (min-width: 100px) {
@@ -22,6 +38,8 @@
         height: 58px;
         width: 100%;
         text-align: center;
+        z-index: 22;
+        /* background: rgba(0, 0, 0, .5); */
     }
 
     .search > button{
@@ -36,9 +54,15 @@
         font-weight: bold;
     }
 
+    .result-container {
+        margin-bottom: 64px;
+    }
+
     .result-book{
         height: 165px;
+        width: 150px;
         border: 1px solid #000;
+        margin: 10px;
     }
 
     .result-top{
@@ -61,29 +85,16 @@
     }
 
     .book-title{
-        font-size: 16px;
+        font-size: 8px;
         padding-top: 5px;
         white-space: nowrap;
         overflow: hidden;
     }
 
     .book-author{
-        font-size: 12px;
+        font-size: 6px;
         padding-top: 11px;
     }
-
-    .result-bottom > .arrow-right {
-        display: flex;
-        width: 18px;
-        height: 18px;
-        margin: -31px 90%;
-        border-top: 4px solid #000;
-        border-right: 4px solid #000;
-        transform: rotate(45deg);
-    }
-
-
-
 }
 
 
@@ -104,9 +115,7 @@
     }
 
     .result-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        margin-bottom: 128px;
     }
 
     .result-book {
@@ -133,45 +142,16 @@
         padding-top: 16.5px;
     }
 
-}
-
-@media screen and (min-width: 1280px) {
-
-
-    .search>input {
-        font-size: 24px;
-    }
-
-    .result-container {
+    .result-bottom>.arrow-right {
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        width: 18px;
+        height: 18px;
+        margin: -31px 90%;
+        border-top: 4px solid #000;
+        border-right: 4px solid #000;
+        transform: rotate(45deg);
+        z-index: 1;
     }
-
-    .result-book {
-        height: 330px;
-        border: 1px solid #000;
-        width: 480px;
-    }
-
-    .book-image>img {
-        width: 170px;
-        height: 216px;
-        padding-top: 10px;
-    }
-
-    .book-title {
-        font-size: 32px;
-        padding-top: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    .book-author {
-        font-size: 24px;
-        padding-top: 16.5px;
-    }
-
 
 }
 
