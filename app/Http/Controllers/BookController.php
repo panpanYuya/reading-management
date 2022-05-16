@@ -44,6 +44,11 @@ class BookController extends Controller
 
     }
 
+    public function showBooksList(Request $request){
+        $userBooks = UserBook::where('user_id', 1)->get();
+
+    }
+
     public function registBookForm($book){
         $registBook = new BookRegistration();
 

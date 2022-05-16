@@ -21,7 +21,6 @@ Route::get('/create', function () {
     return view('user.userAuthCreate');
 });
 
-
 Route::get('/search', function () {
     return view('book.bookSearch');
 });
@@ -34,6 +33,9 @@ Route::controller(BookController::class)->group(function () {
     Route::post('/book/regist', 'regist');
 });
 
+Route::controller(BookController::class)->group(function () {
+    Route::get('/book/list', 'showBooksList');
+});
 
 
 //Route::postの第二引数には無名関数を動かすことができる。
