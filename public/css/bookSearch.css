@@ -3,6 +3,7 @@
     position: fixed;
     height: 100%;
     z-index: 4;
+    /* background: rgba(0, 0, 0, .5); */
 }
 
 .container {
@@ -38,6 +39,7 @@
         width: 100%;
         text-align: center;
         z-index: 22;
+        /* background: rgba(0, 0, 0, .5); */
     }
 
     .search > button{

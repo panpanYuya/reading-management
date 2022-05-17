@@ -22,7 +22,7 @@
                             <li><a href="#">未読</a></li>
                         </ul>
                     </div>
-                    @if(isset($userBooks))
+                    @if($userBooks == null)
                         <div class="books-list">
                             @foreach ( $userBooks as $userBook)
                                 <div class="book">
@@ -49,7 +49,7 @@
                                 </div>
                             @endforeach
                         </div>
-                    @elseif (!isset($userBooks))
+                    @else
                         <div class="books-list">
                             <div class="error-message">まだ登録がされていません。</div>
                         </div>
