@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserBook;
-use App\Models\BookRegistration;
+use App\Models\Book;
 use App\Services\ApiService;
 
 class BookController extends Controller
@@ -22,7 +22,7 @@ class BookController extends Controller
         }
         $book = json_decode($jsonResults, false, 10);
         $registBookForm = $this->registBookForm($book);
-        $resultBook = BookRegistration::updateOrCreate(
+        $resultBook = Book::updateOrCreate(
             ['api_id' => $book->id],
             [
                 'book_cover_url' => $registBookForm->book_cover_url,
@@ -45,12 +45,12 @@ class BookController extends Controller
     }
 
     public function showBooksList(Request $request){
-        $userBooks = UserBook::where('user_id', 1)->get();
-
+        $userBooks = UserBook::where('user_id', 1)->with('book_registrations')->get();
+        dd($userBooks);
     }
 
     public function registBookForm($book){
-        $registBook = new BookRegistration();
+        $registBook = new Book();
 
         //apiのユニークidを変数に格納。
         $registBook->api_id = $book->id;
