@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\UserBook;
 use App\Models\Book;
@@ -34,7 +35,7 @@ class BookController extends Controller
 
         $bookId = $resultBook->id;
 
-        //TODO ユーザー機能実装後に引数は変更する。
+        //TODO チケット番号1047で修正→ユーザー機能実装後に引数は変更する。
         $checkedBookStatus = $this->bookStatusCheck($request->bookStatus);
         UserBook::updateOrCreate(['user_id' => 1, 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
 
@@ -45,8 +46,10 @@ class BookController extends Controller
     }
 
     public function showBooksList(Request $request){
-        $userBooks = UserBook::where('user_id', 1)->with('book_registrations')->get();
-        dd($userBooks);
+        //TODO チケット番号1047で修正→ユーザー機能実装後に引数を変更する。
+        $userBooks = DB::table('user_books')->leftJoin('books', 'user_books.book_id', '=' , 'books.id')->get();
+
+        return view('book.booksList', compact('userBooks'));
     }
 
     public function registBookForm($book){

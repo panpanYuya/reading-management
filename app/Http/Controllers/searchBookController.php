@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchBookRequest;
-use App\Models\BookRegistration;
+use App\Models\Book;
 use App\Services\BookService;
 use App\Services\ApiService;
 
@@ -27,7 +27,7 @@ class SearchBookController extends Controller
         $searchResult = json_decode($jsonResults, false, 10);
 
         foreach ($searchResult->items as $item) {
-            $book = new BookRegistration();
+            $book = new Book();
 
             //apiのユニークidを変数に格納。
             $book->api_id = $item->id;

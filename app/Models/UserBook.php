@@ -17,8 +17,8 @@ class UserBook extends Model
         'read_status',
     ];
 
-    public function bookregistration(){
-        return $this->belongsTo(Book::class, 'foreign_key', 'book_id');
+    public function book(){
+        return $this->belongsTo(Book::class);
     }
 
 }

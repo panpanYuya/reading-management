@@ -25,7 +25,7 @@ class CreateBookTagRegistrationsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('user_auths');
             $table->foreign('tag_id')->references('id')->on('look_back_tag_registrations');
-            $table->foreign('book_id')->references('id')->on('book_registrations');
+            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 

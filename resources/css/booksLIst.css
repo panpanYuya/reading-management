@@ -42,6 +42,11 @@
     text-align: center;
 }
 
+.title {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .tags_circle {
     display: flex;
     justify-content: space-between;
@@ -108,7 +113,7 @@
 
     .title {
         padding-top: 7px;
-        font-size:15px;
+        font-size: 8px;
     }
 
     .tags_title {
@@ -175,7 +180,7 @@
     }
 
     .title {
-        font-size: 30px;
+        font-size: 15px;
     }
 
     .tags_title {
