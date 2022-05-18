@@ -11,6 +11,8 @@ use App\Services\ApiService;
 class BookController extends Controller
 {
 
+    protected  $userId = '1';
+
     public function regist(Request $request){
 
         if(empty($request->bookId)){
@@ -23,7 +25,7 @@ class BookController extends Controller
         }
         $book = json_decode($jsonResults, false, 10);
         $registBookForm = $this->registBookForm($book);
-        $resultBook = Book::updateOrCreate(
+        $resultBook = Book::firstOrCreate(
             ['api_id' => $book->id],
             [
                 'book_cover_url' => $registBookForm->book_cover_url,
@@ -37,7 +39,7 @@ class BookController extends Controller
 
         //TODO チケット番号1047で修正→ユーザー機能実装後に引数は変更する。
         $checkedBookStatus = $this->bookStatusCheck($request->bookStatus);
-        UserBook::updateOrCreate(['user_id' => 1, 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
+        UserBook::updateOrCreate(['user_id' => $this->userId, 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
 
         return response()->json([
             'message' => '登録に成功しました'
@@ -47,7 +49,12 @@ class BookController extends Controller
 
     public function showBooksList(Request $request){
         //TODO チケット番号1047で修正→ユーザー機能実装後に引数を変更する。
-        $userBooks = DB::table('user_books')->leftJoin('books', 'user_books.book_id', '=' , 'books.id')->get();
+        // $userBooks = DB::table('user_books')->leftJoin('books', 'user_books.book_id', '=' , 'books.id')->get();
+        $userBooks = DB::table('user_books')->join('books', function($join){
+            $join->on('user_books.book_id', '=', 'books.id')
+            ->where('user_books.user_id', $this->userId);
+        })->get();
+        // dd($userBooks);
         return view('book.booksList', compact('userBooks'));
     }
 
