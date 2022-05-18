@@ -46,34 +46,33 @@
                         </div>
                     </div>
                     <div class="sticky_note-container">
-                        <div class="sticky_note">
-                            <div class="sticky_top">
-                                <div class="sticky_title">タイトル</div>
-                                <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
-                                <div class="sticky-trash_button"><img src={{asset("images/trash.png")}} alt="削除ボタン"></div>
+                        <div class="sticky_note-content">
+                            <div class="sticky_note">
+                                <div class="sticky_top">
+                                    <div class="sticky_title">タイトル</div>
+                                    <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
+                                </div>
+                                <div class="sticky_bottom">
+                                    <div class="sticky_content">P42 の世界はメタバースに包まれていく →つまり今後は何もかもVRでのやり取りが行われていく 子かそんなことをしたら、孤独死や孤独を感じることが多くあふれてしまうのではなかと思われる。 しかしメタバースによって生活様式の一部が拡張現実に行く可能性はありそうだ。。</div>
+                                </div>
                             </div>
-                            <div class="sticky_bottom">
-                                <div class="sticky_content">付箋のテキストです。</div>
+                            <div class="sticky_note">
+                                <div class="sticky_top">
+                                    <div class="sticky_title">タイトル</div>
+                                    <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
+                                </div>
+                                <div class="sticky_bottom">
+                                    <div class="sticky_content">付箋のテキストです。</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sticky_note">
-                            <div class="sticky_top">
-                                <div class="sticky_title">タイトル</div>
-                                <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
-                                <div class="sticky-trash_button"><img src={{asset("images/trash.png")}} alt="削除ボタン"></div>
-                            </div>
-                            <div class="sticky_bottom">
-                                <div class="sticky_content">付箋のテキストです。</div>
-                            </div>
-                        </div>
-                        <div class="sticky_note">
-                            <div class="sticky_top">
-                                <div class="sticky_title">タイトル</div>
-                                <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
-                                <div class="sticky-trash_button"><img src={{asset("images/trash.png")}} alt="削除ボタン"></div>
-                            </div>
-                            <div class="sticky_bottom">
-                                <div class="sticky_content">付箋のテキストです。</div>
+                            <div class="sticky_note">
+                                <div class="sticky_top">
+                                    <div class="sticky_title">タイトル</div>
+                                    <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
+                                </div>
+                                <div class="sticky_bottom">
+                                    <div class="sticky_content">付箋のテキストです。</div>
+                                </div>
                             </div>
                         </div>
                         <div class="sticky_add-button">
