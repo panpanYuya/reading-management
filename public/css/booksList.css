@@ -135,6 +135,12 @@
         width: 12px;
         height: 12px;
     }
+
+    .error-message{
+        font-size: 20px;
+        margin: 40px auto;
+        color: red;
+    }
 }
 
 @media screen and (min-width: 1280px) {
