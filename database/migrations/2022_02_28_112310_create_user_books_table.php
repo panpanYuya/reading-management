@@ -24,7 +24,7 @@ class CreateUserBooksTable extends Migration
             $table->dateTime('updated_at', $precision = 0)->comment('更新時間');
 
             // $table->foreign('user_id')->references('id')->on('user_auths');
-            $table->foreign('book_id')->references('id')->on('book_registrations');
+            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 
