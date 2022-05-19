@@ -22,7 +22,7 @@
                             <li><a href="#">未読</a></li>
                         </ul>
                     </div>
-                    @if(isEmpty($userBooks))
+                    @if(!$userBooks->isEmpty())
                         <div class="books-list">
                             @foreach ( $userBooks as $userBook)
                                 <div class="book">

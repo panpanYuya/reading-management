@@ -49,12 +49,10 @@ class BookController extends Controller
 
     public function showBooksList(Request $request){
         //TODO チケット番号1047で修正→ユーザー機能実装後に引数を変更する。
-        // $userBooks = DB::table('user_books')->leftJoin('books', 'user_books.book_id', '=' , 'books.id')->get();
         $userBooks = DB::table('user_books')->join('books', function($join){
             $join->on('user_books.book_id', '=', 'books.id')
             ->where('user_books.user_id', $this->userId);
         })->get();
-        // dd($userBooks);
         return view('book.booksList', compact('userBooks'));
     }
 
