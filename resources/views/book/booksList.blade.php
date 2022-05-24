@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="userBookId" value={{ $userBook->id}}>
+                                    <input type="hidden"  name="userBookId" value={{ $userBook->api_id}}>
                                 </div>
                             @endforeach
                         </div>
