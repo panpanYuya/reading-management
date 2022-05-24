@@ -14,16 +14,22 @@ use App\Rules\Space;
 
 class DetailController extends Controller
 {
-    //
+    /**
+     * 図書詳細画面を表示する機能
+     *
+     * @param string $apiId
+     * @return view
+     */
     protected $userId =1;
-    protected $apiId = 'q8pBEAAAQBAJ';
-    public function showDetail(Request $request){
+    public function showDetail($id){
         //TODOユーザー機能実装後に修正を加える。
 
-        $bookDetail = DB::table('user_books')->join('books', function ($join) {
-            $join->on('user_books.book_id', '=', 'books.id')
-            ->where([['user_books.user_id', $this->userId],['books.api_id', $this->apiId]]);
-        })->first();
+        $bookDetail = DB::table('user_books')
+            ->join('books', 'user_books.book_id', '=', 'books.id')
+            ->where([
+                ['user_books.id', $id],
+                ['user_books.user_id', $this->userId],
+            ])->first();
         $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->get();
         if(!isset($bookDetail)){
             abort(404);
@@ -32,7 +38,7 @@ class DetailController extends Controller
     }
 
     public function addStickyNote(Request $request){
-        $validated = $request->validate([
+        $request->validate([
             'userBookId' => ['required', 'integer'],
             'stickyId' => ['nullable', 'integer'],
             'pageNumber' => ['nullable', 'integer', new Space],

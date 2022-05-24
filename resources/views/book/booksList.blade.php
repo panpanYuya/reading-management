@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden"  name="userBookId" value={{ $userBook->api_id}}>
+                                    <input type="hidden" class="userBookId" name="userBookId" value={{ $userBook->id }}>
                                 </div>
                             @endforeach
                         </div>
@@ -58,4 +58,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ asset('/js/bookList.js') }}"></script>
 </html>

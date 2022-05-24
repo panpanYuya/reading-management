@@ -10927,18 +10927,21 @@ var __webpack_exports__ = {};
   !*** ./resources/js/bookDetail.js ***!
   \************************************/
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-var bookDetailUrl = '/book/detail/';
-var modalFlg = false;
+//モーダル表示のflg
+var modalFlg = false; //付箋追加ボタン押下の処理
+
 $('.sticky_add-button > img').on('click', function () {
   modalResize();
   openModal();
-});
+}); //付箋編集ボタン押下の処理
+
 $('.sticky-edit_button > img').on('click', function () {
   var editSticky = $(this).parent().parent().parent();
   modalResize();
   openModal();
   editModal(editSticky);
-});
+}); //モーダルを閉じるボタンが押下された時の処理
+
 $('.modal-close').on("click", function () {
   if (modalFlg) {
     modalFlg = false;
@@ -10982,7 +10985,7 @@ function editModal(editSticky) {
   $('#modal').find(".sticky_id").val(stickyId);
 }
 
-;
+; //モーダルを閉じる処理
 
 function closeModal() {
   //モーダルを隠す処理
@@ -10998,18 +11001,19 @@ function closeModal() {
   modalFlg = false;
 }
 
-;
+; //画面サイズが変わったときにモーダルを真ん中に持っていく処理
+
 $(window).on('resize', function () {
   if (modalFlg) {
     modalResize();
   }
-});
+}); //XSS対策の処理
 
 function escapeHTML(text) {
   return text.replace(/&/g, '&lt;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, "&#x27;");
 }
 
-;
+; //モーダルの位置を真ん中で固定する処理
 
 function modalResize() {
   var w = $(window).width();
@@ -11058,6 +11062,8 @@ $('.sticky-regist-button').on('click', function () {
       'stickyMemo': formattedMemo
     }
   }).done(function () {
+    var bookId = modalBox.find('.user_book_id"').val();
+    window.location.href = bookDetailUrl + bookId;
     window.location.href = "/book/detail";
   }).fail(function (error) {
     //失敗のメッセージ

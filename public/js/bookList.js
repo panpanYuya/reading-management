@@ -10930,7 +10930,7 @@ var __webpack_exports__ = {};
 var bookDetailUrl = '/book/detail/';
 $('.book').on('click', function () {
   var clickBook = $(this);
-  var bookId = clickBook.children('input').val;
+  var bookId = clickBook.find('.userBookId').val();
   window.location.href = bookDetailUrl + bookId;
 });
 })();
