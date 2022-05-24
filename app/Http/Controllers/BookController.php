@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UserBook;
 use App\Models\Book;
 use App\Services\ApiService;
+use App\Services\BookService;
 
 class BookController extends Controller
 {
@@ -49,14 +50,13 @@ class BookController extends Controller
 
     public function showBooksList(Request $request){
         //TODO チケット番号1047で修正→ユーザー機能実装後に引数を変更する。
-        // $userBooks = DB::table('user_books')->leftJoin('books', 'user_books.book_id', '=' , 'books.id')->get();
         $userBooks = DB::table('user_books')->join('books', function($join){
             $join->on('user_books.book_id', '=', 'books.id')
             ->where('user_books.user_id', $this->userId);
         })->get();
-        // dd($userBooks);
         return view('book.booksList', compact('userBooks'));
     }
+
 
     public function registBookForm($book){
         $registBook = new Book();
@@ -85,7 +85,9 @@ class BookController extends Controller
             $registBook->book_cover_url = $book->volumeInfo->imageLinks->smallThumbnail;
         }
         if (property_exists($book->volumeInfo, 'description')) {
-            $registBook->description = $book->volumeInfo->description;
+            $trimDescription = BookService::trimLinefeed($book->volumeInfo->description);
+            $trimDescription = BookService::trimOverlapping($trimDescription);
+            $registBook->description = $trimDescription;
         }
         return $registBook;
     }

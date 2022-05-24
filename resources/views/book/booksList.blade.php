@@ -22,7 +22,7 @@
                             <li><a href="#">未読</a></li>
                         </ul>
                     </div>
-                    @if(isEmpty($userBooks))
+                    @if(!$userBooks->isEmpty())
                         <div class="books-list">
                             @foreach ( $userBooks as $userBook)
                                 <div class="book">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="userBookId" value={{ $userBook->id}}>
+                                    <input type="hidden" class="userBookId" name="userBookId" value={{ $userBook->id }}>
                                 </div>
                             @endforeach
                         </div>
@@ -58,4 +58,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ asset('/js/bookList.js') }}"></script>
 </html>

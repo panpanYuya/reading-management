@@ -16,4 +16,20 @@ class BookService
     {
         return preg_split("/[\p{Z}\p{Cc}]++/u", $keyword, $limit = 5);
     }
+
+    /**
+     * <wbr>を削除する処理
+     *
+     */
+    static public function trimLinefeed($text){
+        return preg_replace("/<wbr>/i", '', $text);
+    }
+
+    /**
+     * 改行コードが重複していた場合、正規表現に直す処理
+     *
+     */
+    static public function trimOverlapping($text){
+        return preg_replace("/(<br>)\1+/", '<br>', $text);
+    }
 }

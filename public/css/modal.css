@@ -4,8 +4,6 @@
     background-color: aliceblue;
     border: 2px solid black;
     position: absolute;
-    left: 9.72%;
-    top: 5.6%;
     z-index: 2;
 }
 
@@ -25,7 +23,6 @@
 
 .modal-box {
     text-align: center;
-    /* height: 480px; */
 }
 
 .modal-img>img {
@@ -83,16 +80,6 @@
 
 
 @media screen and (min-width: 100px) {
-    .search-container {
-        height: 64px;
-    }
-
-    .search>input {
-        height: 58px;
-        width: 100%;
-        text-align: center;
-        z-index: 22;
-    }
 
     .search>button {
         display: none;
@@ -140,17 +127,6 @@
     .book-author {
         font-size: 12px;
         padding-top: 11px;
-    }
-
-    .result-bottom>.arrow-right {
-        display: flex;
-        width: 18px;
-        height: 18px;
-        margin: -31px 90%;
-        border-top: 4px solid #000;
-        border-right: 4px solid #000;
-        transform: rotate(45deg);
-        z-index: 1;
     }
 
 }
