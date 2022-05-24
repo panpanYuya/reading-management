@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UserBook;
 use App\Models\Book;
 use App\Services\ApiService;
+use App\Services\BookService;
 
 class BookController extends Controller
 {
@@ -56,6 +57,7 @@ class BookController extends Controller
         return view('book.booksList', compact('userBooks'));
     }
 
+
     public function registBookForm($book){
         $registBook = new Book();
 
@@ -83,7 +85,9 @@ class BookController extends Controller
             $registBook->book_cover_url = $book->volumeInfo->imageLinks->smallThumbnail;
         }
         if (property_exists($book->volumeInfo, 'description')) {
-            $registBook->description = $book->volumeInfo->description;
+            $trimDescription = BookService::trimLinefeed($book->volumeInfo->description);
+            $trimDescription = BookService::trimOverlapping($trimDescription);
+            $registBook->description = $trimDescription;
         }
         return $registBook;
     }

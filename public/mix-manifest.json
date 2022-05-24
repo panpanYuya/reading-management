@@ -1,11 +1,14 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/bookSearch.js": "/js/bookSearch.js",
+    "/js/bookList.js": "/js/bookList.js",
+    "/js/bookDetail.js": "/js/bookDetail.js",
     "/css/bookDetail.css": "/css/bookDetail.css",
     "/css/booksList.css": "/css/booksList.css",
     "/css/commonCompletePage.css": "/css/commonCompletePage.css",
     "/css/commonForm.css": "/css/commonForm.css",
     "/css/app.css": "/css/app.css",
+    "/css/sticky-note-modal.css": "/css/sticky-note-modal.css",
     "/css/modal.css": "/css/modal.css",
     "/css/bookSearch.css": "/css/bookSearch.css"
 }

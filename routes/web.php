@@ -4,6 +4,7 @@ use App\Http\Controllers\UserCreateController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SearchBookController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\Book\DetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,10 +32,14 @@ Route::controller(SearchBookController::class)->group(function () {
 
 Route::controller(BookController::class)->group(function () {
     Route::post('/book/regist', 'regist');
+    Route::get('/book/list', 'showBooksList');
+    Route::get('/book/detail/{id}', 'findBookDetail');
 });
 
-Route::controller(BookController::class)->group(function () {
-    Route::get('/book/list', 'showBooksList');
+Route::controller(DetailController::class)->group(function () {
+    Route::get('/book/detail', 'showDetail');
+    Route::post('/book/sticky/add', 'addStickyNote');
+    Route::post('/book/sticky/update', 'updateStickyNote');
 });
 
 

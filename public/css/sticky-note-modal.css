@@ -1,0 +1,93 @@
+#modal {
+    display: none;
+    width: 287px;
+    background-color: aliceblue;
+    border: 2px solid black;
+    position: fixed;
+    z-index: 2;
+}
+
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    width: 40px;
+    right: -40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.modal-box {
+    text-align: center;
+}
+
+
+.sticky-regist-button {
+    padding-top: 32px;
+    padding-bottom: 22px;
+}
+
+.sticky-regist-button>button {
+    width: 206px;
+    height: 50px;
+    background-color: #eb7e35;
+    border: 1px solid #000;
+    font-size: 30px;
+}
+
+.message-box {
+    font-size: 24px;
+    padding: 16px 32px;
+}
+
+
+@media screen and (min-width: 100px) {
+
+
+    .sticky-page,
+    .sticky-title,
+    .sticky-memo {
+        padding-top: 13px;
+    }
+
+    .sticky-title {
+        text-align: center;
+        padding-top: 15px;
+        font-size: 18px;
+        color: red;
+        font-weight: bold;
+    }
+
+    .sticky-memo > textArea{
+        height:292px;
+    }
+
+    .sticky-page > input,
+    .sticky-title > input,
+    .sticky-memo >  textarea {
+        width:200px;
+    }
+
+
+}
+
+
+@media screen and (min-width: 768px) {
+    #modal {
+        width: 430px;
+    }
+
+
+
+
+}
+
+
+@media screen and (min-width: 1024px) {
+
+}
+
