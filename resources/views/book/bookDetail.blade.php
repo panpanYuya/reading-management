@@ -77,5 +77,6 @@
             </div>
         </div>
     </body>
+    <script src="{{ asset('/js/modal.js') }}"></script>
     <script src="{{ asset('/js/bookDetail.js') }}"></script>
 </html>
