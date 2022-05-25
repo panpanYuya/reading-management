@@ -10985,6 +10985,7 @@ $('.result-book').on("click", function () {
     var bookTitle = resultBook.find(".book-title").text();
     var bookAuthor = resultBook.find(".book-author").text();
     var bookId = resultBook.find(".book-id").val();
+    modalResize();
     openModal(bookCover, bookTitle, bookAuthor, bookId);
   }
 });
@@ -11004,6 +11005,8 @@ function openModal(bookCover, bookTitle, bookAuthor, bookId) {
   $('#modal').find(".message-box").css('display', 'none');
   $('#modal').find(".modal-close").css('display', 'block');
   $('#modal').css('display', 'block');
+  $('body').css('background', 'rgba(0, 0, 0, 0.5)');
+  $('header').css('opacity', '0');
   $('#modal').find(".regist-book-box").css('display', 'block');
   $('.main').css('background', 'rgba(0, 0, 0, .5)');
   $('.search > input').css('background', 'rgba(0, 0, 0, .5)');
@@ -11017,12 +11020,37 @@ function closeModal() {
   $('#modal').css('display', 'none');
   $('.main').css('background', '');
   $('.search > input').css('background', '');
-  $('.search > input').prop('disabled', false);
+  $('.search > input').prop('disabled', false); //暗くした要素を元にもどす処理
+
+  $('body').css('background', '');
+  $('header').css('opacity', '1');
+  $('.header-wrapper').css('background-color', '#65eb8d');
+  $('.book-image > img').css('opacity', '');
   $('.book-image > img').css('opacity', '');
   modalFlg = false;
-} // #modal display:none
-// main backgroudを付けるbackground: rgba(0, 0, 0, .5);
-// .search > input   background: rgba(0, 0, 0, .5);を付ける
+}
+
+; //モーダルの位置を真ん中で固定する処理
+
+function modalResize() {
+  var w = $(window).width();
+  var h = $(window).height();
+  var cw = $("#modal").outerWidth();
+  var ch = $("#modal").outerHeight(); //取得した値をcssに追加する
+
+  $("#modal").css({
+    "left": (w - cw) / 2 + "px",
+    "top": (h - ch) / 2 + "px"
+  });
+}
+
+; //画面サイズが変わったときにモーダルを真ん中に持っていく処理
+
+$(window).on('resize', function () {
+  if (modalFlg) {
+    modalResize();
+  }
+});
 })();
 
 /******/ })()
