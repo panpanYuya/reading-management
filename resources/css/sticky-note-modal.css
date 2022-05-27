@@ -26,17 +26,27 @@
 }
 
 
-.sticky-regist-button {
+.sticky-regist-button,
+.sticky-delete-button {
     padding-top: 32px;
     padding-bottom: 22px;
 }
 
-.sticky-regist-button>button {
+.sticky-regist-button>button,
+.sticky-delete-button>button {
     width: 206px;
     height: 50px;
-    background-color: #eb7e35;
     border: 1px solid #000;
     font-size: 30px;
+}
+
+.sticky-regist-button>button {
+    background-color: #eb7e35;
+}
+
+.sticky-delete-button>button {
+    background-color: #FF0D41;
+    color: #fff;
 }
 
 .message-box {
@@ -48,7 +58,7 @@
 @media screen and (min-width: 100px) {
 
 
-    .sticky-page,
+    .book-page,
     .sticky-title,
     .sticky-memo {
         padding-top: 13px;
@@ -66,7 +76,7 @@
         height:292px;
     }
 
-    .sticky-page > input,
+    .book-page > input,
     .sticky-title > input,
     .sticky-memo >  textarea {
         width:200px;
