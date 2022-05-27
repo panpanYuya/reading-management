@@ -203,14 +203,13 @@ $('.sticky-delete-button').on('click',function(){
     ajaxSetUp();
     $.ajax({
         type: 'POST',
-        url: '/sticky/delete',
+        url: '/book/sticky/delete',
         data: {
             'stickyId': stickyId,
             'userBookId': formattedId
         }
-    }).done((done)=>{
-        alert(done.responseJSON.message);
-        // successAjax(modalBox);
+    }).done(()=>{
+        successAjax(modalBox);
     }).fail((error)=>{
         //失敗のメッセージ
         failAjax(modalBox,error.responseJSON.message)

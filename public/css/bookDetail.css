@@ -128,6 +128,11 @@
         margin-bottom: 24px;
     }
 
+    .modal_sticky_note {
+        width: 250px;
+        margin: 24px auto;
+    }
+
     .book-page{
         font-size:14px;
     }
@@ -225,9 +230,13 @@
     }
 
 
-    .sticky_note,
-    .modal_sticky_note {
+    .sticky_note{
         margin: 10px 20px;
+    }
+
+    .modal_sticky_note {
+        width: 320px;
+        margin: 24px auto;
     }
 
     .sticky_title {
