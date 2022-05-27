@@ -48,9 +48,9 @@
                             </div>
                         </form>
                     </div>
-                    <button type="submit" class="external_account-button">外部アカウントでログイン</button>
                 </div>
             </div>
         </div>
     </body>
+    <script src="{{ mix('/js/login.js') }}"></script>
 </html>

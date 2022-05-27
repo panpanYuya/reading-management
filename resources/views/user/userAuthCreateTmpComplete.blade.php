@@ -17,7 +17,7 @@
                         <div class="complete">認証用のメールが送信されました。</div>
                         <div class="complete">ご確認ください。</div>
                         <div class="back_button">
-                            <a href="">ログイン画面へ</a></a>
+                            <a href="/login">ログイン画面へ</a></a>
                         </div>
                     </div>
                 </div>
