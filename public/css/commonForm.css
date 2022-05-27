@@ -6,6 +6,12 @@
     margin: 32px auto;
 }
 
+.alert,
+.alert-danger{
+    color: red;
+    margin-bottom: 15px;
+}
+
 .tag {
     text-align: left;
 }
@@ -15,6 +21,10 @@ div.user-info {
     display: flex;
     flex-flow: column;
     margin-bottom: 15px;
+}
+
+.forget-password{
+    margin-top: 10px;
 }
 
 .title {

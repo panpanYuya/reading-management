@@ -19,7 +19,7 @@
                             @csrf
                             <div class="user-info">
                                 @error('user_name')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{!! $message !!}</div>
                                 @enderror
                                 <div class="tag">
                                     <label for="user_name">
