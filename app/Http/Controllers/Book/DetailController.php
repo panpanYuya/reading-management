@@ -96,5 +96,13 @@ class DetailController extends Controller
 
     }
 
+    public function deleteStickyNote(Request $request){
+        $userBook = UserBook::find($request->userBookId);
+        StickyRegistration::findOrFail($request->stickyId)->delete();
+        return response()->json([
+            'message' => '削除に成功しました。'
+        ], 200);
+    }
+
 
 }
