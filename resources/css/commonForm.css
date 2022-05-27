@@ -7,9 +7,9 @@
 }
 
 .alert,
-.alert-danger{
+.alert-danger {
     color: red;
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
 
 .tag {
@@ -23,7 +23,7 @@ div.user-info {
     margin-bottom: 15px;
 }
 
-.forget-password{
+.forget-password {
     margin-top: 10px;
 }
 
@@ -101,6 +101,18 @@ div.user-info {
         margin-top: 3px;
     }
 
+    .alert,
+    .alert-danger {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 385px) {
+
+    .alert,
+    .alert-danger {
+        font-size: 14px;
+    }
 }
 
 @media screen and (min-width: 768px) {

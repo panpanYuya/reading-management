@@ -22,7 +22,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/create', function () {
+Route::get('/user/create', function () {
     return view('user.userAuthCreate');
 });
 

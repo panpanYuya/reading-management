@@ -60,6 +60,7 @@ return [
         'numeric' => ':attributeは、:value以上でなければなりません。',
         'string'  => ':attributeは、:value文字以上でなければなりません。',
     ],
+    'hankaku'              => ':attribute は半角英数字で入力してください。',
     'image'                => ':attributeには、画像を指定してください。',
     'in'                   => '選択された:attributeは、有効ではありません。',
     'in_array'             => ':attributeが:otherに存在しません。',

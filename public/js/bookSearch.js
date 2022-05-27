@@ -10985,8 +10985,8 @@ $('.result-book').on("click", function () {
     var bookTitle = resultBook.find(".book-title").text();
     var bookAuthor = resultBook.find(".book-author").text();
     var bookId = resultBook.find(".book-id").val();
-    modalResize();
     openModal(bookCover, bookTitle, bookAuthor, bookId);
+    modalResize();
   }
 });
 $('.modal-close').on("click", function () {

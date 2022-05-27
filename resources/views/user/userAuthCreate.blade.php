@@ -16,39 +16,39 @@
                     <div class="common-form">
                         <form action="{{ url('/user/createUser')}}" method="POST">
                             @csrf
-                            @error('user_name')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                             <div class="user-info">
+                                @error('user_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div class="tag">
                                     <label for="user_name">ユーザー名</label><span class="required">必須</span>
                                 </div>
                                     <input type="text" id="user_name" name="user_name" minlength="8" maxlength="20" required value="{{ old('user_name') }}">
                                     <p class="length_limit">※半角英数字8~20文字以内</p>
+                                </div>
+                            <div class="user-info">
                                 @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-                            <div class="user-info">
                                 <div class="tag">
                                     <label for="password">パスワード</label><span class="required">必須</span>
                                 </div>
                                 <input type="password" id="password" name="password" minlength="8" maxlength="50" required >
-                                <p class="length_limit">※半角英数字5~50文字以内</p>
+                                <p class="length_limit">※半角英数字8~50文字以内</p>
+                            </div>
+                            <div class="user-info">
                                 @error('passwordConfirm')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-                            <div class="user-info">
                                 <div class="tag">
                                     <label for="password_confirmation">パスワード確認用</label><span class="required">必須</span>
                                 </div>
                                 <input type="password" id="password_confirmation" name="password_confirmation" minlength="8" maxlength="50" required>
+                            </div>
+                            <div class="user-info">
                                 @error('mailAddress')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-                            <div class="user-info">
                                 <div class="tag">
                                     <label for="mailAddress">メールアドレス</label>
                                 </div>
