@@ -61,6 +61,7 @@
                                         <div class="book-page">P{{ $stickyNote->page_number }}</div>
                                         <div class="sticky_title">{{ $stickyNote->sticky_title }}</div>
                                         <div class="sticky-edit_button"><img src={{asset("images/edit.png")}} alt="編集ボタン"></div>
+                                        <div class="sticky-trash_button"><img src={{asset("images/trash.png")}} alt="削除ボタン"></div>
                                     </div>
                                     <div class="sticky_bottom">
                                         <div class="sticky_content">{{ $stickyNote->sticky_memo }}</div>

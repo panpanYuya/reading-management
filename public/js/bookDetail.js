@@ -10928,18 +10928,30 @@ var __webpack_exports__ = {};
   \************************************/
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 //モーダル表示のflg
-var modalFlg = false; //付箋追加ボタン押下の処理
+var modalFlg = false;
+var deleteFlg = false;
+var bookDetailUrl = '/book/detail/'; //付箋追加ボタン押下の処理
 
 $('.sticky_add-button > img').on('click', function () {
+  deleteFlg = false;
+  openStickyModal();
   modalResize();
-  openModal();
 }); //付箋編集ボタン押下の処理
 
 $('.sticky-edit_button > img').on('click', function () {
   var editSticky = $(this).parent().parent().parent();
+  deleteFlg = false;
+  openStickyModal(deleteFlg);
+  showEditContent(editSticky);
   modalResize();
-  openModal();
-  editModal(editSticky);
+}); //付箋削除ボタン押下の処理
+
+$('.sticky-trash_button > img').on('click', function () {
+  var deleteSticky = $(this).parent().parent().parent();
+  deleteFlg = true;
+  openStickyModal(deleteFlg);
+  showDeleteContent(deleteSticky);
+  modalResize();
 }); //モーダルを閉じるボタンが押下された時の処理
 
 $('.modal-close').on("click", function () {
@@ -10949,7 +10961,7 @@ $('.modal-close').on("click", function () {
   }
 }); //モーダルを表示する。
 
-function openModal() {
+function openStickyModal(deleteFlg) {
   if (!modalFlg) {
     modalFlg = true; //モーダルの中身を切り替える。
 
@@ -10961,31 +10973,53 @@ function openModal() {
     $('header').css('opacity', '0');
     $('.menu-btn').css('display', 'none');
     $('.book-image > img').css('opacity', '0.5');
-    $('.sticky_note').css('opacity', '0.3'); //モーダルを表示する処理
+    $('.sticky_note').css('opacity', '0.3'); //モーダルの中身を空にする
+
+    $('#modal').find(".book-page").children('input').text("");
+    $('#modal').find(".sticky-title").children('input').text("");
+    $('#modal').find(".sticky-memo").children('textarea').text("");
+    $('#modal').find(".sticky_id").val(""); //モーダルを表示する処理
 
     $('#modal').find('.sticky-note-box').css('display', 'block');
     var userBookId = $('.details-right').children('input').val();
     $('#modal').find('.user_book_id').val(userBookId);
     $('.site-header').css('z-index', '1');
+
+    if (deleteFlg) {
+      $('#sticky-regist').css('display', 'none');
+      $('#sticky-delete').css('display', 'block');
+    } else {
+      $('#sticky-regist').css('display', 'block');
+      $('#sticky-delete').css('display', 'none');
+    }
   }
-}
+} //編集する付箋の値をモーダルに表示する。
 
-; //編集する付箋の値をモーダルに表示する。
 
-function editModal(editSticky) {
+function showEditContent(editSticky) {
   //編集したい付箋を取得する。
   var bookPage = editSticky.find('.book-page').text();
   var stickyTitle = editSticky.find('.sticky_title').text();
   var stickyMemo = editSticky.find('.sticky_content').text();
   var stickyId = editSticky.find('.sticky_id').val();
   var formattedBookPage = bookPage.substr(1, bookPage.length);
-  $('#modal').find(".sticky-page").children('input').val(formattedBookPage);
-  $('#modal').find(".sticky-title").children('input').val(stickyTitle);
-  $('#modal').find(".sticky-memo").children('textarea').val(stickyMemo);
-  $('#modal').find(".sticky_id").val(stickyId);
+  $('#sticky-regist').find(".book-page").children('input').val(formattedBookPage);
+  $('#sticky-regist').find(".sticky-title").children('input').val(stickyTitle);
+  $('#sticky-regist').find(".sticky-memo").children('textarea').val(stickyMemo);
+  $('#sticky-regist').find(".sticky_id").val(stickyId);
 }
 
-; //モーダルを閉じる処理
+function showDeleteContent(deleteSticky) {
+  var bookPage = deleteSticky.find('.book-page').text();
+  var stickyTitle = deleteSticky.find('.sticky_title').text();
+  var stickyContent = deleteSticky.find('.sticky_content').text();
+  var stickyId = deleteSticky.find('.sticky_id').val();
+  $('#sticky-delete').find('.book-page').text(bookPage);
+  $('#sticky-delete').find('.sticky_title').text(stickyTitle);
+  $('#sticky-delete').find('.sticky_content').text(stickyContent);
+  $('#sticky-delete').find('.sticky_id').val(stickyId);
+} //モーダルを閉じる処理
+
 
 function closeModal() {
   //モーダルを隠す処理
@@ -10999,9 +11033,8 @@ function closeModal() {
   $('.sticky_note').css('opacity', '');
   $('.book-image > img').css('opacity', '');
   modalFlg = false;
-}
+} //画面サイズが変わったときにモーダルを真ん中に持っていく処理
 
-; //画面サイズが変わったときにモーダルを真ん中に持っていく処理
 
 $(window).on('resize', function () {
   if (modalFlg) {
@@ -11011,9 +11044,8 @@ $(window).on('resize', function () {
 
 function escapeHTML(text) {
   return text.replace(/&/g, '&lt;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, "&#x27;");
-}
+} //モーダルの位置を真ん中で固定する処理
 
-; //モーダルの位置を真ん中で固定する処理
 
 function modalResize() {
   var w = $(window).width();
@@ -11027,18 +11059,12 @@ function modalResize() {
   });
 }
 
-;
 $('.sticky-regist-button').on('click', function () {
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
   var modalBox = $(this).parent().parent();
-  var bookPage = modalBox.find(".sticky-page").children('input').val();
+  var bookPage = modalBox.find(".book-page").children('input').val();
   var stickyTitle = modalBox.find(".sticky-title").children('input').val();
   var stickyMemo = modalBox.find(".sticky-memo").children('textarea').val();
-  var stickyId = modalBox.find(".sticky_id").val();
+  var stickyId = modalBox.parent().find(".sticky_id").val();
   var userBookId = modalBox.find(".user_book_id").val();
   var formattedId = escapeHTML(userBookId);
   var splitText = stickyMemo.split('\n');
@@ -11051,6 +11077,8 @@ $('.sticky-regist-button').on('click', function () {
     urlString = '/book/sticky/update';
   }
 
+  ;
+  ajaxSetUp();
   $.ajax({
     type: 'POST',
     url: urlString,
@@ -11062,19 +11090,54 @@ $('.sticky-regist-button').on('click', function () {
       'stickyMemo': formattedMemo
     }
   }).done(function () {
-    var bookId = modalBox.find('.user_book_id"').val();
-    window.location.href = bookDetailUrl + bookId;
-    window.location.href = "/book/detail";
+    successAjax(modalBox);
   }).fail(function (error) {
     //失敗のメッセージ
-    modalBox.find(".sticky-note-box").css('display', 'none');
-    modalBox.find(".modal-close").css('display', 'none');
-    modalBox.find(".message-box").css('display', 'block');
-    modalBox.find(".message-box").text(error.responseJSON.message);
-    modalBox.find(".message-box").css('color', 'red');
-    window.setTimeout(closeModal, 5000);
+    failAjax(modalBox, error.responseJSON.message);
   });
 });
+$('.sticky-delete-button').on('click', function () {
+  var modalBox = $(this).parent().parent();
+  var stickyId = modalBox.find(".sticky_id").val();
+  var userBookId = modalBox.find(".user_book_id").val();
+  var formattedId = escapeHTML(userBookId);
+  ajaxSetUp();
+  $.ajax({
+    type: 'POST',
+    url: '/book/sticky/delete',
+    data: {
+      'stickyId': stickyId,
+      'userBookId': formattedId
+    }
+  }).done(function () {
+    successAjax(modalBox);
+  }).fail(function (error) {
+    //失敗のメッセージ
+    failAjax(modalBox, error.responseJSON.message);
+  });
+});
+
+function ajaxSetUp() {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+}
+
+function successAjax(modalBox) {
+  var bookId = modalBox.find('.user_book_id').val();
+  window.location.href = bookDetailUrl + bookId;
+}
+
+function failAjax(modalBox, errorMessage) {
+  modalBox.find(".sticky-note-box").css('display', 'none');
+  modalBox.find(".modal-close").css('display', 'none');
+  modalBox.find(".message-box").css('display', 'block');
+  modalBox.find(".message-box").text(errorMessage);
+  modalBox.find(".message-box").css('color', 'red');
+  window.setTimeout(closeModal, 5000);
+}
 })();
 
 /******/ })()

@@ -39,6 +39,7 @@ Route::controller(DetailController::class)->group(function () {
     Route::get('/book/detail/{apiId}', 'showDetail');
     Route::post('/book/sticky/add', 'addStickyNote');
     Route::post('/book/sticky/update', 'updateStickyNote');
+    Route::post('/book/sticky/delete', 'deleteStickyNote');
 });
 
 
