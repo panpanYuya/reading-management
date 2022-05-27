@@ -65,8 +65,8 @@ $('.result-book' ).on( "click", function(){
         let bookAuthor = resultBook.find(".book-author").text();
         let bookId = resultBook.find(".book-id").val();
 
-        modalResize();
         openModal(bookCover, bookTitle, bookAuthor, bookId);
+        modalResize();
     }
 });
 
