@@ -80,18 +80,6 @@ div.user-info {
     align-items: center;
 }
 
-.external_account-button {
-    height: 64px;
-    font-size: 24px;
-    padding-top: 5px;
-    color: #3e3e3e;
-    border-color: #349e54;
-    background-color: #d0ead8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 @media screen and (min-width: 100px) {
 
@@ -101,10 +89,6 @@ div.user-info {
 
     .length_limit {
         margin-top: 3px;
-    }
-
-    .external_account-button {
-        width: 100%;
     }
 
 }
@@ -130,11 +114,6 @@ div.user-info {
 
     .regist-button {
         width: 80%;
-        margin: 0 auto;
-    }
-
-    .external_account-button {
-        width: 640px;
         margin: 0 auto;
     }
 
