@@ -75,7 +75,7 @@ class DetailController extends Controller
             'stickyMemo' => ['string', 'max:400', new Space],
         ]);
         $stickyNote = StickyRegistration::find($request->stickyId);
-        //TODO　ユーザー機能実装後に修正する。
+        //TODO ユーザー機能実装後に修正する。
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
             ['user_book_id' => 1]
