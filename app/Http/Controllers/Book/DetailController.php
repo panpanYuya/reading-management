@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Book;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\StickyRegistration;
 use App\Models\UserBook;
@@ -20,16 +20,16 @@ class DetailController extends Controller
      * @param string $apiId
      * @return view
      */
-    protected $userId =1;
     public function showDetail($id){
-        //TODOユーザー機能実装後に修正を加える。
-
         $bookDetail = DB::table('user_books')
             ->join('books', 'user_books.book_id', '=', 'books.id')
             ->where([
                 ['user_books.id', $id],
-                ['user_books.user_id', $this->userId],
+                ['user_books.user_id', Auth::id()],
             ])->first();
+        if(!isset($bookDetail)){
+            abort(401);
+        }
         $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->get();
         if(!isset($bookDetail)){
             abort(404);
@@ -45,8 +45,14 @@ class DetailController extends Controller
             'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
             'stickyMemo' => ['string', 'max:400', new Space],
         ]);
+
         $userBook = UserBook::find($request->userBookId);
         //本のページを登録する。
+        if($userBook->user_id != Auth::id()){
+            return response()->json([
+                'message' => '登録ができませんでした'
+            ], 401);
+        }
         try {
             $sticky = new StickyRegistration;
             $sticky->user_book_id = $userBook->id;
@@ -56,13 +62,11 @@ class DetailController extends Controller
 
             $sticky->save();
         } catch (Exception $e) {
-
             abort(500);
         }
         return response()->json([
             'message' => '登録に成功しました'
         ], 200);
-
     }
 
 
@@ -75,10 +79,9 @@ class DetailController extends Controller
             'stickyMemo' => ['string', 'max:400', new Space],
         ]);
         $stickyNote = StickyRegistration::find($request->stickyId);
-        //TODO ユーザー機能実装後に修正する。
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
-            ['user_book_id' => 1]
+            ['user_book_id' => $request->userBookId]
         )->firstOrFail();
         //本のページを登録する。
         try {

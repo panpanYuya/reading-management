@@ -29,9 +29,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            //TODOloginの際に使用したユーザー名からユーザーidを取得して、ユーザーidにひもづく本棚ページを表示するように記述する。
-            //user認証を行ったタイミングで下記のreturn viewも修正する。
-            return view('/user/userAuthCreate');
+            return redirect()->route('list');
         }
 
         return $this->sendFailedLoginResponse($request);

@@ -89,7 +89,7 @@ function showEditContent(editSticky){
     $('#sticky-regist').find(".book-page").children('input').val(formattedBookPage);
     $('#sticky-regist').find(".sticky-title").children('input').val(stickyTitle);
     $('#sticky-regist').find(".sticky-memo").children('textarea').val(stickyMemo);
-    $('#sticky-regist').find(".sticky_id").val(stickyId);
+    $('.sticky-note-box').find(".sticky_id").val(stickyId);
 
 }
 
@@ -156,11 +156,11 @@ function modalResize(){
 
 $('.sticky-regist-button').on('click',function(){
 
-    let modalBox = $(this).parent().parent();
+    let modalBox = $(this).parent().parent().parent();
     let bookPage = modalBox.find(".book-page").children('input').val();
     let stickyTitle = modalBox.find(".sticky-title").children('input').val();
     let stickyMemo = modalBox.find(".sticky-memo").children('textarea').val();
-    let stickyId = modalBox.parent().find(".sticky_id").val();
+    let stickyId = modalBox.find(".sticky_id").val();
 
     let userBookId = modalBox.find(".user_book_id").val();
     let formattedId = escapeHTML(userBookId);
@@ -196,7 +196,7 @@ $('.sticky-regist-button').on('click',function(){
 
 $('.sticky-delete-button').on('click',function(){
 
-    let modalBox = $(this).parent().parent();
+    let modalBox = $(this).parent().parent().parent();
     let stickyId = modalBox.find(".sticky_id").val();
     let userBookId = modalBox.find(".user_book_id").val();
     let formattedId = escapeHTML(userBookId);
@@ -212,7 +212,7 @@ $('.sticky-delete-button').on('click',function(){
         successAjax(modalBox);
     }).fail((error)=>{
         //失敗のメッセージ
-        failAjax(modalBox,error.responseJSON.message)
+        failAjax(modalBox,error.message);
     });
 });
 
