@@ -20,7 +20,6 @@ class DetailController extends Controller
      * @param string $apiId
      * @return view
      */
-    protected $userId =1;
     public function showDetail($id){
         $bookDetail = DB::table('user_books')
             ->join('books', 'user_books.book_id', '=', 'books.id')
@@ -28,6 +27,9 @@ class DetailController extends Controller
                 ['user_books.id', $id],
                 ['user_books.user_id', Auth::id()],
             ])->first();
+        if(!isset($bookDetail)){
+            abort(401);
+        }
         $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->get();
         if(!isset($bookDetail)){
             abort(404);
@@ -71,7 +73,6 @@ class DetailController extends Controller
             'stickyMemo' => ['string', 'max:400', new Space],
         ]);
         $stickyNote = StickyRegistration::find($request->stickyId);
-        //TODO ユーザー機能実装後に修正する。
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
             ['user_book_id' => $request->userBookId]
