@@ -20,39 +20,49 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
     return view('login');
+})->name('login');
+
+
+Route::controller(LoginController::class)->group(function () {
+    Route::post('/login/auth', 'authenticate');
 });
 
 Route::get('/user/create', function () {
     return view('user.userAuthCreate');
 });
 
-Route::get('/search', function () {
-    return view('book.bookSearch');
-});
-
-Route::controller(SearchBookController::class)->group(function () {
-    Route::post('/book/search', 'searchBook');
-});
-
-Route::controller(BookController::class)->group(function () {
-    Route::post('/book/regist', 'regist');
-    Route::get('/book/list', 'showBooksList');
-});
-
-Route::controller(DetailController::class)->group(function () {
-    Route::get('/book/detail/{apiId}', 'showDetail');
-    Route::post('/book/sticky/add', 'addStickyNote');
-    Route::post('/book/sticky/update', 'updateStickyNote');
-    Route::post('/book/sticky/delete', 'deleteStickyNote');
-});
-
-
 //Route::postの第二引数には無名関数を動かすことができる。
-Route::controller(UserCreateController::class)->group(function(){
+Route::controller(UserCreateController::class)->group(function () {
     Route::post('/user/createUser', 'createUser');
 });
 
-Route::controller(LoginController::class)->group(function(){
-    Route::post('/login/auth', 'authenticate');
+
+
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::controller(BookController::class)->group(function () {
+        Route::post('/book/regist', 'regist');
+        Route::get('/book/list/', 'showBooksList')->name('list');
+    });
+
+    Route::controller(DetailController::class)->group(function () {
+        Route::get('/book/detail/{apiId}', 'showDetail');
+        Route::post('/book/sticky/add', 'addStickyNote');
+        Route::post('/book/sticky/update', 'updateStickyNote');
+        Route::post('/book/sticky/delete', 'deleteStickyNote');
+    });
+
+    Route::get('/search', function () {
+        return view('book.bookSearch');
+    });
+
+    Route::controller(SearchBookController::class)->group(function () {
+        Route::post('/book/search', 'searchBook');
+    });
 });
+
+
+
 

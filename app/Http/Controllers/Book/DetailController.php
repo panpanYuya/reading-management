@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Book;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\StickyRegistration;
 use App\Models\UserBook;
@@ -22,13 +22,11 @@ class DetailController extends Controller
      */
     protected $userId =1;
     public function showDetail($id){
-        //TODOユーザー機能実装後に修正を加える。
-
         $bookDetail = DB::table('user_books')
             ->join('books', 'user_books.book_id', '=', 'books.id')
             ->where([
                 ['user_books.id', $id],
-                ['user_books.user_id', $this->userId],
+                ['user_books.user_id', Auth::id()],
             ])->first();
         $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->get();
         if(!isset($bookDetail)){
@@ -56,13 +54,11 @@ class DetailController extends Controller
 
             $sticky->save();
         } catch (Exception $e) {
-
             abort(500);
         }
         return response()->json([
             'message' => '登録に成功しました'
         ], 200);
-
     }
 
 
@@ -78,7 +74,7 @@ class DetailController extends Controller
         //TODO ユーザー機能実装後に修正する。
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
-            ['user_book_id' => 1]
+            ['user_book_id' => $request->userBookId]
         )->firstOrFail();
         //本のページを登録する。
         try {

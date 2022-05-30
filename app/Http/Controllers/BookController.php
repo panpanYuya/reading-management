@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\UserBook;
@@ -11,8 +12,6 @@ use App\Services\BookService;
 
 class BookController extends Controller
 {
-
-    protected  $userId = '1';
 
     public function regist(Request $request){
 
@@ -37,22 +36,17 @@ class BookController extends Controller
         );
 
         $bookId = $resultBook->id;
-
-        //TODO チケット番号1047で修正→ユーザー機能実装後に引数は変更する。
         $checkedBookStatus = $this->bookStatusCheck($request->bookStatus);
-        UserBook::updateOrCreate(['user_id' => $this->userId, 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
-
+        UserBook::updateOrCreate(['user_id' => Auth::id(), 'book_id' => $bookId],['read_status' => $checkedBookStatus]);
         return response()->json([
             'message' => '登録に成功しました'
         ], 200);
-
     }
 
     public function showBooksList(Request $request){
-        //TODO チケット番号1047で修正→ユーザー機能実装後に引数を変更する。
         $userBooks = DB::table('user_books')->join('books', function($join){
             $join->on('user_books.book_id', '=', 'books.id')
-            ->where('user_books.user_id', $this->userId);
+            ->where('user_books.user_id', Auth::id());
         })->get();
         return view('book.booksList', compact('userBooks'));
     }
@@ -92,15 +86,11 @@ class BookController extends Controller
         return $registBook;
     }
 
-
     public function bookStatusCheck($bookStatus){
         if($bookStatus !== \BookConst::READ_STATUS_LIST['読んだ'] && $bookStatus !== \BookConst::READ_STATUS_LIST['読みたい']  && $bookStatus !== \BookConst::READ_STATUS_LIST['未読']){
             $bookStatus = \BookConst::READWISH_STATUS;
         }
         return $bookStatus;
     }
-
-
-
 
 }
