@@ -45,8 +45,14 @@ class DetailController extends Controller
             'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
             'stickyMemo' => ['string', 'max:400', new Space],
         ]);
+
         $userBook = UserBook::find($request->userBookId);
         //本のページを登録する。
+        if($userBook->user_id != Auth::id()){
+            return response()->json([
+                'message' => '登録ができませんでした'
+            ], 401);
+        }
         try {
             $sticky = new StickyRegistration;
             $sticky->user_book_id = $userBook->id;
