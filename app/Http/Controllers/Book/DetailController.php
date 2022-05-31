@@ -74,15 +74,20 @@ class DetailController extends Controller
         $request->validate([
             'userBookId' => ['required', 'integer'],
             'stickyId' => ['nullable', 'integer'],
-            'pageNumber' => ['nullable', 'integer', new Space],
-            'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
-            'stickyMemo' => ['string', 'max:400', new Space],
+            'pageNumber' => ['nullable', 'integer'],
+            'stickyTitle' => ['nullable', 'string', 'max:100'],
+            'stickyMemo' => ['string', 'max:400'],
         ]);
-        $stickyNote = StickyRegistration::find($request->stickyId);
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
             ['user_book_id' => $request->userBookId]
         )->firstOrFail();
+        $userBook = UserBook::find($request->userBookId);
+        if ($userBook->user_id != Auth::id()) {
+            return response()->json([
+                'message' => '編集ができませんでした'
+            ], 401);
+        }
         //本のページを登録する。
         try {
             $stickyNote->page_number = $request->pageNumber;
@@ -90,7 +95,6 @@ class DetailController extends Controller
             $stickyNote->sticky_memo = $request->stickyMemo;
             $stickyNote->save();
         } catch (Exception $e) {
-
             abort(500);
         }
         return response()->json([
@@ -101,6 +105,11 @@ class DetailController extends Controller
 
     public function deleteStickyNote(Request $request){
         $userBook = UserBook::find($request->userBookId);
+        if ($userBook->user_id != Auth::id()) {
+            return response()->json([
+                'message' => '削除ができませんでした'
+            ], 401);
+        }
         StickyRegistration::findOrFail($request->stickyId)->delete();
         return response()->json([
             'message' => '削除に成功しました。'
