@@ -19,19 +19,11 @@ class TemporaryRegistration extends Model{
         'user_id',
         'user_name',
         'mail_address',
-        'created_at',
-        'updated_at',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
         'password',
         'login_token',
         'temporary_token',
+        'created_at',
+        'updated_at',
     ];
 
 }
