@@ -12,13 +12,12 @@
         <div>
             <div class="main">
                 <div class="container">
-                    <h1 class="title">仮登録登録</h1>
+                    <h1 class="title">認証時間切れ</h1>
                     <div class="regist-container">
-                        <div>認証用のメールが送信されました。</div>
-                        <div>ご確認ください。</div>
-                        <div>認証期間はいまから24時間です。</div>
+                        <div>認証期間を過ぎてしまいました。</div>
+                        <div>新規登録画面から再度ご登録ください。</div>
                         <div class="back_button">
-                            <a href="/login">ログイン画面へ</a></a>
+                            <a href="/user/create/">新規登録画面へ</a></a>
                         </div>
                     </div>
                 </div>

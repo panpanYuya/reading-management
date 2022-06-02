@@ -9,6 +9,8 @@ use App\Http\Requests\UserCreateRequest;
 use App\Services\UserService;
 use App\Models\TemporaryRegistration;
 use App\Mail\RegistVerificationMail;
+use Carbon\Carbon;
+use DateTime;
 use Exception;
 
 class UserCreateController extends Controller
@@ -71,14 +73,21 @@ class UserCreateController extends Controller
     public function authEmail(Request $request){
         $token = $request->token;
         $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
-        try{
-            $authEmailForm = $this->authEmailForm($tmpInfo);
-            $authEmailForm->save();
+        $deadLine = Carbon::now();
+        $deadLine->addHour(24);
+        if($tmpInfo->created_at < $deadLine){
+            try{
+                $authEmailForm = $this->authEmailForm($tmpInfo);
+                $authEmailForm->save();
+                $tmpInfo->delete();
+            } catch (Exception $e){
+                abort(500);
+            }
+            return view('/user/userAuthCreateComplete');
+        } else {
             $tmpInfo->delete();
-        } catch (Exception $e){
-            abort(500);
+            return view('/user/auth-expired');
         }
-        return view('/user/userAuthCreateComplete');
     }
 
 
