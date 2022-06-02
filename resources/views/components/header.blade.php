@@ -14,7 +14,7 @@
                         <a href="#">メニューリンク2</a>
                     </li>
                     <li>
-                        <a href="#">メニューリンク3</a>
+                        <a href="/logout">ログアウト</a>
                     </li>
                 </ul>
             </div>
