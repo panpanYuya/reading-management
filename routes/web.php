@@ -34,10 +34,8 @@ Route::get('/user/create', function () {
 //Route::postの第二引数には無名関数を動かすことができる。
 Route::controller(UserCreateController::class)->group(function () {
     Route::post('/user/createUser', 'createUser');
+    Route::get('/user/regist', 'authEmail');
 });
-
-
-
 
 
 Route::middleware('auth')->group(function () {

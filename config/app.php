@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'BookConst' => App\Consts\BookConst::class,
+        'UserConst' => App\Consts\UserConst::class,
 
     ],
 

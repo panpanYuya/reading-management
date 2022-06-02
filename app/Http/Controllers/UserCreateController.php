@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\UserAuth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UserCreateRequest;
 use App\Services\UserService;
 use App\Models\TemporaryRegistration;
+use App\Mail\RegistVerificationMail;
+use Carbon\Carbon;
+use DateTime;
 use Exception;
 
 class UserCreateController extends Controller
 {
+
+    //TODO 送信するメールアドレスが決まり次第修正
+    protected $testMail = 'test@test.com';
     /**
      * ユーザーを作成するメソッド
      *
@@ -45,6 +52,9 @@ class UserCreateController extends Controller
             $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
             try {
                 $tmpRegistrationForm->save();
+                //TODO 送信するメールアドレスが決まり次第修正
+                $registUrl = config('app.url') . \UserConst::USER_REGIST_URL . $temporaryToken;
+                Mail::to($this->testMail)->send(new RegistVerificationMail($tmpRegistrationForm,$registUrl) );
             } catch (Exception $e) {
                 abort(500);
             }
@@ -54,9 +64,35 @@ class UserCreateController extends Controller
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function authEmail(Request $request){
+        $token = $request->token;
+        $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
+        $deadLine = Carbon::now();
+        $deadLine->addHour(24);
+        if($tmpInfo->created_at < $deadLine){
+            try{
+                $authEmailForm = $this->authEmailForm($tmpInfo);
+                $authEmailForm->save();
+                $tmpInfo->delete();
+            } catch (Exception $e){
+                abort(500);
+            }
+            return view('/user/userAuthCreateComplete');
+        } else {
+            $tmpInfo->delete();
+            return view('/user/auth-expired');
+        }
+    }
+
 
     /**
-     * ユーザー認証テーブル登録用フォームを作成するメソッド
+     * ユーザー認証テーブル登録用フォームを作成する関数
      *
      * @param Request $request
      * @param String $hashedPassword
@@ -66,15 +102,27 @@ class UserCreateController extends Controller
     {
         $userAuth = new UserAuth();
         $userAuth->user_name = $request->user_name;
-        $userAuth->mail_address = $request->mailAddress;
+        $userAuth->mail_address = $request->mail_address;
         $userAuth->password = $hashedPassword;
 
         return $userAuth;
     }
 
 
+
+    public function authEmailForm(TemporaryRegistration $tmpInfo)
+    {
+        $userAuth = new UserAuth();
+        $userAuth->user_name = $tmpInfo->user_name;
+        $userAuth->mail_address = $tmpInfo->mail_address;
+        $userAuth->password = $tmpInfo->password;
+
+        return $userAuth;
+    }
+
+
     /**
-     * 仮登録テーブル登録用フォームを作成するメソッド
+     * 仮登録テーブル登録用フォームを作成する関数
      *
      * @param Request $request
      * @param String $hashedPassword
