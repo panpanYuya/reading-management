@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserCreateController;
+use App\Http\Controllers\UserEditController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SearchBookController;
 use App\Http\Controllers\BookController;
@@ -37,7 +38,6 @@ Route::controller(UserCreateController::class)->group(function () {
     Route::get('/user/regist', 'authEmail');
 });
 
-
 Route::middleware('auth')->group(function () {
 
     Route::controller(BookController::class)->group(function () {
@@ -50,6 +50,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/book/sticky/add', 'addStickyNote');
         Route::post('/book/sticky/update', 'updateStickyNote');
         Route::post('/book/sticky/delete', 'deleteStickyNote');
+    });
+
+    Route::controller(UserEditController::class)->group(function () {
+        Route::get('/user/edit', 'edit');
+        Route::post('/user/update', 'update');
+        Route::get('/user/update/email', 'updateAuthEmail');
     });
 
     Route::get('/search', function () {
