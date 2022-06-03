@@ -73,9 +73,9 @@ class UserCreateController extends Controller
     public function authEmail(Request $request){
         $token = $request->token;
         $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
-        $deadLine = Carbon::now();
+        $deadLine = $tmpInfo->created_at;
         $deadLine->addHour(24);
-        if($tmpInfo->created_at < $deadLine){
+        if (Carbon::now() < $deadLine) {
             try{
                 $authEmailForm = $this->authEmailForm($tmpInfo);
                 $authEmailForm->save();
@@ -86,7 +86,8 @@ class UserCreateController extends Controller
             return view('/user/userAuthCreateComplete');
         } else {
             $tmpInfo->delete();
-            return view('/user/auth-expired');
+            $message = \UserConst::USER_CREATE_FAIL_MESSAGE;
+            return view('.user.auth-expired', compact('message'));
         }
     }
 

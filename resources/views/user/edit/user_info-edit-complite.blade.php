@@ -12,12 +12,11 @@
         <div>
             <div class="main">
                 <div class="container">
-                    <h1 class="title">認証時間切れ</h1>
+                    <h1 class="title">ユーザー情報変更完了</h1>
                     <div class="regist-container">
-                        <div>認証期間を過ぎてしまいました。</div>
-                        <div>{{$message}}</div>
+                        <div class="complete">ユーザー情報を変更いたしました。</div>
                         <div class="back_button">
-                            <a href="/user/create/">新規登録画面へ</a></a>
+                            <a href="/book/list">図書一覧画面へ</a></a>
                         </div>
                     </div>
                 </div>
