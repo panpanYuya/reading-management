@@ -43,10 +43,10 @@
                             <div class="user-info">
                                 <button type="submit" class="common-button">ログイン</button>
                             </div>
-                            <div class="user-info">
-                                <button type="submit" class="regist-button">新規登録</button>
-                            </div>
                         </form>
+                        <div class="user-info">
+                            <button class="regist-button">新規登録</button>
+                        </div>
                     </div>
                 </div>
             </div>
