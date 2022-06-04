@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/update/email', 'updateAuthEmail');
     });
 
-    Route::get('/search', function () {
+    Route::get('/book/search', function () {
         return view('book.bookSearch');
     });
 
