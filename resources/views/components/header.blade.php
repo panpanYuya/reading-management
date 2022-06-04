@@ -23,6 +23,4 @@
             </div>
         @endauth
     </div>
-
-
 </header>
