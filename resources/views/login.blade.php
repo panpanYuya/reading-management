@@ -38,7 +38,7 @@
                                     </label>
                                 </div>
                                 <input type="password" id="password" name="password" minlength="8" maxlength="50" required >
-                                <a href="#" class="forget-password">パスワードを忘れた方はこちら</a>
+                                <a href="/password/forget" class="forget-password">パスワードを忘れた方はこちら</a>
                             </div>
                             <div class="user-info">
                                 <button type="submit" class="common-button">ログイン</button>

@@ -14,9 +14,12 @@
                 <div class="container">
                     <h1 class="title">パスワード変更</h1>
                     <div class="common-form">
-                        <form action="{{ url('/password/sendMail')}}" method="POST">
+                        <form action="{{ url('/password/send')}}" method="POST">
                             @csrf
                             <div class="user-info">
+                                @error('mailAddress')
+                                    <div class="alert alert-danger">{!! $message !!}</div>
+                                @enderror
                                 <div class="tag">
                                     <label for="mailAddress">メールアドレス</label>
                                 </div>
