@@ -16,6 +16,7 @@ use Exception;
 class UserEditController extends Controller
 {
 
+    //TODO メールアドレスが確定した際に修正する。
     protected $testMail = 'test@test.com';
     /**
      *  ユーザー情報変更画面を表示する関数
@@ -67,7 +68,7 @@ class UserEditController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('.user.edit.user_info-edit-complite');
+            return view('user.edit.user_info-edit-complite');
         }
     }
 
@@ -95,7 +96,7 @@ class UserEditController extends Controller
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_EDIT_FAIL_MESSAGE;
-            return view('.user.auth-expired', compact('message'));
+            return view('user.auth-expired', compact('message'));
         }
     }
 
