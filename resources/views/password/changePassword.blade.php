@@ -15,7 +15,7 @@
                 <div class="container">
                     <h1 class="title">パスワード変更</h1>
                     <div class="common-form">
-                        <form action="{{ url('/password/forget')}}" method="POST">
+                        <form action="{{ url('/password/update')}}" method="POST">
                             @csrf
                             <div class="user-info">
                                 <div class="tag">
@@ -36,6 +36,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <input type="hidden" name="userId" value={{$userId}}>
                             <div class="user-info">
                                 <button type="submit" class="common-button">パスワード変更</button>
                             </div>

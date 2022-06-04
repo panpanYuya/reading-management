@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserCreateController;
 use App\Http\Controllers\UserEditController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SearchBookController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Book\DetailController;
@@ -32,6 +33,16 @@ Route::get('/user/create', function () {
     return view('user.userAuthCreate');
 });
 
+Route::get('/password/forget', function(){
+    return view('password.entryMail');
+});
+
+
+Route::controller(PasswordController::class)->group(function () {
+    Route::post('/password/send', 'sendPasswordEmail');
+    Route::get('/password/edit', 'editPassword');
+    Route::post('/password/update', 'updatePassword');
+});
 //Route::postの第二引数には無名関数を動かすことができる。
 Route::controller(UserCreateController::class)->group(function () {
     Route::post('/user/createUser', 'createUser');
