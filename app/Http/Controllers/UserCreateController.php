@@ -72,7 +72,11 @@ class UserCreateController extends Controller
      */
     public function authEmail(Request $request){
         $token = $request->token;
-        $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
+        try{
+            $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
+        } catch (Exception $e) {
+            abort(500);
+        }
         $deadLine = $tmpInfo->created_at;
         $deadLine->addHour(24);
         if (Carbon::now() < $deadLine) {
