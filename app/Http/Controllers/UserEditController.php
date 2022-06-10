@@ -40,14 +40,20 @@ class UserEditController extends Controller
      */
     public function update(UpdateUserRequest $request)
     {
+
+        $request->session()->regenerateToken();
+
         $userInfo = UserAuth::find(Auth::id());
         $temporaryToken = UserService::generateToken();
+        //try catch説で使用できるように宣言を行う。
         $hashedPassword ="";
+
         if($request->password != NULL){
             $hashedPassword = UserService::PasswordHash($request->password);
         } else {
             $hashedPassword = $userInfo->password;
         }
+        //if(メールアドレスが登録または変更された場合はtrue)
         if ($request->mailAddress != $userInfo->mail_address && $request->mailAddress != NULL) {
             try {
                 //仮登録テーブルに情報を登録する。
