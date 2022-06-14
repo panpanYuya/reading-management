@@ -15,8 +15,6 @@ use Exception;
 
 class PasswordController extends Controller
 {
-    //TODO メールアドレスが確定した際に修正する。
-    protected $testMail = 'test@test.com';
 
     //
     public function sendPasswordEmail(SendEmailRequest $request){
@@ -26,7 +24,7 @@ class PasswordController extends Controller
             $tmpRegistrationForm = $this->temporaryRegistrationForm($userInfo, $temporaryToken);
             $tmpRegistrationForm->save();
             $registUrl = config('app.url') . \UserConst::USER_RESET_PASSWORD_URL . $temporaryToken;
-            Mail::to($this->testMail)->send(new ResetPasswordMail($registUrl));
+            Mail::to($request->mailAddress)->send(new ResetPasswordMail($registUrl));
         } catch (Exception $e) {
                 abort(500);
         }
