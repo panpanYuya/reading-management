@@ -15,9 +15,6 @@ use Exception;
 
 class UserCreateController extends Controller
 {
-
-    //TODO 送信するメールアドレスが決まり次第修正
-    protected $testMail = 'test@test.com';
     /**
      * ユーザーを作成するメソッド
      *
@@ -52,9 +49,8 @@ class UserCreateController extends Controller
             $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
             try {
                 $tmpRegistrationForm->save();
-                //TODO 送信するメールアドレスが決まり次第修正
                 $registUrl = config('app.url') . \UserConst::USER_REGIST_URL . $temporaryToken;
-                Mail::to($this->testMail)->send(new RegistVerificationMail($tmpRegistrationForm,$registUrl) );
+                Mail::to($request->mailAddress)->send(new RegistVerificationMail($tmpRegistrationForm,$registUrl) );
             } catch (Exception $e) {
                 abort(500);
             }

@@ -15,9 +15,6 @@ use Exception;
 
 class UserEditController extends Controller
 {
-
-    //TODO メールアドレスが確定した際に修正する。
-    protected $testMail = 'test@test.com';
     /**
      *  ユーザー情報変更画面を表示する関数
      *
@@ -60,7 +57,7 @@ class UserEditController extends Controller
                 $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
                 $tmpRegistrationForm->save();
                 $registUrl = config('app.url') . \UserConst::USER_UPDATE_EMAIL_URL . $temporaryToken;
-                Mail::to($this->testMail)->send(new RegistVerificationMail($tmpRegistrationForm, $registUrl));
+                Mail::to($request->mailAddress)->send(new RegistVerificationMail($tmpRegistrationForm, $registUrl));
             } catch (Exception $e) {
                 abort(500);
             }
