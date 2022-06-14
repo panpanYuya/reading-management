@@ -16,7 +16,7 @@
                     <div class="regist-container">
                         <div class="complete">パスワードの変更が完了いたしました。</div>
                         <div class="back_button">
-                            <a href="/login">ログイン画面へ</a></a>
+                            <a href="/">ログイン画面へ</a></a>
                         </div>
                     </div>
                 </div>
