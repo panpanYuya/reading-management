@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(SearchBookController::class)->group(function () {
-        Route::post('/book/search/', 'searchBook');
+        Route::post('/book/search', 'searchBook');
     });
 
     Route::controller(LoginController::class)->group(function () {
