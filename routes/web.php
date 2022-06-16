@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(DetailController::class)->group(function () {
-        Route::get('/book/detail/{apiId}', 'showDetail');
+        Route::get('/book/detail/{userBookId}', 'showDetail');
         Route::post('/book/sticky/add', 'addStickyNote');
         Route::post('/book/sticky/update', 'updateStickyNote');
         Route::post('/book/sticky/delete', 'deleteStickyNote');
@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(SearchBookController::class)->group(function () {
-        Route::post('/book/search', 'searchBook');
+        Route::post('/book/search/', 'searchBook');
     });
 
     Route::controller(LoginController::class)->group(function () {
