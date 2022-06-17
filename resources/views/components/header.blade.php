@@ -18,6 +18,9 @@
                             <a href="/user/edit">ユーザー情報変更</a>
                         </li>
                         <li>
+                            <a href="/user/cancell">解約</a>
+                        </li>
+                        <li>
                             <a href="/logout">ログアウト</a>
                         </li>
                     </ul>

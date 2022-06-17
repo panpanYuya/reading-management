@@ -19,6 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/bookList.js', 'public/js')
     .js('resources/js/bookDetail.js', 'public/js')
     .js('resources/js/login.js', 'public/js')
+    .js('resources/js/userDelete.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ])
@@ -41,5 +42,8 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ])
     .postCss('resources/css/sticky-note-modal.css', 'public/css', [
+        //
+    ])
+    .postCss('resources/css/user-cancell.css', 'public/css', [
         //
     ]);
