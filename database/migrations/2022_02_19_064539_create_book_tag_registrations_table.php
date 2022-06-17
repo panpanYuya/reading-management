@@ -23,9 +23,9 @@ class CreateBookTagRegistrationsTable extends Migration
             $table->dateTime('created_at', $precision = 0)->comment('作成時間');
             $table->dateTime('updated_at', $precision = 0)->comment('更新時間');
 
-            $table->foreign('user_id')->references('id')->on('user_auths');
+            $table->foreign('user_id')->references('id')->on('user_auths')->cascadeOnDelete();
             $table->foreign('tag_id')->references('id')->on('look_back_tag_registrations');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('id')->on('books')->cascadeOnDelete();
         });
     }
 

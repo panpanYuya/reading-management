@@ -25,7 +25,7 @@ class CreateStickyRegistrationsTable extends Migration
             $table->dateTime('updated_at', $precision = 0)->comment('更新時間');
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);
-            $table->foreign('user_book_id')->references('id')->on('user_books');
+            $table->foreign('user_book_id')->references('id')->on('user_books')->cascadeOnDelete();
         });
     }
 

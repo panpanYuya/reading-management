@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserCreateController;
 use App\Http\Controllers\UserEditController;
+use App\Http\Controllers\user\UserDeleteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SearchBookController;
@@ -67,6 +68,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/edit', 'edit');
         Route::post('/user/update', 'update');
         Route::get('/user/update/email', 'updateAuthEmail');
+    });
+
+    Route::controller(UserDeleteController::class)->group(function () {
+        Route::get('/user/cancell', 'cancell');
+        Route::post('/user/delete', 'delete');
     });
 
     Route::get('/book/search', function () {

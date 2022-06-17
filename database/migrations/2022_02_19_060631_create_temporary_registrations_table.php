@@ -26,7 +26,7 @@ class CreateTemporaryRegistrationsTable extends Migration
             $table->dateTime('created_at', $precision = 0)->comment('作成時間');
             $table->dateTime('updated_at', $precision = 0)->comment('更新時間');
 
-            $table->foreign('user_id')->references('id')->on('user_auths');
+            $table->foreign('user_id')->references('id')->on('user_auths')->cascadeOnDelete();
         });
     }
 
