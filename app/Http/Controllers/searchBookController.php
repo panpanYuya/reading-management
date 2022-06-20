@@ -16,6 +16,9 @@ class SearchBookController extends Controller
         $keywords = BookService::trimKeywords($request->keyword);
 
         $results = ApiService::serachBookApi($keywords);
+        if($results->getStatusCode() != 200){
+            abort(500);
+        }
 
         $resultBooks = $this->searchBookForm($results);
 
