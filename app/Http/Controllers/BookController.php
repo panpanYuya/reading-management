@@ -19,6 +19,9 @@ class BookController extends Controller
             abort(500);
         }
         $jsonResults = ApiService::findBookApi($request->bookId);
+        if ($jsonResults->getStatusCode() != 200) {
+            abort(500);
+        }
         if($jsonResults->failed()){
             $apiErrorStatus = $jsonResults->status();
             abort($apiErrorStatus);
