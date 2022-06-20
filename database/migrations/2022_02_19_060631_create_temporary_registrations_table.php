@@ -21,7 +21,6 @@ class CreateTemporaryRegistrationsTable extends Migration
             $table->string('user_name', 100)->unique()->comment('ユーザー名');
             $table->string('mail_address', 255)->nullable()->comment('メールアドレス');
             $table->string('password', 255)->comment('パスワード');
-            $table->string('login_token', 255)->nullable()->comment('ログイン用トークン');
             $table->string('temporary_token',255)->comment('仮登録用トークン');
             $table->dateTime('created_at', $precision = 0)->comment('作成時間');
             $table->dateTime('updated_at', $precision = 0)->comment('更新時間');
