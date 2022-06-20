@@ -21,10 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-})->name('login');
-
+Route::group(['middleware' =>['guest']], function(){
+    Route::get('/', function () {
+        return view('login');
+    })->name('login');
+});
 
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login/auth', 'authenticate');
@@ -54,7 +55,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(BookController::class)->group(function () {
         Route::post('/book/regist', 'regist');
-        Route::get('/book/list/', 'showBooksList')->name('list');
+        Route::get('/book/list', 'showBooksList')->name('list');
     });
 
     Route::controller(DetailController::class)->group(function () {
