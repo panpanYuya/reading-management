@@ -14,7 +14,7 @@
                 <div class="container">
                     <h1 class="title">ユーザー情報変更</h1>
                     <div class="common-form">
-                        <form action={{ url('/user/update')}} method="POST">
+                        <form action="{{ url('/user/update')}}" method="POST">
                             @csrf
                             <div class="user-info">
                                 @error('user_name')

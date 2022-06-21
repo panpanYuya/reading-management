@@ -16,7 +16,7 @@
                     <div class="regist-container">
                         <div class="complete">認証メールに添付されているURLからパスワード変更を行ってください。</div>
                         <div class="back_button">
-                            <a href="/">ログイン画面へ</a></a>
+                            <a href={{ url('/')}}>ログイン画面へ</a></a>
                         </div>
                     </div>
                 </div>

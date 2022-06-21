@@ -17,7 +17,7 @@
                         <div class="complete">本登録が完了いたしました。</div>
                         <div class="complete">サービスをご利用してください。</div>
                         <div class="back_button">
-                            <a href="/">ログイン画面へ</a></a>
+                            <a href={{ url('/')}}>ログイン画面へ</a></a>
                         </div>
                     </div>
                 </div>

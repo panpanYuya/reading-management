@@ -17,7 +17,7 @@
                         <div>認証期間を過ぎてしまいました。</div>
                         <div>{{$message}}</div>
                         <div class="back_button">
-                            <a href="/user/create/">新規登録画面へ</a></a>
+                            <a href="{{ url('/user/create')}}">新規登録画面へ</a></a>
                         </div>
                     </div>
                 </div>
