@@ -34,7 +34,7 @@ class DetailController extends Controller
         if(!isset($bookDetail)){
             abort(404);
         }
-        return view('book.bookDetail', compact('bookDetail', 'stickyNotes'));
+        return view('book.detail', compact('bookDetail', 'stickyNotes'));
     }
 
     public function addStickyNote(Request $request){

@@ -22,7 +22,7 @@ class SearchBookController extends Controller
 
         $resultBooks = $this->searchBookForm($results);
 
-        return view('/book/bookSearch', compact('keyword','resultBooks'));
+        return view('book.search', compact('keyword','resultBooks'));
     }
 
     public function searchBookForm($jsonResults)

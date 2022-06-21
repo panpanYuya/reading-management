@@ -16,7 +16,7 @@ class UserDeleteController extends Controller
      */
     public function cancell(){
         $userId = Auth::id();
-        return view('user.delete.delete-confirm', compact('userId'));
+        return view('user.delete.confirm', compact('userId'));
     }
 
 
@@ -27,6 +27,6 @@ class UserDeleteController extends Controller
         } catch (Exception $e) {
             abort(500);
         }
-        return view('user.delete.delete-complete');
+        return view('user.delete.complete');
     }
 }
