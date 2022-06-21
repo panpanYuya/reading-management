@@ -18,7 +18,7 @@
                         <div>ご確認ください。</div>
                         <div>認証期間はいまから24時間です。</div>
                         <div class="back_button">
-                            <a href="/">ログイン画面へ</a></a>
+                            <a href={{ url('/')}}>ログイン画面へ</a></a>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
                                 <li>登録した付箋</li>
                             </ul>
                         </div>
-                        <form action={{ url('/user/delete')}} method="POST">
+                        <form action="{{ url('/user/delete')}}" method="POST">
                             @csrf
                             <div class="delete-content">
                                 @error('deleteCheckBox')

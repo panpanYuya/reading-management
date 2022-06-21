@@ -17,7 +17,7 @@
                 <div class="container">
                     <x-modal />
                     <div class="search-container">
-                        <form action="/book/search" method="POST" >
+                        <form action="{{ url('/book/search')}}" method="POST" >
                             <div class="search">
                                 @csrf
                                 {{-- <img  class="search-icon" src={{ asset('images/search.png')}} alt="search-icon"> --}}

@@ -9,19 +9,19 @@
                 <div class="menu-content">
                     <ul>
                         <li>
-                            <a href="/book/search">図書検索</a>
+                            <a href="{{ url('/book/search')}}">図書検索</a>
                         </li>
                         <li>
-                            <a href="/book/list">図書一覧</a>
+                            <a href="{{ url('/book/list')}}">図書一覧</a>
                         </li>
                         <li>
-                            <a href="/user/edit">ユーザー情報変更</a>
+                            <a href="{{ url('/user/edit')}}">ユーザー情報変更</a>
                         </li>
                         <li>
-                            <a href="/user/cancell">解約</a>
+                            <a href="{{ url('/user/cancell')}}">解約</a>
                         </li>
                         <li>
-                            <a href="/logout">ログアウト</a>
+                            <a href="{{ url('/logout')}}">ログアウト</a>
                         </li>
                     </ul>
                 </div>
