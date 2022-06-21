@@ -51,7 +51,7 @@ class BookController extends Controller
             $join->on('user_books.book_id', '=', 'books.id')
             ->where('user_books.user_id', Auth::id());
         })->get();
-        return view('book.booksList', compact('userBooks'));
+        return view('book.list', compact('userBooks'));
     }
 
 

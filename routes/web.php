@@ -32,11 +32,11 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::get('/user/create', function () {
-    return view('user.userAuthCreate');
+    return view('user.auth.create');
 });
 
 Route::get('/password/forget', function(){
-    return view('password.entryMail');
+    return view('password.entry-mail');
 });
 
 
@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/book/search', function () {
-        return view('book.bookSearch');
+        return view('book.search');
     });
 
     Route::controller(SearchBookController::class)->group(function () {

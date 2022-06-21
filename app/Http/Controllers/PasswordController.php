@@ -28,7 +28,7 @@ class PasswordController extends Controller
         } catch (Exception $e) {
                 abort(500);
         }
-        return view('password.sendMail');
+        return view('password.send-mail');
     }
 
     public function editPassword(Request $request)
@@ -43,7 +43,7 @@ class PasswordController extends Controller
         $deadLine->addHour(24);
         if (Carbon::now() < $deadLine) {
             $userId = $tmpInfo->user_id;
-            return view('password.changePassword', compact('userId'));
+            return view('password.change', compact('userId'));
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_CREATE_FAIL_MESSAGE;
@@ -65,7 +65,7 @@ class PasswordController extends Controller
         } catch (Exception $e) {
             abort(500);
         }
-        return view('password.changePasswordComplete');
+        return view('password.change-complete');
     }
 
 

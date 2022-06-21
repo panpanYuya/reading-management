@@ -24,7 +24,7 @@ class UserEditController extends Controller
     public function edit(Request $request)
     {
         $userInfo = UserAuth::find(Auth::id());
-        return view('user.edit.user_info-edit', compact('userInfo'));
+        return view('user.edit.user-info-edit', compact('userInfo'));
     }
 
     /**
@@ -61,7 +61,7 @@ class UserEditController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('/user/userAuthCreateTmpComplete');
+            return view('user.auth.create-tmp-complete');
         } else{
             try {
                 $userInfo->user_name = $request->user_name;
@@ -71,7 +71,7 @@ class UserEditController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('user.edit.user_info-edit-complite');
+            return view('user.edit.user-info-edit-complite');
         }
     }
 
@@ -95,7 +95,7 @@ class UserEditController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('user.edit.user_info-edit-complite');
+            return view('user.edit.user-info-edit-complite');
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_EDIT_FAIL_MESSAGE;

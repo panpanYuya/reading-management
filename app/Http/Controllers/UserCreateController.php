@@ -39,7 +39,7 @@ class UserCreateController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('/user/userAuthCreateComplete');
+            return view('user.auth.create-complete');
 
 
         //メールアドレス有で登録
@@ -54,7 +54,7 @@ class UserCreateController extends Controller
             } catch (Exception $e) {
                 abort(500);
             }
-            return view('/user/userAuthCreateTmpComplete');
+            return view('user.auth.create-tmp-complete');
 
         }
 
@@ -83,11 +83,11 @@ class UserCreateController extends Controller
             } catch (Exception $e){
                 abort(500);
             }
-            return view('/user/userAuthCreateComplete');
+            return view('user.auth.create-complete');
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_CREATE_FAIL_MESSAGE;
-            return view('.user.auth-expired', compact('message'));
+            return view('user.auth.expired', compact('message'));
         }
     }
 
