@@ -6,19 +6,16 @@ use App\Models\UserAuth;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Lockout;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
+    protected $maxAttempts = 5;     // ログイン試行回数（回）
+    protected $decayMinutes = 600;   // ログインロックタイム（分）
 
     public function authenticate(LoginRequest $request){
 
@@ -27,78 +24,52 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        $this->ensureIsNotRateLimited($request);
+
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->route('list');
         }
-
-        return $this->sendFailedLoginResponse($request);
+        else{
+            RateLimiter::hit($this->throttleKey($request), $this->decayMinutes);
+            $this->sendFailedLoginResponse();
+        }
     }
 
     /**
-     * Show the form for creating a new resource.
+     * ログインの試行回数をチェックする関数
      *
-     * @return \Illuminate\Http\Response
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function create()
+    public function ensureIsNotRateLimited($request)
     {
-        //
+        if (!RateLimiter::tooManyAttempts($this->throttleKey($request), $this->maxAttempts)) {
+            return;
+        }
+
+        event(new Lockout($request));
+
+        //試行回数が増えるまでの時間を返す。
+        $seconds = RateLimiter::availableIn($this->throttleKey($request));
+
+        throw ValidationException::withMessages([
+            'user_name' => trans('auth.throttle', [
+                'seconds' => $seconds,
+                'minutes' => ceil($seconds / 60),
+            ]),
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Get the rate limiting throttle key for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return string
      */
-    public function store(Request $request)
+    public function throttleKey($request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $request->ip();
     }
 
     public function logout(Request $request){
@@ -127,7 +98,7 @@ class LoginController extends Controller
         return $userAuth;
     }
 
-    protected function sendFailedLoginResponse(LoginRequest $request)
+    protected function sendFailedLoginResponse()
     {
         throw ValidationException::withMessages([
             'user_name' => [trans('auth.failed')],
