@@ -26,9 +26,9 @@
                         <div class="books-list">
                             @foreach ( $userBooks as $userBook)
                                 <div class="book">
-                                    @if($userBook->read_status == \BookConst::STATUS_READWISH_NAME ||  $userBook->read_status == \BookConst::STATUS_UNREAD_NAME)
+                                    @if($userBook->read_status == \BookConst::READWISH_STATUS ||  $userBook->read_status == \BookConst::UNREAD_STATUS)
                                         <div class="unread">
-                                            <img src={{ asset('images/未達.png')}} alt="未達">
+                                            <img src="{{ asset('images/unread.png')}}" alt="未達">
                                         </div>
                                     @endif
                                     <div class="image"><img src={{ $userBook->book_cover_url}} alt="本の画像"></div>
