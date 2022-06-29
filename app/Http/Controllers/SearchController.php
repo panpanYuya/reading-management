@@ -10,19 +10,20 @@ use App\Services\ApiService;
 class SearchBookController extends Controller
 {
     //
-    public function searchBook(SearchBookRequest $request){
+    public function searchBook(SearchBookRequest $request)
+    {
 
         $keyword = $request->keyword;
         $keywords = BookService::trimKeywords($request->keyword);
 
         $results = ApiService::serachBookApi($keywords);
-        if($results->getStatusCode() != 200){
+        if ($results->getStatusCode() != 200) {
             abort(500);
         }
 
         $resultBooks = $this->searchBookForm($results);
 
-        return view('book.search', compact('keyword','resultBooks'));
+        return view('book.search', compact('keyword', 'resultBooks'));
     }
 
     public function searchBookForm($jsonResults)
