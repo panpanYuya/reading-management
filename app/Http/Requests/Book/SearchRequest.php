@@ -17,8 +17,6 @@ class SearchBookRequest extends FormRequest
         return true;
     }
 
-    // protected $redirect = '/';
-
     /**
      * Get the validation rules that apply to the request.
      *
