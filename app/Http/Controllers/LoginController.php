@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAuth;
-use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -17,7 +16,7 @@ class LoginController extends Controller
     protected $maxAttempts = 5;     // ログイン試行回数（回）
     protected $decayMinutes = 600;   // ログインロックタイム（分）
 
-    public function authenticate(LoginRequest $request){
+    public function authenticate(Request $request){
 
         $credentials = $request->validate([
             'user_name' => ['required'],

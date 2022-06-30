@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Book\StickyRequest;
 use App\Models\StickyRegistration;
 use App\Models\UserBook;
-use App\Rules\Space;
 
 
-class DetailController extends Controller
+class BookDetailController extends Controller
 {
     /**
      * 図書詳細画面を表示する機能
@@ -37,15 +37,7 @@ class DetailController extends Controller
         return view('book.detail', compact('bookDetail', 'stickyNotes'));
     }
 
-    public function addStickyNote(Request $request){
-        $request->validate([
-            'userBookId' => ['required', 'integer'],
-            'stickyId' => ['nullable', 'integer'],
-            'pageNumber' => ['nullable', 'integer', new Space],
-            'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
-            'stickyMemo' => ['string', 'max:400', new Space],
-        ]);
-
+    public function addStickyNote(StickyRequest $request){
         $userBook = UserBook::find($request->userBookId);
         //本のページを登録する。
         if($userBook->user_id != Auth::id()){
@@ -70,14 +62,7 @@ class DetailController extends Controller
     }
 
 
-    public function updateStickyNote(Request $request){
-        $request->validate([
-            'userBookId' => ['required', 'integer'],
-            'stickyId' => ['nullable', 'integer'],
-            'pageNumber' => ['nullable', 'integer'],
-            'stickyTitle' => ['nullable', 'string', 'max:100'],
-            'stickyMemo' => ['string', 'max:400'],
-        ]);
+    public function updateStickyNote(StickyRequest $request){
         $stickyNote = StickyRegistration::where(
             ['id' => $request->stickyId],
             ['user_book_id' => $request->userBookId]

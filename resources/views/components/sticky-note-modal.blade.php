@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/sticky-note-modal.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/book/sticky-note-modal.css') }}" type="text/css">
 <div>
     <div id="modal" class="modal">
         <div class="modal-close">✖</div>

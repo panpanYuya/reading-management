@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\UserCreateController;
-use App\Http\Controllers\UserEditController;
-use App\Http\Controllers\user\UserDeleteController;
+use App\Http\Controllers\Book\BookDetailController;
+use App\Http\Controllers\Book\SearchBookController;
+use App\Http\Controllers\Book\BookListController;
+use App\Http\Controllers\User\CreateUserController;
+use App\Http\Controllers\User\EditUserController;
+use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\SearchBookController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\Book\DetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,42 +46,42 @@ Route::controller(PasswordController::class)->group(function () {
     Route::post('/password/update', 'updatePassword');
 });
 //Route::postの第二引数には無名関数を動かすことができる。
-Route::controller(UserCreateController::class)->group(function () {
+Route::controller(CreateUserController::class)->group(function () {
     Route::post('/user/createUser', 'createUser');
     Route::get('/user/regist', 'authEmail');
 });
 
 Route::middleware('auth')->group(function () {
 
-    Route::controller(BookController::class)->group(function () {
-        Route::post('/book/regist', 'regist');
-        Route::get('/book/list', 'showBooksList')->name('list');
-    });
-
-    Route::controller(DetailController::class)->group(function () {
+    Route::controller(BookDetailController::class)->group(function () {
         Route::get('/book/detail/{userBookId}', 'showDetail');
         Route::post('/book/sticky/add', 'addStickyNote');
         Route::post('/book/sticky/update', 'updateStickyNote');
         Route::post('/book/sticky/delete', 'deleteStickyNote');
     });
 
-    Route::controller(UserEditController::class)->group(function () {
+    Route::controller(BookListController::class)->group(function () {
+        Route::get('/book/list', 'showBooksList')->name('list');
+    });
+
+    Route::controller(SearchBookController::class)->group(function () {
+        Route::post('/book/search', 'searchBooks');
+        Route::post('/book/regist', 'registBook');
+    });
+
+    Route::controller(EditUserController::class)->group(function () {
         Route::get('/user/edit', 'edit');
         Route::post('/user/update', 'update');
         Route::get('/user/update/email', 'updateAuthEmail');
     });
 
-    Route::controller(UserDeleteController::class)->group(function () {
+    Route::controller(DeleteUserController::class)->group(function () {
         Route::get('/user/cancell', 'cancell');
         Route::post('/user/delete', 'delete');
     });
 
     Route::get('/book/search', function () {
         return view('book.search');
-    });
-
-    Route::controller(SearchBookController::class)->group(function () {
-        Route::post('/book/search', 'searchBook');
     });
 
     Route::controller(LoginController::class)->group(function () {

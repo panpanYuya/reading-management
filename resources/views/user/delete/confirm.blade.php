@@ -5,7 +5,7 @@
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/user-cancell.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/user/user-cancell.css') }}" type="text/css">
     </head>
     <body>
         <x-header />

@@ -23,27 +23,30 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ])
-    .postCss('resources/css/commonForm.css', 'public/css', [
+    .postCss('resources/css/header.css', 'public/css', [
         //
     ])
-    .postCss('resources/css/commonCompletePage.css', 'public/css', [
+    .postCss('resources/css/common/common-form.css', 'public/css/common', [
         //
     ])
-    .postCss('resources/css/booksList.css', 'public/css', [
+    .postCss('resources/css/common/common-complete.css', 'public/css/common', [
         //
     ])
-    .postCss('resources/css/bookDetail.css', 'public/css', [
+    .postCss('resources/css/book/books-list.css', 'public/css/book', [
         //
     ])
-    .postCss('resources/css/bookSearch.css', 'public/css', [
+    .postCss('resources/css/book/book-detail.css', 'public/css/book', [
         //
     ])
-    .postCss('resources/css/modal.css', 'public/css', [
+    .postCss('resources/css/book/search-book.css', 'public/css/book', [
         //
     ])
-    .postCss('resources/css/sticky-note-modal.css', 'public/css', [
+    .postCss('resources/css/common/modal.css', 'public/css/common', [
         //
     ])
-    .postCss('resources/css/user-cancell.css', 'public/css', [
+    .postCss('resources/css/book/sticky-note-modal.css', 'public/css/book', [
+        //
+    ])
+    .postCss('resources/css/user/user-cancell.css', 'public/css/user', [
         //
     ]);

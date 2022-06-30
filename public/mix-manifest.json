@@ -5,13 +5,14 @@
     "/js/bookDetail.js": "/js/bookDetail.js",
     "/js/login.js": "/js/login.js",
     "/js/userDelete.js": "/js/userDelete.js",
-    "/css/bookDetail.css": "/css/bookDetail.css",
-    "/css/booksList.css": "/css/booksList.css",
-    "/css/commonCompletePage.css": "/css/commonCompletePage.css",
-    "/css/commonForm.css": "/css/commonForm.css",
+    "/css/book/books-list.css": "/css/book/books-list.css",
+    "/css/common/common-complete.css": "/css/common/common-complete.css",
+    "/css/common/common-form.css": "/css/common/common-form.css",
+    "/css/header.css": "/css/header.css",
     "/css/app.css": "/css/app.css",
-    "/css/user-cancell.css": "/css/user-cancell.css",
-    "/css/sticky-note-modal.css": "/css/sticky-note-modal.css",
-    "/css/modal.css": "/css/modal.css",
-    "/css/bookSearch.css": "/css/bookSearch.css"
+    "/css/user/user-cancell.css": "/css/user/user-cancell.css",
+    "/css/book/sticky-note-modal.css": "/css/book/sticky-note-modal.css",
+    "/css/common/modal.css": "/css/common/modal.css",
+    "/css/book/search-book.css": "/css/book/search-book.css",
+    "/css/book/book-detail.css": "/css/book/book-detail.css"
 }

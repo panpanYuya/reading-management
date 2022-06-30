@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Space;
 
-class StoreBookRequest extends FormRequest
+class SearchBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +25,7 @@ class StoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'img' => ['string'],
-            'title' => ['string'],
-            'author' => ['string'],
-            'range' => ['integer'],
-            'id' => ['string']
+            'keyword' => ['required', 'string', new Space],
         ];
     }
 }

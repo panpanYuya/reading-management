@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Space;
 
-class LoginRequest extends FormRequest
+class StickyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +26,11 @@ class LoginRequest extends FormRequest
     {
         return [
             //
+            'userBookId' => ['required', 'integer'],
+            'stickyId' => ['nullable', 'integer'],
+            'pageNumber' => ['nullable', 'integer', new Space],
+            'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
+            'stickyMemo' => ['string', 'max:400', new Space],
         ];
     }
 }
