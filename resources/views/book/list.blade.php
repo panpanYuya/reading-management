@@ -5,7 +5,7 @@
         <title>読書管理ツール</title>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/booksList.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/book/books-list.css') }}" type="text/css">
     </head>
     <body>
         <x-header />

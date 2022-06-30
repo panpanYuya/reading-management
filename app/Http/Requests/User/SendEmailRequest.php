@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatetemporaryRegistrationRequest extends FormRequest
+class SendEmailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdatetemporaryRegistrationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,7 @@ class UpdatetemporaryRegistrationRequest extends FormRequest
     {
         return [
             //
+            'mailAddress' => ['email:strict,dns,spoof', 'min:5', 'max:100','exists:App\Models\UserAuth,mail_address'],
         ];
     }
 }

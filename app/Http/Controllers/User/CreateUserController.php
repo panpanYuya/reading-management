@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\UserCreateRequest;
-use App\Services\UserService;
+use App\Http\Requests\User\UserCreateRequest;
+use App\Http\Controllers\Controller;
+use App\Mails\RegistVerificationMail;
 use App\Models\TemporaryRegistration;
-use App\Mail\RegistVerificationMail;
+use App\Models\UserAuth;
+use App\Services\UserService;
 use Carbon\Carbon;
-use DateTime;
 use Exception;
 
-class UserCreateController extends Controller
+class CreateUserController extends Controller
 {
     /**
      * ユーザーを作成するメソッド

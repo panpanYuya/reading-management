@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Space;
 
-class SearchBookRequest extends FormRequest
+class StickyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,8 +17,6 @@ class SearchBookRequest extends FormRequest
         return true;
     }
 
-    // protected $redirect = '/';
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +25,12 @@ class SearchBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'keyword' => ['required', 'string', new Space],
+            //
+            'userBookId' => ['required', 'integer'],
+            'stickyId' => ['nullable', 'integer'],
+            'pageNumber' => ['nullable', 'integer', new Space],
+            'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
+            'stickyMemo' => ['string', 'max:400', new Space],
         ];
     }
 }

@@ -7,7 +7,7 @@ use App\Models\UserAuth;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 
-class UserDeleteController extends Controller
+class DeleteUserController extends Controller
 {
     /**
      * 解約画面を表示する機能

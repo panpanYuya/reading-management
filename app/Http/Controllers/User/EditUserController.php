@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Http\Requests\UpdateUserRequest;
-use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Services\UserService;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Controllers\Controller;
+use App\Mails\RegistVerificationMail;
+use App\Models\UserAuth;
 use App\Models\TemporaryRegistration;
-use App\Mail\RegistVerificationMail;
+use App\Services\UserService;
 use Carbon\Carbon;
 use Exception;
 
-class UserEditController extends Controller
+class EditUserController extends Controller
 {
     /**
      *  ユーザー情報変更画面を表示する関数
