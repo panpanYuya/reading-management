@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Book;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Book\SearchBookRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\ResultBook;
 use App\Services\BookService;
 use App\Services\ApiService;
 use Illuminate\Http\Request;
@@ -46,8 +48,9 @@ class SearchBookController extends Controller
         }
         $book = json_decode($jsonResults, false, 10);
         $registBookForm = $this->registBookForm($book);
+        $apiId = $book->id;
         $resultBook = Book::firstOrCreate(
-            ['api_id' => $book->id],
+            ['api_id' => $apiId],
             [
                 'book_cover_url' => $registBookForm->book_cover_url,
                 'title' => $registBookForm->title,
@@ -60,7 +63,8 @@ class SearchBookController extends Controller
         $checkedBookStatus = $this->bookStatusCheck($request->bookStatus);
         UserBook::updateOrCreate(['user_id' => Auth::id(), 'book_id' => $bookId], ['read_status' => $checkedBookStatus]);
         return response()->json([
-            'message' => '登録に成功しました'
+            'message' => '登録に成功しました',
+            'bookId' => $apiId
         ], 200);
     }
 
@@ -78,15 +82,13 @@ class SearchBookController extends Controller
         $searchResult = json_decode($jsonResults, false, 10);
 
         foreach ($searchResult->items as $item) {
-            $book = new Book();
+            $book = new ResultBook();
 
             //apiのユニークidを変数に格納。
             $book->api_id = $item->id;
-            //apiから取得した本のタイトルを代入する
             if (property_exists($item->volumeInfo, 'title')) {
                 $book->title = $item->volumeInfo->title;
             }
-            //apiから取得した本の著者名を代入
             if (property_exists($item->volumeInfo, 'authors')) {
                 $authors = $item->volumeInfo->authors;
                 for ($i = 0; $i < count($authors); $i++) {
@@ -103,6 +105,17 @@ class SearchBookController extends Controller
             if (property_exists($item->volumeInfo, 'imageLinks')) {
                 $book->book_cover_url = $item->volumeInfo->imageLinks->smallThumbnail;
             }
+
+            //すでに登録済みの本にはresultFlgにTrueを代入し、登録ボタンを押下できないようにする
+            $userBook = DB::table('user_books')->where('user_id', Auth::id())->join('books', function ($join) {
+                $join->on('user_books.book_id', '=', 'books.id');
+            })->where('books.api_id', $book->api_id)->exists();
+            if ($userBook) {
+                $book->registFlg =  true;
+            } else{
+                $book->registFlg =  false;
+            }
+
             $showBooks[] = $book;
         }
         return $showBooks;
