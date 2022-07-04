@@ -64,6 +64,7 @@
                                         </div>
                                     </div>
                                     <input class="book-id" type="hidden" value="{{ $resultBook->api_id }}">
+                                    <input class="regist-flg" type="hidden" value="{{ $resultBook->registFlg }}">
                                 </div>
                             @endforeach
                         @endif

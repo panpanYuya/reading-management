@@ -10933,11 +10933,6 @@ var read = "1";
 var readWish = "2";
 var unread = "3";
 $('.regist-button').on('click', function () {
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
   var modalBox = $(this).parent().parent().parent();
   var bookStatus = modalBox.find(".slider").children('input').val();
 
@@ -10947,6 +10942,11 @@ $('.regist-button').on('click', function () {
 
   var bookId = modalBox.find(".book-id").val();
   var formattedBookId = escapeHTML(bookId);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
   $.ajax({
     type: 'POST',
     url: '/book/regist',
@@ -10960,6 +10960,9 @@ $('.regist-button').on('click', function () {
     modalBox.find(".modal-close").css('display', 'none');
     modalBox.find(".message-box").css('display', 'block');
     modalBox.find(".message-box").text(res.message);
+    var registBookId = $('input[value="' + res.bookId + '"]'); //登録した本の登録Flgをtrueに変更し、モーダルから登録を押下できない様にする
+
+    registBookId.next().val(true);
     window.setTimeout(closeModal, 5000);
   }).fail(function (error) {
     //失敗のメッセージ
@@ -10985,7 +10988,8 @@ $('.result-book').on("click", function () {
     var bookTitle = resultBook.find(".book-title").text();
     var bookAuthor = resultBook.find(".book-author").text();
     var bookId = resultBook.find(".book-id").val();
-    openModal(bookCover, bookTitle, bookAuthor, bookId);
+    var registFlg = resultBook.find(".regist-flg").val();
+    openModal(bookCover, bookTitle, bookAuthor, bookId, registFlg);
     modalResize();
   }
 });
@@ -10996,7 +11000,7 @@ $('.modal-close').on("click", function () {
   }
 }); //モーダルを表示する。
 
-function openModal(bookCover, bookTitle, bookAuthor, bookId) {
+function openModal(bookCover, bookTitle, bookAuthor, bookId, registFlg) {
   var bookContent = $('.regist-book-box');
   bookContent.find(".modal-img").children('img').attr('src', bookCover);
   bookContent.find(".modal-title").text(bookTitle);
@@ -11013,6 +11017,16 @@ function openModal(bookCover, bookTitle, bookAuthor, bookId) {
   $('.search > input').prop('disabled', true);
   $('.book-image > img').css('opacity', '0.5');
   $('#modal').find(".regist-book-box").css('display', 'block');
+
+  if (registFlg) {
+    $('.regist-button').text("登録済み");
+    $('.regist-button').prop('disabled', true);
+    $('.regist-button').css('background-color', '#d5d5d5');
+  } else {
+    $('.regist-button').text("本棚に登録");
+    $('.regist-button').prop('disabled', false);
+    $('.regist-button').css('background-color', '#eb7e35');
+  }
 }
 
 function closeModal() {
