@@ -149,9 +149,7 @@ class SearchBookController extends Controller
             $registBook->book_cover_url = $book->volumeInfo->imageLinks->smallThumbnail;
         }
         if (property_exists($book->volumeInfo, 'description')) {
-            $trimDescription = BookService::trimLinefeed($book->volumeInfo->description);
-            $trimDescription = BookService::trimOverlapping($trimDescription);
-            $registBook->description = $trimDescription;
+            $registBook->description = $book->volumeInfo->description;
         }
         return $registBook;
     }
