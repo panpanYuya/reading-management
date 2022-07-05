@@ -48,7 +48,7 @@
                         <div class="book-title">{{ $bookDetail->title }}</div>
                         <div class="book-author">{{ $bookDetail->author }}</div>
                         {{-- <div class="book-page">1690ページ</div> --}}
-                        <div class="synopsis_book">{{ $bookDetail->description}}</div>
+                        <div class="synopsis_book">{!! $bookDetail->description !!}</div>
                         <input type="hidden" class="user_book_id" name="user_book_id" value={{ $bookDetail->id }} >
                     </div>
                 </div>
