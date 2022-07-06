@@ -1,0 +1,190 @@
+.container{
+    margin: 0 auto;
+}
+
+
+
+.return{
+    transform: rotateY(180deg);
+    position: absolute;
+    z-index: 11;
+}
+
+
+.book-image{
+    margin-top:32px;
+}
+
+.book{
+    display: flex;
+    justify-content: center;
+    margin: 0 30px;
+    align-items: center;
+}
+
+.status{
+    margin-top:20px;
+}
+
+.status-container{
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.book-title{
+    margin-left:20px;
+}
+
+.readed-box{
+    text-align: center;
+    background-color: #fff;
+}
+
+.high_priority-book-box{
+    text-align: center;
+    background-color: #fff;
+}
+
+.unread-box {
+    text-align: center;
+    background-color: #F5AF0C;
+}
+
+
+.edit_shelf-button {
+    background-color: #36f561;
+}
+
+.delete_book-button {
+    background-color: #f53649;
+    color: #fff;
+}
+
+.edit_shelf-button,
+.delete_book-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+@media screen and (min-width: 100px) {
+
+    .return{
+        width: 32px;
+        height: 32px;
+        top: 3%;
+    }
+
+    .status-container{
+        width: 300px;
+        height: 100px;
+    }
+
+    .book-image>img {
+        width: 80px;
+        height: 88px;
+    }
+
+    .book-title{
+        font-size: 18px;
+    }
+
+    .icon > img{
+        width: 32px;
+        height: 32px;
+    }
+
+    .readed-box,
+    .high_priority-book-box,
+    .unread-box{
+        width: 58px;
+        height: 58px;
+        margin-top: 20px;
+        border: 1px solid #000;
+    }
+
+    .status-text{
+        padding-top: 5px;
+        font-size: 14px;
+    }
+
+    .high_priority-book-box,
+    .unread-box {
+        margin-left: 50px;
+    }
+
+    .edit_shelf-button,
+    .delete_book-button{
+        width:320px;
+        height: 48px;
+        font-size: 36px;
+    }
+
+    .shelf,
+    .delete{
+        margin-top:32px;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .return{
+    width: 48px;
+    height: 48px;
+    top: 1%;
+    }
+
+    .container{
+        width: 640px;
+    }
+
+    .edit_shelf-button,
+    .delete_book-button{
+        width: 80%;
+    }
+
+    .status-container{
+        width: 80%;
+        height: 150px;
+    }
+
+
+    .icon > img{
+        width: 48px;
+        height: 48px
+    }
+
+    .status-text{
+        font-size: 21px;
+    }
+
+    .readed-box,
+    .high_priority-book-box,
+    .unread-box{
+        width: 87px;
+        height: 87px;
+        margin-top: 30px;
+        border: 1.5px solid #000;
+    }
+
+    .alert-danger {
+        font-size: 24px;
+    }
+
+    .book-image>img {
+        width: 127.5px;
+        height: 152.5px;
+    }
+
+}
+
+@media screen and (min-width: 1045px) {
+
+}
+

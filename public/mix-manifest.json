@@ -13,6 +13,7 @@
     "/css/user/user-cancell.css": "/css/user/user-cancell.css",
     "/css/book/sticky-note-modal.css": "/css/book/sticky-note-modal.css",
     "/css/common/modal.css": "/css/common/modal.css",
+    "/css/book/edit-book.css": "/css/book/edit-book.css",
     "/css/book/search-book.css": "/css/book/search-book.css",
     "/css/book/book-detail.css": "/css/book/book-detail.css"
 }
