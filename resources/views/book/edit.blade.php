@@ -20,15 +20,15 @@
                 <div class="status">
                     <div class="status-container">
                         <div class="readed-box">
-                            <div class="icon"><img src={{ asset('images/read.png')}} alt="既読"></div>
+                            <div class="icon"><img class="read-icon" src={{ asset('images/read.png')}} alt="既読"></div>
                             <p class="status-text">読んだ</p>
                         </div>
                         <div class="high_priority-book-box">
-                            <div class="icon"><img src={{ asset('images/want_read.png')}} alt="既読"></div>
+                            <div class="icon"><img class="priority-book-icon" src={{ asset('images/want_read.png')}} alt="既読"></div>
                             <p class="status-text">読みたい</p>
                         </div>
                         <div class="unread-box">
-                            <div class="icon"><img src={{ asset('images/unread.png')}} alt="既読"></div>
+                            <div class="icon"><img class="unread-icon" src={{ asset('images/unread.png')}} alt="既読"></div>
                             <p class="status-text">未達</p>
                         </div>
                     </div>
