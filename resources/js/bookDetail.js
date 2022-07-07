@@ -3,6 +3,12 @@ let modalFlg = false;
 let deleteFlg = false;
 const bookDetailUrl = '/book/detail/'
 
+
+//図書編集画面を表示する
+$('.edit-button').on('click', function(){
+    window.location.href = location.href + '/edit';
+});
+
 //付箋追加ボタン押下の処理
 $('.sticky_add-button > img').on('click',function(){
     deleteFlg = false;

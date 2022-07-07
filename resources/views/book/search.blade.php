@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/book/search-book.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" type="text/javascript">
-
     </head>
     <body>
         <x-header />

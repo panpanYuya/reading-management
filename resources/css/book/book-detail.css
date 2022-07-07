@@ -2,10 +2,10 @@
     width: 100%;
 }
 
-.details-container {
+/* .details-container {
     justify-content: center;
     display: flex;
-}
+} */
 
 
 .details-left {
@@ -23,6 +23,24 @@
 .circle_fifth {
     border-radius: 50%;
     background: red;
+}
+
+.edit-book{
+    text-align: center;
+    margin-top: 24px;
+}
+
+.edit-button{
+    background-color: #618DF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.book-detail{
+    display: flex;
+    justify-content: center;
 }
 
 .sticky_note,
@@ -57,6 +75,10 @@
 
 .sticky_add-button {
     text-align: center;
+}
+
+.sticky_note-container{
+    margin-top:32px;
 }
 
 
@@ -119,6 +141,12 @@
     .synopsis_book {
         margin-top: 12px;
         font-size: 8px;
+    }
+
+    .edit-button{
+        width: 320px;
+        height: 48px;
+        font-size: 36px;
     }
 
 
