@@ -14,42 +14,46 @@
             <div class="container">
                 <x-sticky-note-modal />
                 <div class="details-container">
-                    <div class="details-left">
-                        @if (isset($bookDetail->book_cover_url))
-                            <div class="book-image"><img src={{ $bookDetail->book_cover_url}}  alt="本の表紙"></div>
-                        @else
-                            <div class="book-image"><img src={{ asset('images/title.jpg')}}  alt="本の表紙"></div>
-                        @endif
-                        <div class="tags-list">
-                            <div class="tag">
-                                <div class="circle_first"></div>
-                                <p class="tags_title">SF</p>
-                            </div>
-                            <div class="tag">
-                                <div class="circle_first"></div>
-                                <p class="tags_title">推理小説</p>
-                            </div>
-                            <div class="tag">
-                                <div class="circle_first"></div>
-                                <p class="tags_title">料理系</p>
-                            </div>
-                            <div class="tag">
-                                <div class="circle_first"></div>
-                                <p class="tags_title">資格系</p>
-                            </div>
-                            <div class="tag">
-                                <div class="circle_first"></div>
-                                <p class="tags_title">ビジネス</p>
+                    <div class="book-detail">
+                        <div class="details-left">
+                            @if (isset($bookDetail->book_cover_url))
+                                <div class="book-image"><img src={{ $bookDetail->book_cover_url}}  alt="本の表紙"></div>
+                            @else
+                                <div class="book-image"><img src={{ asset('images/noImage.png')}}  alt="本の表紙"></div>
+                            @endif
+                            <div class="tags-list">
+                                <div class="tag">
+                                    <div class="circle_first"></div>
+                                    <p class="tags_title">SF</p>
+                                </div>
+                                <div class="tag">
+                                    <div class="circle_first"></div>
+                                    <p class="tags_title">推理小説</p>
+                                </div>
+                                <div class="tag">
+                                    <div class="circle_first"></div>
+                                    <p class="tags_title">料理系</p>
+                                </div>
+                                <div class="tag">
+                                    <div class="circle_first"></div>
+                                    <p class="tags_title">資格系</p>
+                                </div>
+                                <div class="tag">
+                                    <div class="circle_first"></div>
+                                    <p class="tags_title">ビジネス</p>
+                                </div>
                             </div>
                         </div>
-
+                        <div class="details-right">
+                            <div class="book-title">{{ $bookDetail->title }}</div>
+                            <div class="book-author">{{ $bookDetail->author }}</div>
+                            {{-- <div class="book-page">1690ページ</div> --}}
+                            <div class="synopsis_book">{!! $bookDetail->description !!}</div>
+                            <input type="hidden" class="user_book_id" name="user_book_id" value={{ $bookDetail->id }} >
+                        </div>
                     </div>
-                    <div class="details-right">
-                        <div class="book-title">{{ $bookDetail->title }}</div>
-                        <div class="book-author">{{ $bookDetail->author }}</div>
-                        {{-- <div class="book-page">1690ページ</div> --}}
-                        <div class="synopsis_book">{!! $bookDetail->description !!}</div>
-                        <input type="hidden" class="user_book_id" name="user_book_id" value={{ $bookDetail->id }} >
+                    <div class="edit-book">
+                        <button class="edit-button">図書編集</button>
                     </div>
                 </div>
                 <div class="sticky_note-container">

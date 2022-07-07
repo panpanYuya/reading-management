@@ -3,6 +3,7 @@
     "/js/bookSearch.js": "/js/bookSearch.js",
     "/js/bookList.js": "/js/bookList.js",
     "/js/bookDetail.js": "/js/bookDetail.js",
+    "/js/editBook.js": "/js/editBook.js",
     "/js/login.js": "/js/login.js",
     "/js/userDelete.js": "/js/userDelete.js",
     "/css/book/books-list.css": "/css/book/books-list.css",

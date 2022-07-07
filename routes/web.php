@@ -3,6 +3,7 @@
 use App\Http\Controllers\Book\BookDetailController;
 use App\Http\Controllers\Book\SearchBookController;
 use App\Http\Controllers\Book\BookListController;
+use App\Http\Controllers\Book\EditBookController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\EditUserController;
 use App\Http\Controllers\User\DeleteUserController;
@@ -62,6 +63,11 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(BookListController::class)->group(function () {
         Route::get('/book/list', 'showBooksList')->name('list');
+    });
+
+    Route::controller(EditBookController::class)->group(function (){
+        Route::get('/book/detail/{userBookId}/edit', 'showEditBook');
+        Route::post('/book/detail/{userBookId}/edit/status/update', 'changeStatus');
     });
 
     Route::controller(SearchBookController::class)->group(function () {
