@@ -39,10 +39,13 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/book/book-detail.css', 'public/css/book', [
         //
     ])
-    .postCss('resources/css/book/search-book.css', 'public/css/book', [
+    .postCss('resources/css/book/delete-book-modal.css', 'public/css/book', [
         //
     ])
     .postCss('resources/css/book/edit-book.css', 'public/css/book', [
+        //
+    ])
+    .postCss('resources/css/book/search-book.css', 'public/css/book', [
         //
     ])
     .postCss('resources/css/common/modal.css', 'public/css/common', [

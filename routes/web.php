@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(EditBookController::class)->group(function (){
         Route::get('/book/detail/{userBookId}/edit', 'showEditBook');
         Route::post('/book/detail/{userBookId}/edit/status/update', 'changeStatus');
+        Route::post('/book/detail/{userBookId}/delete', 'deleteBook');
     });
 
     Route::controller(SearchBookController::class)->group(function () {
