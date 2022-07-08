@@ -27,4 +27,11 @@ class EditBookController extends Controller
             'updatedBookStatus' => $request->bookStatus,
         ], 200);
     }
+
+    public function deleteBook(Request $request){
+        $userBookId = $request->userBookId;
+        $userBook = UserBook::find($userBookId);
+        $userBook->delete();
+        return redirect('/book/list');
+    }
 }

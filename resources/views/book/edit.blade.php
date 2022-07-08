@@ -13,10 +13,11 @@
         <x-header />
         <div class="main">
             <div class="container">
+                <x-delete-book-modal :userBookId="$userBook->id"/>
                 <div class="book">
                     @if(isset($userBook->book_cover_url))
                         <div class="book-image"><img src={{ $userBook->book_cover_url}}  alt="本の表紙"></div>
-                        @else
+                    @else
                         <div class="book-image"><img src={{ asset('images/noImage.png')}}  alt="本の表紙"></div>
                     @endif
                     <div class="book-title">{{$userBook->title}}</div>
