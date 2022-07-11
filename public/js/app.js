@@ -30258,6 +30258,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/shelf/edit-shelf.css":
+/*!********************************************!*\
+  !*** ./resources/css/shelf/edit-shelf.css ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/common/modal.css":
 /*!****************************************!*\
   !*** ./resources/css/common/modal.css ***!
@@ -30686,6 +30699,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 			"css/user/user-cancell": 0,
 /******/ 			"css/book/sticky-note-modal": 0,
 /******/ 			"css/common/modal": 0,
+/******/ 			"css/shelf/edit-shelf": 0,
 /******/ 			"css/book/search-book": 0,
 /******/ 			"css/book/edit-book": 0,
 /******/ 			"css/book/delete-book-modal": 0,
@@ -30739,19 +30753,20 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/header.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/common-form.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/common-complete.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/books-list.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/book-detail.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/delete-book-modal.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/edit-book.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/search-book.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/modal.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/sticky-note-modal.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/user/user-cancell.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/header.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/common-form.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/common-complete.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/books-list.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/book-detail.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/delete-book-modal.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/edit-book.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/search-book.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/shelf/edit-shelf.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/common/modal.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/book/sticky-note-modal.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/book/books-list","css/common/common-complete","css/common/common-form","css/header","css/app","css/user/user-cancell","css/book/sticky-note-modal","css/common/modal","css/shelf/edit-shelf","css/book/search-book","css/book/edit-book","css/book/delete-book-modal","css/book/book-detail"], () => (__webpack_require__("./resources/css/user/user-cancell.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

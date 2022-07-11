@@ -7,18 +7,14 @@
 }
 
 #nav {
-    height: 50px;
+    height: 70px;
     list-style: none;
+    line-height: 70px;
 
-}
-
-#nav li:first-child {
-    padding-left: 15px;
 }
 
 #nav li {
     line-height: 50px;
-    width: 100px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -57,6 +53,46 @@
     border-radius: 50%;
     background: red;
 }
+
+.regist_date, .read_status, .read-wish_status, .unread_status{
+    border-radius: 30px 30px 30px 30px;
+    border-bottom: solid 4px #627295;
+}
+
+.regist_date:active,
+.read_status:active,
+.read-wish_status:active,
+.unread_status:active {
+    transform: translateY(4px);
+    border-bottom: none;
+}
+
+.regist_date{
+    background-color: #42F5D1;
+}
+
+.read_status{
+    background-color: #ED4EF5;
+}
+
+.read-wish_status{
+    background-color: #F5571D;
+}
+.unread_status{
+    background-color: #7DF52A;
+}
+
+.regist_date,
+.read_status,
+.unread_status{
+    width: 100px;
+}
+
+.read-wish_status{
+    width: 120px;
+}
+
+
 
 @media screen and (min-width: 100px) {
 

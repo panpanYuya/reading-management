@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('list');
+            return redirect()->route('list',['statusId' => \BookConst::DEAFALUT_BOOK_STATUS]);
         }
         else{
             RateLimiter::hit($this->throttleKey($request), $this->decayMinutes);
