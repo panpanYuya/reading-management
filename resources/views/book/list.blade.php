@@ -14,12 +14,10 @@
                 <div class="container">
                     <div class="slideshow">
                         <ul id="nav">
-                            <li><a href="#">名前</a></li>
-                            <li><a href="#">読んだ日</a></li>
-                            <li><a href="#">未読</a></li>
-                            <li><a href="#">未読</a></li>
-                            <li><a href="#">未読</a></li>
-                            <li><a href="#">未読</a></li>
+                            <li class="regist_date"><a href="{{route('list', ['statusId'=>\BookConst::DEAFALUT_BOOK_STATUS])}}">登録日順</a></li>
+                            <li class="read_status"><a href="{{route('list', ['statusId'=>\BookConst::READ_STATUS])}}">読んだ本のみ</a></li>
+                            <li class="read-wish_status"><a href="{{route('list', ['statusId'=>\BookConst::READWISH_STATUS])}}">読みたい本のみ</a></li>
+                            <li class="unread_status"><a href="{{route('list', ['statusId'=>\BookConst::UNREAD_STATUS])}}">未読のみ</a></li>
                         </ul>
                     </div>
                     @if(!$userBooks->isEmpty())

@@ -10927,12 +10927,40 @@ var __webpack_exports__ = {};
   !*** ./resources/js/bookList.js ***!
   \**********************************/
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-var bookDetailUrl = '/book/detail/';
+var BOOKDETAILURL = '/book/detail/';
+var DEFAULTSTATUS = 0;
+var READSTATUS = 1;
+var PRIORITYSTATUS = 2;
+var UNREADSTATUS = 3;
 $('.book').on('click', function () {
   var clickBook = $(this);
   var bookId = clickBook.find('.userBookId').val();
-  window.location.href = bookDetailUrl + bookId;
+  window.location.href = BOOKDETAILURL + bookId;
 });
+$(document).ready(function () {
+  delayButton();
+});
+
+function delayButton() {
+  var bookListUrl = $(location).attr('pathname');
+  var statusCode = bookListUrl.slice(-1);
+
+  if (statusCode == DEFAULTSTATUS) {
+    $('.regist_date').css('display', 'none');
+  }
+
+  if (statusCode == READSTATUS) {
+    $('.read_status').css('display', 'none');
+  }
+
+  if (statusCode == PRIORITYSTATUS) {
+    $('.read-wish_status').css('display', 'none');
+  }
+
+  if (statusCode == UNREADSTATUS) {
+    $('.unread_status').css('display', 'none');
+  }
+}
 })();
 
 /******/ })()

@@ -12,7 +12,7 @@
                             <a href="{{ url('/book/search')}}">図書検索</a>
                         </li>
                         <li>
-                            <a href="{{ url('/book/list')}}">図書一覧</a>
+                            <a href="{{route('list', ['statusId'=>\BookConst::DEAFALUT_BOOK_STATUS])}}">図書一覧</a>
                         </li>
                         <li>
                             <a href="{{ url('/user/edit')}}">ユーザー情報変更</a>

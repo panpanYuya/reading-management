@@ -4,6 +4,7 @@ use App\Http\Controllers\Book\BookDetailController;
 use App\Http\Controllers\Book\SearchBookController;
 use App\Http\Controllers\Book\BookListController;
 use App\Http\Controllers\Book\EditBookController;
+use App\Http\Controllers\Book\UserShelfController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\EditUserController;
 use App\Http\Controllers\User\DeleteUserController;
@@ -62,7 +63,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(BookListController::class)->group(function () {
-        Route::get('/book/list', 'showBooksList')->name('list');
+        Route::get('/book/list/{statusId}', 'showBooksList')->name('list');
     });
 
     Route::controller(EditBookController::class)->group(function (){
@@ -74,6 +75,10 @@ Route::middleware('auth')->group(function () {
     Route::controller(SearchBookController::class)->group(function () {
         Route::post('/book/search', 'searchBooks');
         Route::post('/book/regist', 'registBook');
+    });
+
+    Route::controller(UserShelfController::class)->group(function () {
+        Route::get('/book/shelf', 'showUserShelf');
     });
 
     Route::controller(EditUserController::class)->group(function () {

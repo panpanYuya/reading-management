@@ -6,6 +6,9 @@ namespace App\Consts;
 class BookConst
 {
 
+    //図書一覧画面を表示する際、読書ステータスを使用しないで検索をする際に使用する。
+    const DEAFALUT_BOOK_STATUS = '0';
+
     const READ_STATUS =  '1';
     const STATUS_READ_NAME =  '読んだ';
     const READWISH_STATUS =  '2';
