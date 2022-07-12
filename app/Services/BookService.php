@@ -30,6 +30,13 @@ class BookService
      *
      */
     static public function trimOverlapping($text){
-        return preg_replace("/(<br>)\1+/", '<br>', $text);
+        return preg_replace("/<br>\1+/", '<br>', $text);
+    }
+
+    /**
+     *  改行コードを正規表現に修正する機能
+     */
+    static public function newLineCodeToRegexp($text){
+        return preg_replace('/<br>/', "\n", $text);
     }
 }
