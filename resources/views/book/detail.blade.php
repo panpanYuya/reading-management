@@ -68,7 +68,7 @@
                                         <div class="sticky-trash_button"><img src={{asset("images/trash.png")}} alt="削除ボタン"></div>
                                     </div>
                                     <div class="sticky_bottom">
-                                        <div class="sticky_content">{{ $stickyNote->sticky_memo }}</div>
+                                        <div class="sticky_content">{!! nl2br(e($stickyNote->sticky_memo)) !!}</div>
                                     </div>
                                     <input type="hidden" class="sticky_id" name="sticky_id" value={{ $stickyNote->id }} >
                                 </div>

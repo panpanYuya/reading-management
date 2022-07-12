@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\StickyRequest;
+use App\Services\BookService;
 use App\Models\StickyRegistration;
 use App\Models\UserBook;
 
@@ -45,12 +46,13 @@ class BookDetailController extends Controller
                 'message' => '登録ができませんでした'
             ], 401);
         }
+        $formattedMemo = BookService::newLineCodeToRegexp($request->stickyMemo);
         try {
             $sticky = new StickyRegistration;
             $sticky->user_book_id = $userBook->id;
             $sticky->page_number = $request->pageNumber;
             $sticky->sticky_title = $request->stickyTitle;
-            $sticky->sticky_memo = $request->stickyMemo;
+            $sticky->sticky_memo = $formattedMemo;
 
             $sticky->save();
         } catch (Exception $e) {
@@ -73,11 +75,12 @@ class BookDetailController extends Controller
                 'message' => '編集ができませんでした'
             ], 401);
         }
-        //本のページを登録する。
+
+        $formattedMemo = BookService::newLineCodeToRegexp($request->stickyMemo);
         try {
             $stickyNote->page_number = $request->pageNumber;
             $stickyNote->sticky_title = $request->stickyTitle;
-            $stickyNote->sticky_memo = $request->stickyMemo;
+            $stickyNote->sticky_memo = $formattedMemo;
             $stickyNote->save();
         } catch (Exception $e) {
             abort(500);
