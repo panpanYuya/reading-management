@@ -21,28 +21,6 @@
                             @else
                                 <div class="book-image"><img src={{ asset('images/noImage.png')}}  alt="本の表紙"></div>
                             @endif
-                            <div class="tags-list">
-                                <div class="tag">
-                                    <div class="circle_first"></div>
-                                    <p class="tags_title">SF</p>
-                                </div>
-                                <div class="tag">
-                                    <div class="circle_first"></div>
-                                    <p class="tags_title">推理小説</p>
-                                </div>
-                                <div class="tag">
-                                    <div class="circle_first"></div>
-                                    <p class="tags_title">料理系</p>
-                                </div>
-                                <div class="tag">
-                                    <div class="circle_first"></div>
-                                    <p class="tags_title">資格系</p>
-                                </div>
-                                <div class="tag">
-                                    <div class="circle_first"></div>
-                                    <p class="tags_title">ビジネス</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="details-right">
                             <div class="book-title">{{ $bookDetail->title }}</div>
