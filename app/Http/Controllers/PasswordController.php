@@ -20,9 +20,23 @@ class PasswordController extends Controller
     public function sendPasswordEmail(SendEmailRequest $request){
         try{
             $userInfo = UserAuth::where('mail_address', $request->mailAddress)->first();
-            $temporaryToken = UserService::generateToken();
-            $tmpRegistrationForm = $this->temporaryRegistrationForm($userInfo, $temporaryToken);
-            $tmpRegistrationForm->save();
+        } catch (Exception $e) {
+            abort(500);
+        }
+        if(is_null($userInfo)){
+            abort(500);
+        }
+        $temporaryToken = UserService::generateToken();
+        try{
+            TemporaryRegistration::updateOrCreate(
+                ['mail_address' => $userInfo->mail_address],
+                [
+                    'user_id' => $userInfo->id,
+                    'user_name' => $userInfo->user_name,
+                    'password' => $userInfo->password,
+                    'temporary_token' => $temporaryToken,
+                ]
+            );
             $registUrl = config('app.url') . \UserConst::USER_RESET_PASSWORD_URL . $temporaryToken;
             Mail::to($request->mailAddress)->send(new ResetPasswordMail($registUrl));
         } catch (Exception $e) {
