@@ -43,7 +43,6 @@ class EditUserController extends Controller
 
         $userInfo = UserAuth::find(Auth::id());
         $temporaryToken = UserService::generateToken();
-        //try catch説で使用できるように宣言を行う。
         $hashedPassword ="";
 
         if($request->password != NULL){
@@ -54,11 +53,17 @@ class EditUserController extends Controller
         //if(メールアドレスが登録または変更された場合はtrue)
         if ($request->mailAddress != $userInfo->mail_address && $request->mailAddress != NULL) {
             try {
-                //仮登録テーブルに情報を登録する。
-                $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
-                $tmpRegistrationForm->save();
+                TemporaryRegistration::updateOrCreate(
+                    ['user_id' => Auth::id(),],
+                    [
+                        'user_name' => $request->user_name,
+                        'mail_address' => $request->mailAddress,
+                        'password' => $hashedPassword,
+                        'temporary_token' => $temporaryToken,
+                    ]
+                );
                 $registUrl = config('app.url') . \UserConst::USER_UPDATE_EMAIL_URL . $temporaryToken;
-                Mail::to($request->mailAddress)->send(new RegistVerificationMail($tmpRegistrationForm, $registUrl));
+                Mail::to($request->mailAddress)->send(new RegistVerificationMail($request->user_name, $registUrl));
             } catch (Exception $e) {
                 abort(500);
             }
@@ -86,7 +91,10 @@ class EditUserController extends Controller
     {
         $token = $request->token;
         $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
-        $deadLine = $tmpInfo->created_at;
+        if($tmpInfo == NULL){
+            abort(500);
+        }
+        $deadLine = $tmpInfo->updated_at;
         $deadLine->addHour(24);
         if (Carbon::now() < $deadLine) {
             try {
@@ -100,7 +108,7 @@ class EditUserController extends Controller
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_EDIT_FAIL_MESSAGE;
-            return view('user.auth-expired', compact('message'));
+            return view('user.auth.expired', compact('message'));
         }
     }
 
@@ -119,24 +127,5 @@ class EditUserController extends Controller
         $userAuth->mail_address = $tmpInfo->mail_address;
 
         return $userAuth;
-    }
-
-    /**
-     * 仮登録テーブル登録用フォームを作成する関数
-     *
-     * @param Request $request
-     * @param String $hashedPassword
-     * @param String $temporaryToken
-     * @return TemporaryRegistration　$tmpRegistrationForm
-     */
-    public function temporaryRegistrationForm(Request $request, $hashedPassword, $temporaryToken)
-    {
-        $tmpRegistrationForm = new TemporaryRegistration();
-        $tmpRegistrationForm->user_id = Auth::id();
-        $tmpRegistrationForm->user_name = $request->user_name;
-        $tmpRegistrationForm->mail_address = $request->mailAddress;
-        $tmpRegistrationForm->password = $hashedPassword;
-        $tmpRegistrationForm->temporary_token = $temporaryToken;
-        return $tmpRegistrationForm;
     }
 }

@@ -16,10 +16,10 @@ class RegistVerificationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($tmpInfo, $registUrl)
+    public function __construct($userName, $registUrl)
     {
         //
-        $this->tmpInfo = $tmpInfo;
+        $this->userName = $userName;
         $this->registUrl = $registUrl;
     }
 
@@ -32,7 +32,7 @@ class RegistVerificationMail extends Mailable
     {
         return $this->view('emails.regist-verification')
         ->subject('仮登録を受け付けました。')
-        ->with('tmpInfo', $this->tmpInfo)
+        ->with('userName', $this->userName)
         ->with('registUrl', $this->registUrl);
     }
 }
