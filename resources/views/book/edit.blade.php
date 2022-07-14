@@ -20,7 +20,7 @@
                     @else
                         <div class="book-image"><img src={{ asset('images/noImage.png')}}  alt="本の表紙"></div>
                     @endif
-                    <div class="book-title">{{$userBook->title}}</div>
+                    <div class="edit_book-title">{{$userBook->title}}</div>
                 </div>
                 <div class="status">
                     <div class="status-container">
@@ -38,9 +38,6 @@
                         </div>
                     </div>
                     <input type="hidden" class="book-status" value={{$userBook->read_status}}>
-                </div>
-                <div class="shelf">
-                    <Button class="edit_shelf-button">登録本棚を編集</Button>
                 </div>
                 <div class="delete">
                     <Button class="delete_book-button">本を削除</Button>

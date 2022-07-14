@@ -2,8 +2,6 @@
     margin: 0 auto;
 }
 
-
-
 .return{
     transform: rotateY(180deg);
     position: absolute;
@@ -44,22 +42,23 @@
     background-color: #fff;
 }
 
-
-.edit_shelf-button {
-    background-color: #36f561;
-}
-
 .delete_book-button {
     background-color: #f53649;
     color: #fff;
 }
 
-.edit_shelf-button,
 .delete_book-button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+}
+
+.edit_book-title{
+    font-size: 16px;
+    padding-top: 5px;
+    overflow: hidden;
+    text-align: center;
 }
 
 
@@ -83,7 +82,7 @@
     }
 
     .book-title{
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .icon > img{
@@ -110,14 +109,12 @@
         margin-left: 50px;
     }
 
-    .edit_shelf-button,
     .delete_book-button{
         width:320px;
         height: 48px;
         font-size: 36px;
     }
 
-    .shelf,
     .delete{
         margin-top:32px;
     }
@@ -138,7 +135,6 @@
         width: 640px;
     }
 
-    .edit_shelf-button,
     .delete_book-button{
         width: 80%;
     }
@@ -175,10 +171,6 @@
         width: 127.5px;
         height: 152.5px;
     }
-
-}
-
-@media screen and (min-width: 1045px) {
 
 }
 
