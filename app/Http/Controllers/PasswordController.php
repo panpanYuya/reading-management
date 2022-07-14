@@ -53,7 +53,10 @@ class PasswordController extends Controller
         } catch (Exception $e){
             abort(500);
         }
-        $deadLine = $tmpInfo->created_at;
+        if ($tmpInfo == NULL) {
+            abort(500);
+        }
+        $deadLine = $tmpInfo->updated_at;
         $deadLine->addHour(24);
         if (Carbon::now() < $deadLine) {
             $userId = $tmpInfo->user_id;
@@ -61,7 +64,7 @@ class PasswordController extends Controller
         } else {
             $tmpInfo->delete();
             $message = \UserConst::USER_CREATE_FAIL_MESSAGE;
-            return view('user.auth-expired', compact('message'));
+            return view('user.auth.expired', compact('message'));
         }
     }
 

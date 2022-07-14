@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
                 'required',
                 new Hankaku,
                 Rule::unique('user_auths')->ignore(Auth::id()),
-                Rule::unique('temporary_registrations')->ignore(Auth::id()),
+                Rule::unique('temporary_registrations')->ignore(Auth::id(),'user_id'),
                 'min:8',
                 'max:20'
             ],

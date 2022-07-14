@@ -46,11 +46,17 @@ class CreateUserController extends Controller
         } else {
             //認証用のtokenを発行する。
             $temporaryToken = UserService::generateToken();
-            $tmpRegistrationForm = $this->temporaryRegistrationForm($request, $hashedPassword, $temporaryToken);
             try {
-                $tmpRegistrationForm->save();
+                TemporaryRegistration::updateOrCreate(
+                    ['mail_address' => $request->mailAddress],
+                    [
+                        'user_name' => $request->user_name,
+                        'password' => $hashedPassword,
+                        'temporary_token' => $temporaryToken,
+                    ]
+                );
                 $registUrl = config('app.url') . \UserConst::USER_REGIST_URL . $temporaryToken;
-                Mail::to($request->mailAddress)->send(new RegistVerificationMail($tmpRegistrationForm,$registUrl) );
+                Mail::to($request->mailAddress)->send(new RegistVerificationMail($request->user_name,$registUrl) );
             } catch (Exception $e) {
                 abort(500);
             }
@@ -73,7 +79,10 @@ class CreateUserController extends Controller
         } catch (Exception $e) {
             abort(500);
         }
-        $deadLine = $tmpInfo->created_at;
+        if ($tmpInfo == NULL) {
+            abort(500);
+        }
+        $deadLine = $tmpInfo->updated_at;
         $deadLine->addHour(24);
         if (Carbon::now() < $deadLine) {
             try{
@@ -121,22 +130,4 @@ class CreateUserController extends Controller
         return $userAuth;
     }
 
-
-    /**
-     * 仮登録テーブル登録用フォームを作成する関数
-     *
-     * @param Request $request
-     * @param String $hashedPassword
-     * @param String $temporaryToken
-     * @return TemporaryRegistration　$tmpRegistrationForm
-     */
-    public function temporaryRegistrationForm(Request $request, $hashedPassword, $temporaryToken)
-    {
-        $tmpRegistrationForm = new TemporaryRegistration();
-        $tmpRegistrationForm->user_name = $request->user_name;
-        $tmpRegistrationForm->mail_address = $request->mailAddress;
-        $tmpRegistrationForm->password = $hashedPassword;
-        $tmpRegistrationForm->temporary_token = $temporaryToken;
-        return $tmpRegistrationForm;
-    }
 }

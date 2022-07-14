@@ -52,6 +52,10 @@ Route::controller(CreateUserController::class)->group(function () {
     Route::get('/user/regist', 'authEmail');
 });
 
+Route::controller(EditUserController::class)->group(function () {
+    Route::get('/user/update/email', 'updateAuthEmail');
+});
+
 Route::middleware('auth')->group(function () {
 
     Route::controller(BookDetailController::class)->group(function () {
@@ -79,7 +83,6 @@ Route::middleware('auth')->group(function () {
     Route::controller(EditUserController::class)->group(function () {
         Route::get('/user/edit', 'edit');
         Route::post('/user/update', 'update');
-        Route::get('/user/update/email', 'updateAuthEmail');
     });
 
     Route::controller(DeleteUserController::class)->group(function () {
