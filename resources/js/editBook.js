@@ -128,7 +128,7 @@ $('#deleteCheckBox').on('click',function(){
         offChecked(deleteButton);
     }
 
-})
+});
 
 
 function onChecked(deleteButton){
@@ -146,3 +146,8 @@ function offChecked(deleteButton){
     deleteButton.css('color', 'black');
 }
 
+$('.return').on('click',function(){
+    let currentUrl = location.href;
+    let backScreenUrl = currentUrl.slice(0, -5);
+    window.location.href = backScreenUrl;
+});

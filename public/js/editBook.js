@@ -11066,6 +11066,12 @@ function offChecked(deleteButton) {
   deleteButton.css('background-color', '#d5d5d5');
   deleteButton.css('color', 'black');
 }
+
+$('.return').on('click', function () {
+  var currentUrl = location.href;
+  var backScreenUrl = currentUrl.slice(0, -5);
+  window.location.href = backScreenUrl;
+});
 })();
 
 /******/ })()

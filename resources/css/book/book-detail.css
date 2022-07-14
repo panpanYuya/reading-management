@@ -112,7 +112,7 @@
     }
 
     .book-title {
-        font-size: 20px;
+        font-size: 14px;
         margin-top: 5px;
     }
 
@@ -124,6 +124,8 @@
     .synopsis_book {
         margin-top: 12px;
         font-size: 8px;
+        height: 152px;
+        overflow: hidden;
     }
 
     .edit-button{
@@ -204,11 +206,11 @@
     }
 
     .book-title {
-        font-size: 28px;
+        font-size: 18px;
     }
 
     .book-author {
-        font-size: 18px;
+        font-size: 14px;
         margin-top: 20px;
     }
 
@@ -269,7 +271,7 @@
     }
 
     .synopsis_book {
-        font-size: 19px;
+        font-size: 14px;
     }
 
     .sticky_note-container {
@@ -292,6 +294,10 @@
 
     .details-left {
         width: 270px;
+    }
+
+    .synopsis_book {
+        height: 304px;
     }
 
     .details-right {
