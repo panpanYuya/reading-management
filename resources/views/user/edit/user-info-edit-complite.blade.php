@@ -16,7 +16,7 @@
                     <div class="regist-container">
                         <div class="complete">ユーザー情報を変更いたしました。</div>
                         <div class="back_button">
-                            <a href="{{ url('/book/list')}}">図書一覧画面へ</a>
+                            <a href="{{ url('/book/list/0')}}">図書一覧画面へ</a>
                         </div>
                     </div>
                 </div>

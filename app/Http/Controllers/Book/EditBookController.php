@@ -32,6 +32,6 @@ class EditBookController extends Controller
         $userBookId = $request->userBookId;
         $userBook = UserBook::find($userBookId);
         $userBook->delete();
-        return redirect('/book/list');
+        return redirect('/book/list/0');
     }
 }
