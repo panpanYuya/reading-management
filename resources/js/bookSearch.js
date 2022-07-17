@@ -41,7 +41,7 @@ $('.regist-button').on('click',function(){
         modalBox.find(".regist-book-box").css('display', 'none');
         modalBox.find(".modal-close").css('display', 'none');
         modalBox.find(".message-box").css('display', 'block');
-        modalBox.find(".message-box").text(error.message);
+        modalBox.find(".message-box").text(error.responseJSON.message);
         modalBox.find(".message-box").css('color', 'red');
         window.setTimeout(closeModal, 5000);
 
