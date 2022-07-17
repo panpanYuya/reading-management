@@ -11117,7 +11117,7 @@ $('.sticky-delete-button').on('click', function () {
     successAjax(modalBox);
   }).fail(function (error) {
     //失敗のメッセージ
-    failAjax(modalBox, error.message);
+    failAjax(modalBox, error.responseJSON.message);
   });
 });
 

@@ -56,7 +56,7 @@ class BookDetailController extends Controller
 
             $sticky->save();
         } catch (Exception $e) {
-            abort(500);
+            abort(500, trans('error.server'));
         }
         return response()->json([
             'message' => '登録に成功しました'
@@ -83,7 +83,7 @@ class BookDetailController extends Controller
             $stickyNote->sticky_memo = $formattedMemo;
             $stickyNote->save();
         } catch (Exception $e) {
-            abort(500);
+            abort(500, trans('error.server'));
         }
         return response()->json([
             'message' => '登録に成功しました'

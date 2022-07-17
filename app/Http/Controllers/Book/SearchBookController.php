@@ -36,15 +36,15 @@ class SearchBookController extends Controller
     {
 
         if (empty($request->bookId)) {
-            abort(500);
+            abort(500, trans('error.server'));
         }
         $jsonResults = ApiService::findBookApi($request->bookId);
         if ($jsonResults->getStatusCode() != 200) {
-            abort(500);
+            abort(500, trans('error.server'));
         }
         if ($jsonResults->failed()) {
             $apiErrorStatus = $jsonResults->status();
-            abort($apiErrorStatus);
+            abort($apiErrorStatus, trans('error.server'));
         }
         $book = json_decode($jsonResults, false, 10);
         $registBookForm = $this->registBookForm($book);

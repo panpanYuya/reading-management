@@ -195,7 +195,7 @@ $('.sticky-regist-button').on('click',function(){
         successAjax(modalBox);
     }).fail((error)=>{
         //失敗のメッセージ
-        failAjax(modalBox,error.responseJSON.message)
+        failAjax(modalBox,error.responseJSON.message);
     });
 
 });
@@ -218,7 +218,7 @@ $('.sticky-delete-button').on('click',function(){
         successAjax(modalBox);
     }).fail((error)=>{
         //失敗のメッセージ
-        failAjax(modalBox,error.message);
+        failAjax(modalBox,error.responseJSON.message);
     });
 });
 
