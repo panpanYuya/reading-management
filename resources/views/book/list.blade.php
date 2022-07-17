@@ -32,16 +32,6 @@
                                     <div class="image"><img src={{ $userBook->book_cover_url}} alt="本の画像"></div>
                                     <div class="book_exaplain">
                                         <div class="title">{{$userBook->title}}</div>
-                                        <div class="tags">
-                                            <p class="tags_title">見返しタグ</p>
-                                            <div class="tags_circle">
-                                                <div class="circle_first"></div>
-                                                <div class="circle_second"></div>
-                                                <div class="circle_third"></div>
-                                                <div class="circle_fource"></div>
-                                                <div class="circle_fifth"></div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <input type="hidden" class="userBookId" name="userBookId" value={{ $userBook->id }}>
                                 </div>

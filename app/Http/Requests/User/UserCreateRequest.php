@@ -26,9 +26,9 @@ class UserCreateRequest extends FormRequest
     {
         return [
             //新規登録のバリデーション
-            'user_name' => ['required', new Hankaku,'unique:App\Models\userAuth,user_name','unique:App\Models\temporaryRegistration,user_name','min:8','max:20'],
+            'user_name' => ['required', new Hankaku,'unique:App\Models\UserAuth,user_name','unique:App\Models\TemporaryRegistration,user_name','min:8','max:20'],
             'password' => ['required', new Hankaku,'min:8','max:50','confirmed'],
-            'mailAddress' => ['email:strict,dns,spoof','min:5','max:100','nullable','unique:App\Models\userAuth,mail_address'],
+            'mailAddress' => ['email:strict,dns,spoof','min:5','max:100','nullable','unique:App\Models\UserAuth,mail_address'],
         ];
     }
 }

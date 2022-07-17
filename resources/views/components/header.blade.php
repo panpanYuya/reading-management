@@ -18,7 +18,7 @@
                             <a href="{{ url('/user/edit')}}">ユーザー情報変更</a>
                         </li>
                         <li>
-                            <a href="{{ url('/user/cancell')}}">解約</a>
+                            <a href="{{ url('/user/cancell')}}">退会</a>
                         </li>
                         <li>
                             <a href="{{ url('/logout')}}">ログアウト</a>
