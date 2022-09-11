@@ -2,12 +2,6 @@
     width: 100%;
 }
 
-/* .details-container {
-    justify-content: center;
-    display: flex;
-} */
-
-
 .details-left {
     text-align: center;
 }
@@ -48,7 +42,6 @@
         linear-gradient(180deg, hsl(60, 100%, 85%, 1), hsl(60deg 100% 85%));
 }
 
-
 .sticky_top {
     position: relative;
     display: flex;
@@ -63,10 +56,6 @@
 .sticky_top>.sticky-edit_button,
 .sticky_top>.sticky-trash_button {
     justify-content: flex-end
-}
-
-.sticky_bottom {
-    text-align: center;
 }
 
 .sticky_add-button {
@@ -111,7 +100,8 @@
         text-align: center;
     }
 
-    .book-title {
+    .book-title,
+    .modal-sticky_title {
         font-size: 14px;
         margin-top: 5px;
     }
@@ -146,7 +136,8 @@
         margin: 24px auto;
     }
 
-    .book-page{
+    .book-page,
+    .modal-book-page{
         font-size:14px;
     }
 
@@ -172,6 +163,7 @@
 
     .sticky_content {
         font-size: 12px;
+        text-align: left;
     }
 
     .sticky_add-button>img {
@@ -214,7 +206,8 @@
         margin-top: 20px;
     }
 
-    .book-page {
+    .book-page,
+    .modal-book-page {
         font-size: 15px;
     }
 
@@ -242,6 +235,7 @@
     .sticky_title {
         width: 330px;
         padding-left: 15px;
+        text-align: left;
     }
 
     .sticky_top {
@@ -272,16 +266,6 @@
 
     .synopsis_book {
         font-size: 14px;
-    }
-
-    .sticky_note-container {
-        text-align: center;
-    }
-
-    .sticky_note,
-    .modal_sticky_note {
-        display: inline-block;
-        vertical-align: top;
     }
 
 }

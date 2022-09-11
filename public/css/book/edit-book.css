@@ -1,1 +1,177 @@
-.container{margin:0 auto}.return{position:absolute;transform:rotateY(180deg);z-index:11}.book-image{margin-top:32px}.book{align-items:center;display:flex;justify-content:center;margin:0 30px}.status{margin-top:20px}.status-container{background-color:#f0f0f0;display:flex;justify-content:center;margin:0 auto}.book-title{margin-left:20px}.high_priority-book-box,.readed-box,.unread-box{background-color:#fff;text-align:center}.delete_book-button{align-items:center;background-color:#f53649;color:#fff;display:flex;justify-content:center;margin:0 auto}.edit_book-title{font-size:16px;overflow:hidden;padding-left:16px;padding-top:5px;text-align:center}@media screen and (min-width:100px){.return{height:32px;left:2%;top:3.5%;width:32px}.status-container{height:100px;width:300px}.book-image>img{height:88px;width:80px}.book-title{font-size:14px}.icon>img{height:32px;width:32px}.high_priority-book-box,.readed-box,.unread-box{border:1px solid #000;height:58px;margin-top:20px;width:58px}.status-text{font-size:14px;padding-top:5px}.high_priority-book-box,.unread-box{margin-left:50px}.delete_book-button{font-size:36px;height:48px;width:320px}.delete{margin-top:32px}}@media screen and (min-width:768px){.return{height:48px;left:1%;top:1%;width:48px}.container{width:640px}.delete_book-button{width:80%}.status-container{height:150px;width:80%}.icon>img{height:48px;width:48px}.status-text{font-size:21px}.high_priority-book-box,.readed-box,.unread-box{border:1.5px solid #000;height:87px;margin-top:30px;width:87px}.alert-danger{font-size:24px}.book-image>img{height:152.5px;width:127.5px}}
+.container{
+    margin: 0 auto;
+}
+
+.return{
+    transform: rotateY(180deg);
+    position: absolute;
+    z-index: 11;
+}
+
+
+.book-image{
+    margin-top:32px;
+}
+
+.book{
+    display: flex;
+    justify-content: center;
+    margin: 0 30px;
+    align-items: center;
+}
+
+.status{
+    margin-top:20px;
+}
+
+.status-container{
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.book-title{
+    margin-left:20px;
+}
+
+.readed-box,
+.high_priority-book-box,
+.unread-box {
+    text-align: center;
+    background-color: #fff;
+}
+
+.delete_book-button {
+    background-color: #f53649;
+    color: #fff;
+}
+
+.delete_book-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.edit_book-title{
+    font-size: 16px;
+    padding-top: 5px;
+    overflow: hidden;
+    text-align: center;
+    padding-left: 16px;
+}
+
+
+@media screen and (min-width: 100px) {
+
+    .return{
+        width: 32px;
+        height: 32px;
+        top: 3.5%;
+        left: 2%;
+    }
+
+    .status-container{
+        width: 300px;
+        height: 100px;
+    }
+
+    .book-image>img {
+        width: 80px;
+        height: 88px;
+    }
+
+    .book-title{
+        font-size: 14px;
+    }
+
+    .icon > img{
+        width: 32px;
+        height: 32px;
+    }
+
+    .readed-box,
+    .high_priority-book-box,
+    .unread-box{
+        width: 58px;
+        height: 58px;
+        margin-top: 20px;
+        border: 1px solid #000;
+    }
+
+    .status-text{
+        padding-top: 5px;
+        font-size: 14px;
+    }
+
+    .high_priority-book-box,
+    .unread-box {
+        margin-left: 50px;
+    }
+
+    .delete_book-button{
+        width:320px;
+        height: 48px;
+        font-size: 36px;
+    }
+
+    .delete{
+        margin-top:32px;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .return{
+        width: 48px;
+        height: 48px;
+        top: 1%;
+        left:1%;
+    }
+
+    .container{
+        width: 640px;
+    }
+
+    .delete_book-button{
+        width: 80%;
+    }
+
+    .status-container{
+        width: 80%;
+        height: 150px;
+    }
+
+
+    .icon > img{
+        width: 48px;
+        height: 48px
+    }
+
+    .status-text{
+        font-size: 21px;
+    }
+
+    .readed-box,
+    .high_priority-book-box,
+    .unread-box{
+        width: 87px;
+        height: 87px;
+        margin-top: 30px;
+        border: 1.5px solid #000;
+    }
+
+    .alert-danger {
+        font-size: 24px;
+    }
+
+    .book-image>img {
+        width: 127.5px;
+        height: 152.5px;
+    }
+
+}
+

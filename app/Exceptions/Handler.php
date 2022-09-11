@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -35,10 +36,6 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-
         $this->renderable( function(Throwable $e, Request $request){
             if($request->ajax()){
                 //Log出力用のメソッドを記入
@@ -47,12 +44,17 @@ class Handler extends ExceptionHandler
                     return response()->json([
                         'message' => $message
                     ],$e->getStatusCode());
+                } elseif($e instanceof ValidationException){
+                    return response()->json([
+                        'message' => '指定されたデータは無効でした。',
+                        'errors' => $e->errors(),
+                    ], $e->status);
+                }
                 } else{
                     return response()->json([
                         'message' => 'アプリケーション内部で問題が発生しました。'
                     ],500);
                 }
-            }
         });
     }
 }

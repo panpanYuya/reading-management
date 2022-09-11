@@ -31,7 +31,7 @@ class BookDetailController extends Controller
         if(!isset($bookDetail)){
             abort(401);
         }
-        $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->get();
+        $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->orderBy('page_number')->get();
         if(!isset($bookDetail)){
             abort(404);
         }

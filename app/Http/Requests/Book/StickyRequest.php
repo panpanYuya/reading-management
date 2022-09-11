@@ -28,7 +28,7 @@ class StickyRequest extends FormRequest
             //
             'userBookId' => ['required', 'integer'],
             'stickyId' => ['nullable', 'integer'],
-            'pageNumber' => ['nullable', 'integer', new Space],
+            'pageNumber' => ['nullable', 'integer', 'min:1',new Space],
             'stickyTitle' => ['nullable', 'string', 'max:100', new Space],
             'stickyMemo' => ['string', 'max:400', new Space],
         ];
