@@ -18,7 +18,7 @@ class CreateStickyRegistrationsTable extends Migration
             $table->collation = 'utf8mb4_bin';
             $table->increments('id');
             $table->unsignedInteger('user_book_id')->comment('ユーザーブックid');
-            $table->integer('page_number')->comment('ページ番号');
+            $table->integer('page_number')->nullable()->comment('ページ番号');
             $table->string('sticky_title', 255)->nullable()->comment('付箋タイトル');
             $table->string('sticky_memo', 255)->comment('付箋メモ');
             $table->dateTime('created_at', $precision = 0)->comment('作成時間');
