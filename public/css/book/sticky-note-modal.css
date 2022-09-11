@@ -1,1 +1,127 @@
-#modal{background-color:#f0f8ff;border:2px solid #000;display:none;position:fixed;width:287px;z-index:2}.modal-close{align-items:center;color:#fff;cursor:pointer;display:flex;font-size:40px;height:40px;justify-content:center;position:absolute;right:-40px;top:-40px;width:40px}.modal-box{text-align:center}.sticky-delete-button,.sticky-regist-button{padding-bottom:22px;padding-top:32px}.sticky-delete-button>button,.sticky-regist-button>button{border:1px solid #000;font-size:30px;height:50px;width:206px}.sticky-regist-button>button{background-color:#eb7e35}.sticky-delete-button>button{background-color:#ff0d41;color:#fff}.message-box{font-size:24px;padding:16px 32px}@media screen and (min-width:100px){.book-page,.sticky-memo,.sticky-title{padding-top:13px}.sticky-title{color:red;font-size:18px;font-weight:700;padding-top:15px;text-align:center}.sticky-memo>textArea{height:292px}.book-page>input,.sticky-memo>textarea,.sticky-title>input{width:200px}}@media screen and (min-width:768px){#modal{width:430px}}
+#modal {
+    display: none;
+    width: 287px;
+    background-color: aliceblue;
+    border: 2px solid black;
+    position: fixed;
+    z-index: 2;
+}
+
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    width: 40px;
+    right: -40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.modal-box {
+    text-align: center;
+}
+
+
+.sticky-regist-button,
+.sticky-delete-button {
+    padding-top: 32px;
+    padding-bottom: 22px;
+}
+
+.sticky-regist-button>button,
+.sticky-delete-button>button {
+    width: 206px;
+    height: 50px;
+    border: 1px solid #000;
+    font-size: 30px;
+}
+
+.sticky-regist-button>button {
+    background-color: #eb7e35;
+}
+
+.sticky-delete-button>button {
+    background-color: #FF0D41;
+    color: #fff;
+}
+
+.message-box {
+    font-size: 24px;
+    padding: 16px 32px;
+}
+
+
+@media screen and (min-width: 100px) {
+
+    .modal-book-page,
+    .modal-sticky_title,
+    .modal-sticky_content {
+        padding-top: 13px;
+    }
+
+    .modal-sticky_content > textArea{
+        height:292px;
+    }
+
+    .modal-book-page > input,
+    .modal-sticky_title > input,
+    .modal-sticky_content >  textarea {
+        width:200px;
+    }
+
+    .book-page-label,
+    .sticky_title-label,
+    .sticky_content-label {
+        text-align: left;
+        font-size:14px;
+    }
+
+    .modal-book-page,
+    .modal-sticky_title,
+    .modal-sticky_content {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .label-wrpper{
+        display:flex;
+    }
+
+    .require-label{
+        margin-left: 10px;
+        padding: 3px;
+        margin-bottom: 4px;
+        font-size: 9px;
+        background-color: #FF0D41;
+        color: white;
+        font-weight: bold;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) {
+    #modal {
+        width: 430px;
+    }
+
+    .book-page-label,
+    .sticky_title-label,
+    .sticky_content-label {
+        font-size: 18px;
+    }
+
+
+
+
+}
+
+
+@media screen and (min-width: 1024px) {
+
+}
+

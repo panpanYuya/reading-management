@@ -7,10 +7,10 @@
         <div class="sticky_bottom">
             <div class="sticky_content"></div>
         </div>
-        <input type="hidden" class="sticky_id" name="sticky_id" value="" >
+        <input type="hidden" class="sticky_id" name="sticky_id" value="">
     </div>
     <div class="sticky-delete-button">
-        <button type="submit" class="regist-button">
+        <button type="submit" class="delete-button">
             付箋を削除
         </button>
     </div>

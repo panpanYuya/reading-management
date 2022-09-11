@@ -1,1 +1,248 @@
-.main{width:100%}.slideshow{background-color:#f4f4f4}#nav{height:70px;line-height:70px;list-style:none}#nav li{display:inline-block;line-height:50px;vertical-align:middle}#nav li a{color:#3e3e3e;text-decoration:none}.books-list{display:flex;flex-wrap:wrap}.unread{position:absolute}.book_exaplain{text-align:center}.title{overflow:hidden}.tags_circle{display:flex;justify-content:space-between}.circle_fifth,.circle_first,.circle_fource,.circle_second,.circle_third{background:red;border-radius:50%;display:flex}.read-wish_status,.read_status,.regist_date,.unread_status{border-bottom:4px solid #627295;border-radius:30px 30px 30px 30px}.read-wish_status:active,.read_status:active,.regist_date:active,.unread_status:active{border-bottom:none;transform:translateY(4px)}.regist_date{background-color:#42f5d1}.read_status{background-color:#ed4ef5}.read-wish_status{background-color:#f5571d}.unread_status{background-color:#7df52a}.read_status,.regist_date,.unread_status{width:100px}.read-wish_status{width:120px}@media screen and (min-width:100px){#nav{overflow:scroll;white-space:nowrap}#nav li,#nav ul>li{text-align:center}#nav ul>li{white-space:nowrap}#nav::-webkit-scrollbar{display:none}.book{background-color:#ff0;height:150px;margin-left:15px;margin-top:15px;width:100px}.unread>img{height:34px;margin-left:-15px;margin-top:-15px;width:34px}.image,.image>img{height:100px;width:100px}.book_exaplain{background-color:#eee;height:50px;width:100px}.title{font-size:8px;padding-top:7px}.tags_title{font-size:10px;padding-left:5px;padding-top:5px;text-align:left}.tags_circle{padding:0 5px}.circle_fifth,.circle_first,.circle_fource,.circle_second,.circle_third{height:12px;width:12px}.error-message{color:red;font-size:20px;margin:40px auto}}@media screen and (min-width:1280px){#nav{text-align:center}.books-list{margin-top:30px}.book{background-color:#ff0;height:300px;margin-bottom:15px;margin-left:30px;margin-top:15px;width:200px}.unread>img{height:68px;margin-left:-30px;margin-top:-30px;width:68px}.image,.image>img{height:200px;width:200px}.book_exaplain{background-color:#eee;height:100px;width:200px}.title{font-size:15px}.tags_title{font-size:20px;padding-left:10px;padding-top:10px;text-align:left}.tags_circle{padding:0 10px}.circle_fifth,.circle_first,.circle_fource,.circle_second,.circle_third{height:24px;width:24px}}
+.main {
+    width: 100%;
+}
+
+.slideshow{
+    background-color: #f4f4f4;
+}
+
+#nav {
+    height: 70px;
+    list-style: none;
+    line-height: 70px;
+
+}
+
+#nav li {
+    line-height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#nav li a{
+    text-decoration: none;
+    color: #3e3e3e;
+}
+
+
+.books-list {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.unread {
+    position:absolute;
+}
+
+.book_exaplain {
+    text-align: center;
+}
+
+.title {
+    overflow: hidden;
+}
+
+.tags_circle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.circle_first, .circle_second, .circle_third, .circle_fource, .circle_fifth{
+    display: flex;
+    border-radius: 50%;
+    background: red;
+}
+
+.regist_date, .read_status, .read-wish_status, .unread_status{
+    border-radius: 30px 30px 30px 30px;
+    border-bottom: solid 4px #627295;
+}
+
+.regist_date:active,
+.read_status:active,
+.read-wish_status:active,
+.unread_status:active {
+    transform: translateY(4px);
+    border-bottom: none;
+}
+
+.regist_date{
+    background-color: #42F5D1;
+}
+
+.read_status{
+    background-color: #ED4EF5;
+}
+
+.read-wish_status{
+    background-color: #F5571D;
+}
+.unread_status{
+    background-color: #7DF52A;
+}
+
+.regist_date,
+.read_status,
+.unread_status{
+    width: 100px;
+}
+
+.read-wish_status{
+    width: 120px;
+}
+
+
+
+@media screen and (min-width: 100px) {
+
+    #nav{
+        overflow: scroll;
+        white-space: nowrap;
+    }
+
+    #nav li {
+        text-align: center;
+    }
+
+    #nav ul > li {
+        text-align: center;
+        white-space: nowrap;
+    }
+
+
+    #nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .book {
+        width: 100px;
+        height: 150px;
+        margin-top: 15px;
+        margin-left: 15px;
+        background-color: yellow;
+    }
+
+    .unread > img {
+        width: 34px;
+        height: 34px;
+        margin-left: -15px;
+        margin-top: -15px;
+    }
+
+
+    .image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .image > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .book_exaplain {
+        width: 100px;
+        height: 50px;
+        background-color: #eeeeee;
+    }
+
+    .title {
+        padding-top: 7px;
+        font-size: 8px;
+    }
+
+    .tags_title {
+        text-align: left;
+        padding-left: 5px;
+        font-size: 10px;
+        padding-top: 5px;
+    }
+
+    .tags_circle {
+        padding: 0 5px;
+    }
+
+    .circle_first,
+    .circle_second,
+    .circle_third,
+    .circle_fource,
+    .circle_fifth {
+        width: 12px;
+        height: 12px;
+    }
+
+    .error-message{
+        font-size: 20px;
+        margin: 40px auto;
+        color: red;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    #nav {
+        text-align: center;
+    }
+
+    .books-list {
+        margin-top:30px;
+    }
+
+    .book {
+        width: 200px;
+        height: 300px;
+        margin-top: 15px;
+        margin-left: 30px;
+        margin-bottom: 15px;
+        background-color: yellow;
+    }
+
+    .unread>img {
+        width: 68px;
+        height: 68px;
+        margin-left: -30px;
+        margin-top: -30px;
+    }
+
+    .image{
+        width: 200px;
+        height: 200px;
+    }
+
+    .image > img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .book_exaplain {
+        width: 200px;
+        height: 100px;
+        background-color: #eeeeee;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .tags_title {
+        text-align: left;
+        padding-left: 10px;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .tags_circle {
+        padding: 0 10px;
+    }
+
+    .circle_first,
+    .circle_second,
+    .circle_third,
+    .circle_fource,
+    .circle_fifth {
+        width: 24px;
+        height: 24px;
+    }
+
+}
+

@@ -60,9 +60,9 @@ function openStickyModal(deleteFlg){
         $('.sticky_note').css('opacity', '0.3');
 
         //モーダルの中身を空にする
-        $('#modal').find(".book-page").children('input').text("");
-        $('#modal').find(".sticky-title").children('input').text("");
-        $('#modal').find(".sticky-memo").children('textarea').text("");
+        $('#modal').find(".modal-book-page").children('input').text("");
+        $('#modal').find(".modal-sticky_title").children('input').text("");
+        $('#modal').find(".modal-sticky-content").children('textarea').text("");
         $('#modal').find(".sticky_id").val("");
 
         //モーダルを表示する処理
@@ -92,9 +92,9 @@ function showEditContent(editSticky){
 
     let formattedBookPage = bookPage.substr(1,bookPage.length);
 
-    $('#sticky-regist').find(".book-page").children('input').val(formattedBookPage);
-    $('#sticky-regist').find(".sticky-title").children('input').val(stickyTitle);
-    $('#sticky-regist').find(".sticky-memo").children('textarea').val(stickyMemo);
+    $('#sticky-regist').find(".modal-book-page").children('input').val(formattedBookPage);
+    $('#sticky-regist').find(".modal-sticky_title").children('input').val(stickyTitle);
+    $('#sticky-regist').find(".modal-sticky_content").children('textarea').val(stickyMemo);
     $('.sticky-note-box').find(".sticky_id").val(stickyId);
 
 }
@@ -163,9 +163,9 @@ function modalResize(){
 $('.sticky-regist-button').on('click',function(){
 
     let modalBox = $(this).parent().parent().parent();
-    let bookPage = modalBox.find(".book-page").children('input').val();
-    let stickyTitle = modalBox.find(".sticky-title").children('input').val();
-    let stickyMemo = modalBox.find(".sticky-memo").children('textarea').val();
+    let bookPage = modalBox.find(".modal-book-page").children('input').val();
+    let stickyTitle = modalBox.find(".modal-sticky_title").children('input').val();
+    let stickyMemo = modalBox.find(".modal-sticky_content").children('textarea').val();
     let stickyId = modalBox.find(".sticky_id").val();
 
     let userBookId = modalBox.find(".user_book_id").val();

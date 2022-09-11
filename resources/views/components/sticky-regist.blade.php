@@ -1,11 +1,16 @@
 <div id="sticky-regist">
-    <div class="book-page">
-        <input type="number" value="" placeholder="ページ数" />
+    <div class="modal-book-page">
+        <p class="book-page-label">ページ番号</p>
+        <input type="number" value="" min="1" placeholder="ページ数" />
     </div>
-    <div class="sticky-title">
+    <div class="modal-sticky_title">
+        <p class="sticky_title-label">タイトル</p>
         <input type="text" value="" placeholder="付箋のタイトル" />
     </div>
-    <div class="sticky-memo">
+    <div class="modal-sticky_content">
+        <div class="label-wrpper">
+            <p class="sticky_content-label">本文</p><label class="require-label">必須</label>
+        </div>
         <textarea name="memo" placeholder="付箋" value=""></textarea>
     </div>
     <div class="sticky-regist-button">

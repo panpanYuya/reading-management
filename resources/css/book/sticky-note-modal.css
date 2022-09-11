@@ -57,31 +57,49 @@
 
 @media screen and (min-width: 100px) {
 
-
-    .book-page,
-    .sticky-title,
-    .sticky-memo {
+    .modal-book-page,
+    .modal-sticky_title,
+    .modal-sticky_content {
         padding-top: 13px;
     }
 
-    .sticky-title {
-        text-align: center;
-        padding-top: 15px;
-        font-size: 18px;
-        color: red;
-        font-weight: bold;
-    }
-
-    .sticky-memo > textArea{
+    .modal-sticky_content > textArea{
         height:292px;
     }
 
-    .book-page > input,
-    .sticky-title > input,
-    .sticky-memo >  textarea {
+    .modal-book-page > input,
+    .modal-sticky_title > input,
+    .modal-sticky_content >  textarea {
         width:200px;
     }
 
+    .book-page-label,
+    .sticky_title-label,
+    .sticky_content-label {
+        text-align: left;
+        font-size:14px;
+    }
+
+    .modal-book-page,
+    .modal-sticky_title,
+    .modal-sticky_content {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .label-wrpper{
+        display:flex;
+    }
+
+    .require-label{
+        margin-left: 10px;
+        padding: 3px;
+        margin-bottom: 4px;
+        font-size: 9px;
+        background-color: #FF0D41;
+        color: white;
+        font-weight: bold;
+    }
 
 }
 
@@ -89,6 +107,12 @@
 @media screen and (min-width: 768px) {
     #modal {
         width: 430px;
+    }
+
+    .book-page-label,
+    .sticky_title-label,
+    .sticky_content-label {
+        font-size: 18px;
     }
 
 

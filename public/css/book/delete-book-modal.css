@@ -1,1 +1,29 @@
-.message-box{font-size:24px;padding:16px 32px}.delete-content{margin-top:20px}.checkbox-text{margin-top:10px}.common-button{align-items:center;background-color:#d5d5d5;color:#000;display:flex;font-size:36px;justify-content:center;margin:18px auto;opacity:.5;padding-top:5px;width:80%}
+
+.message-box {
+    font-size: 24px;
+    padding: 16px 32px;
+}
+
+.delete-content{
+    margin-top: 20px;
+}
+
+.checkbox-text{
+    margin-top:10px;
+}
+
+.common-button {
+    width: 80%;
+    font-size: 36px;
+    padding-top: 5px;
+    margin: 18px auto;
+    padding-top: 5px;
+    color: black;
+    background-color: #d5d5d5;
+    display: flex;
+    justify-content: center;
+    opacity: 0.5;
+    align-items: center;
+}
+
+
