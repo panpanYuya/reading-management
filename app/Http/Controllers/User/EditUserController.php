@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Consts\StatusCodeConst;
+use App\Consts\TimeConst;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -65,7 +67,7 @@ class EditUserController extends Controller
                 $registUrl = config('app.url') . \UserConst::USER_UPDATE_EMAIL_URL . $temporaryToken;
                 Mail::to($request->mailAddress)->send(new RegistVerificationMail($request->user_name, $registUrl));
             } catch (Exception $e) {
-                abort(500);
+                abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
             }
             return view('user.auth.create-tmp-complete');
         } else{
@@ -75,7 +77,7 @@ class EditUserController extends Controller
                 $userInfo->mail_address = $request->mailAddress;
                 $userInfo->save();
             } catch (Exception $e) {
-                abort(500);
+                abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
             }
             return view('user.edit.user-info-edit-complite');
         }
@@ -92,17 +94,17 @@ class EditUserController extends Controller
         $token = $request->token;
         $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
         if($tmpInfo == NULL){
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         $deadLine = $tmpInfo->updated_at;
-        $deadLine->addHour(24);
+        $deadLine->addHour(TimeConst::DAY_IN_HOURS_NUM);
         if (Carbon::now() < $deadLine) {
             try {
                 $authEmailForm = $this->updateAuthEmailForm($tmpInfo);
                 $authEmailForm->save();
                 $tmpInfo->delete();
             } catch (Exception $e) {
-                abort(500);
+                abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
             }
             return view('user.edit.user-info-edit-complite');
         } else {

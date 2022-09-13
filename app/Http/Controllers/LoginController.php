@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Consts\TimeConst;
 use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Validation\ValidationException;
 
@@ -56,7 +56,7 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             'user_name' => trans('auth.throttle', [
                 'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
+                'minutes' => ceil($seconds / TimeConst::ONE_MINUTE_IN_SECONDS),
             ]),
         ]);
     }
