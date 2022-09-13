@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Book;
 
+use App\Consts\StatusCodeConst;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Book\SearchBookRequest;
@@ -23,8 +24,8 @@ class SearchBookController extends Controller
         $keywords = BookService::trimKeywords($request->keyword);
 
         $results = ApiService::serachBookApi($keywords);
-        if ($results->getStatusCode() != 200) {
-            abort(500);
+        if ($results->getStatusCode() != StatusCodeConst::ALL_CORRECT_NUM) {
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
 
         $resultBooks = $this->searchBooksForm($results);
@@ -36,11 +37,11 @@ class SearchBookController extends Controller
     {
 
         if (empty($request->bookId)) {
-            abort(500, trans('error.server'));
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM, trans('error.server'));
         }
         $jsonResults = ApiService::findBookApi($request->bookId);
-        if ($jsonResults->getStatusCode() != 200) {
-            abort(500, trans('error.server'));
+        if ($jsonResults->getStatusCode() != StatusCodeConst::ALL_CORRECT_NUM) {
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM, trans('error.server'));
         }
         if ($jsonResults->failed()) {
             $apiErrorStatus = $jsonResults->status();
@@ -65,7 +66,7 @@ class SearchBookController extends Controller
         return response()->json([
             'message' => '登録に成功しました',
             'bookId' => $apiId
-        ], 200);
+        ], StatusCodeConst::ALL_CORRECT_NUM);
     }
 
 

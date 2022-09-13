@@ -3,6 +3,7 @@ let modalFlg = false;
 const read = "1";
 const readWish = "2";
 const unread = "3";
+const closeModalTime = 5000;
 
 $('.regist-button').on('click',function(){
 
@@ -43,7 +44,7 @@ $('.regist-button').on('click',function(){
         modalBox.find(".message-box").css('display', 'block');
         modalBox.find(".message-box").text(error.responseJSON.message);
         modalBox.find(".message-box").css('color', 'red');
-        window.setTimeout(closeModal, 5000);
+        window.setTimeout(closeModal,closeModalTime);
 
     });
 

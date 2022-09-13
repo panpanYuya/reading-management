@@ -1,6 +1,7 @@
 //モーダル表示のflg
 let modalFlg = false;
 let deleteFlg = false;
+const closeModalTime = 5000;
 const bookDetailUrl = '/book/detail/'
 
 
@@ -240,10 +241,10 @@ function successAjax(modalBox){
 
 
 function failAjax(modalBox , errorMessage){
-        modalBox.find(".sticky-note-box").css('display', 'none');
-        modalBox.find(".modal-close").css('display', 'none');
-        modalBox.find(".message-box").css('display', 'block');
-        modalBox.find(".message-box").text(errorMessage);
-        modalBox.find(".message-box").css('color', 'red');
-        window.setTimeout(closeModal, 5000);
+    modalBox.find(".sticky-note-box").css('display', 'none');
+    modalBox.find(".modal-close").css('display', 'none');
+    modalBox.find(".message-box").css('display', 'block');
+    modalBox.find(".message-box").text(errorMessage);
+    modalBox.find(".message-box").css('color', 'red');
+    window.setTimeout(closeModal, closeModalTime);
 }

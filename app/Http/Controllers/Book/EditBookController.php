@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Book;
 
+use App\Consts\BookConst;
 use App\Http\Controllers\Controller;
 use App\Models\UserBook;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,6 @@ class EditBookController extends Controller
         $userBookId = $request->userBookId;
         $userBook = UserBook::find($userBookId);
         $userBook->delete();
-        return redirect('/book/list/0');
+        return redirect()->route('list', ['statusId' => BookConst::DEAFALUT_BOOK_STATUS]);
     }
 }

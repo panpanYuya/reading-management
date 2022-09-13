@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Consts\StatusCodeConst;
+use App\Consts\TimeConst;
 use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -21,10 +23,10 @@ class PasswordController extends Controller
         try{
             $userInfo = UserAuth::where('mail_address', $request->mailAddress)->first();
         } catch (Exception $e) {
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         if(is_null($userInfo)){
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         $temporaryToken = UserService::generateToken();
         try{
@@ -40,7 +42,7 @@ class PasswordController extends Controller
             $registUrl = config('app.url') . \UserConst::USER_RESET_PASSWORD_URL . $temporaryToken;
             Mail::to($request->mailAddress)->send(new ResetPasswordMail($registUrl));
         } catch (Exception $e) {
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         return view('password.send-mail');
     }
@@ -51,13 +53,13 @@ class PasswordController extends Controller
         try{
             $tmpInfo = TemporaryRegistration::where('temporary_token', $token)->first();
         } catch (Exception $e){
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         if ($tmpInfo == NULL) {
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         $deadLine = $tmpInfo->updated_at;
-        $deadLine->addHour(24);
+        $deadLine->addHour(TimeConst::DAY_IN_HOURS_NUM);
         if (Carbon::now() < $deadLine) {
             $userId = $tmpInfo->user_id;
             return view('password.change', compact('userId'));
@@ -80,7 +82,7 @@ class PasswordController extends Controller
             $tmpInfo = TemporaryRegistration::where('user_id', $userInfo->id)->first();
             $tmpInfo->delete();
         } catch (Exception $e) {
-            abort(500);
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM);
         }
         return view('password.change-complete');
     }

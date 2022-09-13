@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Book;
 
 use Exception;
+use App\Consts\StatusCodeConst;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -29,11 +30,11 @@ class BookDetailController extends Controller
                 ['user_books.user_id', Auth::id()],
             ])->first();
         if(!isset($bookDetail)){
-            abort(401);
+            abort(StatusCodeConst::UNAUTHORIZED_ERROR_NUM);
         }
         $stickyNotes = StickyRegistration::where('user_book_id', $bookDetail->id)->orderBy('page_number')->get();
         if(!isset($bookDetail)){
-            abort(404);
+            abort(StatusCodeConst::NOT_FOUND_ERROR_NUM);
         }
         return view('book.detail', compact('bookDetail', 'stickyNotes'));
     }
@@ -44,7 +45,7 @@ class BookDetailController extends Controller
         if($userBook->user_id != Auth::id()){
             return response()->json([
                 'message' => '登録ができませんでした'
-            ], 401);
+            ], StatusCodeConst::UNAUTHORIZED_ERROR_NUM);
         }
         $formattedMemo = BookService::newLineCodeToRegexp($request->stickyMemo);
         try {
@@ -56,11 +57,11 @@ class BookDetailController extends Controller
 
             $sticky->save();
         } catch (Exception $e) {
-            abort(500, trans('error.server'));
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM, trans('error.server'));
         }
         return response()->json([
             'message' => '登録に成功しました'
-        ], 200);
+        ], StatusCodeConst::ALL_CORRECT_NUM);
     }
 
 
@@ -73,7 +74,7 @@ class BookDetailController extends Controller
         if ($userBook->user_id != Auth::id()) {
             return response()->json([
                 'message' => '編集ができませんでした'
-            ], 401);
+            ], StatusCodeConst::UNAUTHORIZED_ERROR_NUM);
         }
 
         $formattedMemo = BookService::newLineCodeToRegexp($request->stickyMemo);
@@ -83,11 +84,11 @@ class BookDetailController extends Controller
             $stickyNote->sticky_memo = $formattedMemo;
             $stickyNote->save();
         } catch (Exception $e) {
-            abort(500, trans('error.server'));
+            abort(StatusCodeConst::INTERNAL_SERVER_ERROR_NUM, trans('error.server'));
         }
         return response()->json([
             'message' => '登録に成功しました'
-        ], 200);
+        ], StatusCodeConst::ALL_CORRECT_NUM);
 
     }
 
@@ -96,12 +97,12 @@ class BookDetailController extends Controller
         if ($userBook->user_id != Auth::id()) {
             return response()->json([
                 'message' => '削除ができませんでした'
-            ], 401);
+            ], StatusCodeConst::UNAUTHORIZED_ERROR_NUM);
         }
         StickyRegistration::findOrFail($request->stickyId)->delete();
         return response()->json([
             'message' => '削除に成功しました。'
-        ], 200);
+        ], StatusCodeConst::ALL_CORRECT_NUM);
     }
 
 

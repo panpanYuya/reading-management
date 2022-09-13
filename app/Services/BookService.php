@@ -14,7 +14,8 @@ class BookService
      */
     static public function trimKeywords($keyword)
     {
-        return preg_split("/[\p{Z}\p{Cc}]++/u", $keyword, $limit = 5);
+        //5個以上のスペースはスルーする
+        return preg_split("/[\p{Z}\p{Cc}]++/u", $keyword, 5);
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use App\Consts\UserConst;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -22,7 +24,7 @@ class UserService {
      * @return token
      */
     public static function generateToken(){
-       return bin2hex(random_bytes(16));
+       return bin2hex(random_bytes(UserConst::RANDOM_TOKEN_DIGITS));
     }
 
 }
