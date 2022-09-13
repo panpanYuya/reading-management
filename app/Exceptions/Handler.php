@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Consts\StatusCodeConst;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -36,25 +37,25 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->renderable( function(Throwable $e, Request $request){
-            if($request->ajax()){
+        $this->renderable(function (Throwable $e, Request $request) {
+            if ($request->ajax()) {
                 //Log出力用のメソッドを記入
-                if($this->isHttpException($e)){
+                if ($this->isHttpException($e)) {
                     $message = $e->getMessage();
                     return response()->json([
                         'message' => $message
-                    ],$e->getStatusCode());
-                } elseif($e instanceof ValidationException){
+                    ], $e->getStatusCode());
+                } elseif ($e instanceof ValidationException) {
                     return response()->json([
                         'message' => '指定されたデータは無効でした。',
                         'errors' => $e->errors(),
                     ], $e->status);
-                }
-                } else{
+                } else {
                     return response()->json([
                         'message' => 'アプリケーション内部で問題が発生しました。'
-                    ],500);
+                    ], 500);
                 }
+            }
         });
     }
 }
