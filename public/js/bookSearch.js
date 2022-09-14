@@ -10932,6 +10932,7 @@ var modalFlg = false; //登録する本のステータス
 var read = "1";
 var readWish = "2";
 var unread = "3";
+var closeModalTime = 5000;
 $('.regist-button').on('click', function () {
   var modalBox = $(this).parent().parent().parent();
   var bookStatus = modalBox.find(".slider").children('input').val();
@@ -10971,7 +10972,7 @@ $('.regist-button').on('click', function () {
     modalBox.find(".message-box").css('display', 'block');
     modalBox.find(".message-box").text(error.responseJSON.message);
     modalBox.find(".message-box").css('color', 'red');
-    window.setTimeout(closeModal, 5000);
+    window.setTimeout(closeModal, closeModalTime);
   });
 });
 
