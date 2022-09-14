@@ -13,9 +13,17 @@ class EditBookController extends Controller
     public function showEditBook(Request $request){
         $userBookId = $request->userBookId;
         $userBook = DB::table('user_books')
-                        ->where('book_id', $userBookId)
-                        ->leftJoin('books', 'user_books.book_id', '=' , 'books.id')
-                        ->first();
+            ->leftJoin('books', 'user_books.book_id', '=' , 'books.id')
+            ->where('user_books.id', $userBookId)
+            ->select(
+                'user_books.id',
+                'user_books.user_id',
+                'user_books.book_id',
+                'user_books.read_status',
+                'books.book_cover_url',
+                'books.title'
+            )
+            ->first();
         return view('book.edit', compact('userBook'));
     }
 

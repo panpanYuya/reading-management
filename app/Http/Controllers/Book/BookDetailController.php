@@ -22,13 +22,23 @@ class BookDetailController extends Controller
      * @param string $apiId
      * @return view
      */
-    public function showDetail($id){
+    public function showDetail($userBookId){
         $bookDetail = DB::table('user_books')
-            ->join('books', 'user_books.book_id', '=', 'books.id')
+            ->leftJoin('books', 'user_books.book_id', '=', 'books.id')
             ->where([
-                ['user_books.id', $id],
+                ['user_books.id', $userBookId],
                 ['user_books.user_id', Auth::id()],
-            ])->first();
+            ])
+            ->select(
+                'user_books.id',
+                'user_books.user_id',
+                'user_books.book_id',
+                'books.book_cover_url',
+                'books.title',
+                'books.author',
+                'books.description'
+            )
+            ->first();
         if(!isset($bookDetail)){
             abort(StatusCodeConst::UNAUTHORIZED_ERROR_NUM);
         }

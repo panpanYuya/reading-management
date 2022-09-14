@@ -22,21 +22,39 @@ class BookListController extends Controller
     }
 
     public function findBookByCreated(){
-        $userBooks = DB::table('user_books')->join('books', function ($join) {
-            $join->on('user_books.book_id', '=', 'books.id')
-                ->where('user_books.user_id', Auth::id());
-        })->orderBy('user_books.created_at')->get();
-
+        $userBooks = DB::table('user_books')
+            ->leftJoin('books', 'user_books.book_id', '=', 'books.id')
+            ->where('user_books.user_id', Auth::id())
+            ->select(
+                'user_books.id',
+                'user_books.user_id',
+                'user_books.book_id',
+                'user_books.read_status',
+                'books.book_cover_url',
+                'books.title'
+            )
+            ->orderBy('user_books.created_at')
+            ->get();
         return $userBooks;
     }
 
     public function findBookByStatusCode($statusId){
         $userBooks = DB::table('user_books')
-            ->join('books', 'user_books.book_id', '=', 'books.id')
+            ->leftJoin('books', 'user_books.book_id', '=', 'books.id')
             ->where([
                 ['user_books.user_id', Auth::id()],
                 ['user_books.read_status', $statusId],
-            ])->orderBy('user_books.created_at')->get();
+            ])
+            ->select(
+                'user_books.id',
+                'user_books.user_id',
+                'user_books.book_id',
+                'user_books.read_status',
+                'books.book_cover_url',
+                'books.title'
+            )
+            ->orderBy('user_books.created_at')
+            ->get();
         return $userBooks;
     }
 
