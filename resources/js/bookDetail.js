@@ -121,7 +121,7 @@ function closeModal() {
     //暗くした要素を元にもどす処理
     $('body').css('background', '');
     $('header').css('opacity', '1');
-    $('.menu-btn').css('display', 'block');
+    $('.menu-btn').css('display', 'flex');
     $('.header-wrapper').css('background-color', '#65eb8d');
     $('.sticky_note').css('opacity', '');
     $('.book-image > img').css('opacity', '');

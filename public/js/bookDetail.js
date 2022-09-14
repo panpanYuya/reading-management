@@ -10930,6 +10930,7 @@ var __webpack_exports__ = {};
 //モーダル表示のflg
 var modalFlg = false;
 var deleteFlg = false;
+var closeModalTime = 5000;
 var bookDetailUrl = '/book/detail/'; //図書編集画面を表示する
 
 $('.edit-button').on('click', function () {
@@ -11032,7 +11033,7 @@ function closeModal() {
 
   $('body').css('background', '');
   $('header').css('opacity', '1');
-  $('.menu-btn').css('display', 'block');
+  $('.menu-btn').css('display', 'flex');
   $('.header-wrapper').css('background-color', '#65eb8d');
   $('.sticky_note').css('opacity', '');
   $('.book-image > img').css('opacity', '');
@@ -11140,7 +11141,7 @@ function failAjax(modalBox, errorMessage) {
   modalBox.find(".message-box").css('display', 'block');
   modalBox.find(".message-box").text(errorMessage);
   modalBox.find(".message-box").css('color', 'red');
-  window.setTimeout(closeModal, 5000);
+  window.setTimeout(closeModal, closeModalTime);
 }
 })();
 
