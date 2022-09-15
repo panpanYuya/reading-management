@@ -29,7 +29,7 @@ class StickyRegistSeeder extends Seeder
             'user_book_id' => '1',
             'page_number' => '89',
             'sticky_title' => '戦略を試してみる',
-            'sticky_memo' => '➀自分が今挑戦しているもの\n　　　↓\n➁戦略を立てる\n　　　↓\n➂戦略を実行する\n　　　↓\n➃戦略の見直しをする\n　　　↓\n➂に戻るを繰り返す。\n\nこれが戦略を実行するうえで大切になること',
+            'sticky_memo' => "➀自分が今挑戦しているもの  \r\n　　　↓　　　 \r\n ➁戦略を立てる  \r\n　　　↓　　　　 \r\n ➂戦略を実行する  \r\n　　　↓　　　　\r\n ➃戦略の見直しをする  \r\n　　　↓　　　　\r\n ➂に戻るを繰り返す。 \r\n  \r\n これが戦略を実行するうえで大切になること",
             'created_at' => '2022-09-12 21:46:29',
             'updated_at' => '2022-09-12 21:46:29',
         ]);
@@ -38,7 +38,7 @@ class StickyRegistSeeder extends Seeder
             'user_book_id' => '1',
             'page_number' => '876',
             'sticky_title' => '戦略を考えるうえで大切なこと',
-            'sticky_memo' => '戦略を考えるうえで大切になること\n\n\n行動の原理を見返すことで\n自分の行動原因などを考えることができる。\nその行動原因をいかに戦略に組み込むことができるかがポイントとなる',
+            'sticky_memo' => "戦略を考えるうえで大切になること \r\n  \r\n  \r\n 行動の原理を見返すことで \r\n 自分の行動原因などを考えることができる。 \r\n その行動原因をいかに戦略に組み込むことができるかがポイントとなる",
             'created_at' => '2022-09-12 21:46:29',
             'updated_at' => '2022-09-12 21:46:29',
         ]);
@@ -47,7 +47,7 @@ class StickyRegistSeeder extends Seeder
             'user_book_id' => '3',
             'page_number' => '444',
             'sticky_title' => '聞き方のコツ',
-            'sticky_memo' => '聞き方のコツは単純明快\n　　　↓\n聞くときに相槌を打つ\n　　　↓\n聞くときに、一番相手が何を聞いてほしいのかを考える。\n',
+            'sticky_memo' => '聞き方のコツは単純明快 \r\n       ↓ \r\n 聞くときに相槌を打つ \r\n       ↓ \r\n 聞くときに、一番相手が何を聞いてほしいのかを考える。 \r\n ',
             'created_at' => '2022-09-12 21:46:29',
             'updated_at' => '2022-09-12 21:46:29',
         ]);
