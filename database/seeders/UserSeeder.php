@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('user_auths')->insert([
             'id' => '1',
             'user_name' => 'testUser1',
-            'mail_address' => 'testUser1',
+            'mail_address' => '',
             'password' => Hash::make('password1'),
             'created_at' => '2022-05-24 16:39:39',
             'updated_at' => '2022-05-24 16:39:39',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         DB::table('user_auths')->insert([
             'id' => '2',
             'user_name' => 'testUser2',
-            'mail_address' => 'testUser2',
+            'mail_address' => '',
             'password' => Hash::make('password2'),
             'created_at' => '2022-05-24 16:39:39',
             'updated_at' => '2022-05-24 16:39:39',
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         DB::table('user_auths')->insert([
             'id' => '3',
             'user_name' => 'testUser3',
-            'mail_address' => 'testUser3',
+            'mail_address' => '',
             'password' => Hash::make('password3'),
             'created_at' => '2022-05-24 16:39:39',
             'updated_at' => '2022-05-24 16:39:39',
